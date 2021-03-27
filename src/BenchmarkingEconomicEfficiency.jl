@@ -16,7 +16,19 @@ module BenchmarkingEconomicEfficiency
     using Statistics: std
     using StatsBase: CoefTable
 
+    import StatsBase: nobs, mean
+
     using Reexport
     @reexport using DataEnvelopmentAnalysis
+
+    export
+    # Types
+    CostDDFDEAModel,
+
+    # Economic models
+    deacostddf
+
+    # Include code of functions
+    include("deacostddf.jl")
 
 end
