@@ -1,0 +1,7 @@
+[deps]
+DataEnvelopmentAnalysis = "a100299e-89d6-11e9-0fa0-2daf497e6a05"
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+
+[compat]
+DataEnvelopmentAnalysis = "^0.3.1"
+Documenter = "~0.26"
