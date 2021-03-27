@@ -14,6 +14,7 @@ makedocs(sitename = "BenchmarkingEconomicEfficiency",
 
 deploydocs(
     repo = "github.com/javierbarbero/BenchmarkingEconomicEfficiency.jl.git",
+    devbranch = "main"
 )
 
 
