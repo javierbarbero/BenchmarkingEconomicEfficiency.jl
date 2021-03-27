@@ -1,0 +1,13 @@
+name = "BenchmarkingEconomicEfficiency"
+uuid = "9d9a57f5-5434-4194-99f6-8bfcf011f0e1"
+authors = ["Javier Barbero <javierbarbero@users.noreply.github.com> and contributors"]
+version = "0.1.0"
+
+[compat]
+julia = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
