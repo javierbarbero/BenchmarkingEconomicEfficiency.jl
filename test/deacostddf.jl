@@ -22,7 +22,7 @@
     @test efficiency(deacostddfones, :Allocative) ≈ [0.0; 0.5; 0.5; 1/6; 0.0; 1.5; 0.5; 2.2]
     @test normfactor(deacostddfones) ≈ [2.0; 2.0; 2.0; 2.0; 2.0; 2.0; 2.0; 2.0]
     
-    deacostddfonesmon = deacostddf(X, Y, W, Gx = :Ones, rts = :CRS, monetary = true)
+    deacostddfonesmon = deacostddf(X, Y, W, Gx = :Ones, monetary = true)
 
     @test ismonetary(deacostddfonesmon) == true
 

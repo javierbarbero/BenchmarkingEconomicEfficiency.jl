@@ -22,7 +22,7 @@
     @test efficiency(dearevenueddfones, :Allocative) ≈ [0.0; 1.0; 1.0; 0.5; 0.0; 2.0; 0.5; 0.875]
     @test normfactor(dearevenueddfones) ≈ [2.0; 2.0; 2.0; 2.0; 2.0; 2.0; 2.0; 2.0]
     
-    dearevenueddfonesmon = dearevenueddf(X, Y, P, Gy = :Ones, rts = :CRS, monetary = true)
+    dearevenueddfonesmon = dearevenueddf(X, Y, P, Gy = :Ones, monetary = true)
 
     @test ismonetary(dearevenueddfonesmon) == true
 

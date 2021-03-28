@@ -5,5 +5,6 @@ using Test
     
     include("deacostddf.jl")
     include("dearevenueddf.jl")
+    include("deacostadd.jl")
 
 end

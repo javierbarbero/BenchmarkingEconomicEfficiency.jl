@@ -3,7 +3,8 @@
 BenchmarkingEconomicEfficiency.jl will use a default optimizer/solver for each DEA model, as shown in the next table.
 
 | Function            | Specific Options | Problem type | Default Optimizer |
-| --------------------|-----------------:|-------------:|------------------:| 
+| --------------------|-----------------:|-------------:|------------------:|
+| `deacostadd`        |                  | LP           | GLPK              | 
 | `deacostddf`        |                  | LP           | GLPK              |
 | `dearevenueddf`     |                  | LP           | GLPK              |
 
