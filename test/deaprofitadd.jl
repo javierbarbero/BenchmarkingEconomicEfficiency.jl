@@ -56,7 +56,7 @@
     @test_throws DimensionMismatch deaprofitadd([1; 2; 3], [4; 5; 6], [1; 2; 3; 4], [1; 1; 1], :Ones) # Different number of observation in input prices
     @test_throws DimensionMismatch deaprofitadd([1; 2; 3], [4; 5; 6], [1; 1; 1], [1; 2; 3; 4], :Ones) # Different number of observation in output prices
     @test_throws DimensionMismatch deaprofitadd([1 1; 2 2; 3 3 ], [4; 5; 6], [1 1 1; 2 2 2; 3 3 3], [1; 1; 1], :Ones) # Different number of input prices and inputs
-    @test_throws DimensionMismatch deaprofitadd([1 1; 2 2; 3 3 ], [4; 5; 6], [1; 1; 1], [1 1 1; 2 2 2; 3 3 3], :Ones) # Different number of output prices and outputs
+    @test_throws DimensionMismatch deaprofitadd([1; 2; 3 ], [4; 5; 6], [1; 1; 1], [1 1 1; 2 2 2; 3 3 3], :Ones) # Different number of output prices and outputs
     @test_throws DimensionMismatch deaprofitadd([1; 2; 3] , [4; 5; 6], [1; 1; 1], [1; 1; 1], rhoX = [1 1; 2 2; 3 3], rhoY = [1; 1; 1]) # Different size of inputs weights
     @test_throws DimensionMismatch deaprofitadd([1; 2; 3] , [4; 5; 6], [1; 1; 1], [1; 1; 1], rhoX = [1; 1; 1], rhoY = [1 1; 2 2; 3 3]) # Different size of output weights
     @test_throws ArgumentError deaprofitadd([1; 2; 3], [1; 2; 3], [1; 1; 1], [1; 1; 1], :Error) # Invalid inuts weights
