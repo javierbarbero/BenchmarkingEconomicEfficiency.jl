@@ -9,5 +9,6 @@ using Test
     include("dearevenueadd.jl")
     include("deaprofitadd.jl")
     include("deacostrussell.jl")
+    include("dearevenuerussell.jl")
     
 end

@@ -27,7 +27,7 @@ Depth = 2
 
 Revenue DEA models:
 ```@contents
-Pages = ["revenue/revenueddf.md", "revenue/revenueadditive.md"]
+Pages = ["revenue/revenueddf.md", "revenue/revenueadditive.md", "revenue/revenuerussell.md"]
 Depth = 2
 ```
 

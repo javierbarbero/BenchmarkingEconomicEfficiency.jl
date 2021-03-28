@@ -10,8 +10,9 @@ makedocs(sitename = "BenchmarkingEconomicEfficiency",
                 "Cost Russell model" => "cost/costrussell.md"
                 ],
         "Revenue Models" => Any[
-                "Revenue Directional Distance Function model" => "revenue/revenueddf.md"
-                "Revenue Additive model" => "revenue/revenueadditive.md"
+                "Revenue Directional Distance Function model" => "revenue/revenueddf.md",
+                "Revenue Additive model" => "revenue/revenueadditive.md",
+                "Revenue Russell model" => "revenue/revenuerussell.md"
                 ],
         "Profit Models" => [
                 "Profit Additive model" => "profit/profitadditive.md"

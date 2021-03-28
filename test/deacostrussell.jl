@@ -45,6 +45,6 @@
     @test_throws DimensionMismatch deacostrussell([1; 2 ; 3], [4 ; 5], [1; 1; 1]) #  Different number of observations
     @test_throws DimensionMismatch deacostrussell([1; 2; 3], [4; 5; 6], [1; 2; 3; 4]) # Different number of observation in prices
     @test_throws DimensionMismatch deacostrussell([1 1; 2 2; 3 3 ], [4; 5; 6], [1 1 1; 2 2 2; 3 3 3]) # Different number of input prices and inputs
-    @test_throws ArgumentError deacostadd([1; 2; 3], [4; 5; 6], [1; 2; 3], rts = :Error) # Invalid returns to scale
+    @test_throws ArgumentError deacostrussell([1; 2; 3], [4; 5; 6], [1; 2; 3], rts = :Error) # Invalid returns to scale
 
 end
