@@ -7,6 +7,7 @@ BenchmarkingEconomicEfficiency.jl will use a default optimizer/solver for each D
 | `deacostadd`        |                  | LP           | GLPK              | 
 | `deacostddf`        |                  | LP           | GLPK              |
 | `dearevenueddf`     |                  | LP           | GLPK              |
+| `dearevenueadd`     |                  | LP           | GLPK              |
 
 Where:
 - LP = Linear programming.

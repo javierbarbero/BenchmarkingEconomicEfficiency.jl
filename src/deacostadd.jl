@@ -93,7 +93,7 @@ function deacostadd(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
     end
 
     if dispos != :Strong && dispos != :Weak
-        throw(ArgumentError("`disposX` must be :Strong or :Weak"));
+        throw(ArgumentError("`dispos` must be :Strong or :Weak"));
     end
 
     # Default behaviour

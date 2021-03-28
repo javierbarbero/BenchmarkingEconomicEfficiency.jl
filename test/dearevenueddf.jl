@@ -68,9 +68,9 @@
     # Test errors
     @test_throws DimensionMismatch dearevenueddf([1; 2 ; 3], [4 ; 5], [1; 1; 1] , Gy = :Ones) #  Different number of observations
     @test_throws DimensionMismatch dearevenueddf([1; 2; 3], [4; 5; 6], [1; 2; 3; 4], Gy = :Ones) # Different number of observation in prices
-    @test_throws DimensionMismatch dearevenueddf([1 1; 2 2; 3 3 ], [4; 5; 6], [1 1 1; 2 2 2; 3 3 3], Gy = :Ones) # Different number of input prices and inputs
-    @test_throws DimensionMismatch dearevenueddf([1; 2; 3] , [4; 5; 6], [1; 1; 1], Gy = [1 1; 2 2; 3 3]) # Different size of inputs direction
+    @test_throws DimensionMismatch dearevenueddf([1 1; 2 2; 3 3 ], [4; 5; 6], [1 1 1; 2 2 2; 3 3 3], Gy = :Ones) # Different number of output prices and outputs
+    @test_throws DimensionMismatch dearevenueddf([1; 2; 3] , [4; 5; 6], [1; 1; 1], Gy = [1 1; 2 2; 3 3]) # Different size of outputs direction
     @test_throws ArgumentError dearevenueddf([1; 2; 3], [4; 5; 6], [1; 2; 3], Gy = :Ones, rts = :Error) # Invalid returns to scale
-    @test_throws ArgumentError dearevenueddf([1; 2; 3], [1; 2; 3], [1; 1; 1], Gy = :Error) # Invalid inuts direction
+    @test_throws ArgumentError dearevenueddf([1; 2; 3], [1; 2; 3], [1; 1; 1], Gy = :Error) # Invalid outputs direction
 
 end

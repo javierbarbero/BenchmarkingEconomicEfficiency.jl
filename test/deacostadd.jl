@@ -29,6 +29,9 @@
     @test efficiency(deacostaddonescrs, :Technical)  ≈ [0.0; 0.0; 0.0; 3.0; 6.0; 2.0; 3.0; 5.2]
     @test efficiency(deacostaddonescrs, :Allocative) ≈ [0.0; 1.0; 1.0; 0.0; 0.0; 1.0; 0.0; 0.4]
 
+    # Default is :Ones
+    @test efficiency(deacostadd(X, Y, W)) == efficiency(deacostaddones)
+
     # With :MIP
     deacostaddmip = deacostadd(X, Y, W, :MIP)
 
@@ -59,10 +62,10 @@
     @test_throws DimensionMismatch deacostadd([1; 2 ; 3], [4 ; 5], [1; 1; 1] , :Ones) #  Different number of observations
     @test_throws DimensionMismatch deacostadd([1; 2; 3], [4; 5; 6], [1; 2; 3; 4], :Ones) # Different number of observation in prices
     @test_throws DimensionMismatch deacostadd([1 1; 2 2; 3 3 ], [4; 5; 6], [1 1 1; 2 2 2; 3 3 3], :Ones) # Different number of input prices and inputs
-    @test_throws DimensionMismatch deacostadd([1; 2; 3] , [4; 5; 6], [1; 1; 1], rhoX = [1 1; 2 2; 3 3]) # Different size of inputs direction
+    @test_throws DimensionMismatch deacostadd([1; 2; 3] , [4; 5; 6], [1; 1; 1], rhoX = [1 1; 2 2; 3 3]) # Different size of inputs weights
     @test_throws ArgumentError deacostadd([1; 2; 3], [4; 5; 6], [1; 2; 3],:Ones, rts = :Error) # Invalid returns to scale
-    @test_throws ArgumentError deacostadd([1; 2; 3], [1; 2; 3], [1; 1; 1], :Error) # Invalid inuts direction
-    @test_throws ArgumentError deacostadd([1; 2; 3], [1; 2; 3], [1; 1; 1], :Ones, dispos = :Error) # Invalid inputs disposability
+    @test_throws ArgumentError deacostadd([1; 2; 3], [1; 2; 3], [1; 1; 1], :Error) # Invalid inuts weights
+    @test_throws ArgumentError deacostadd([1; 2; 3], [1; 2; 3], [1; 1; 1], :Ones, dispos = :Error) # Invalid inputs disposal
     @test_throws ArgumentError deacostadd([1; 2; 3], [1; 2; 3], [1; 1; 1], :Ones, rhoX= [1; 1; 1]) # Weights not allowed if model != :Custom
 
 end
