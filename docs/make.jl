@@ -15,7 +15,8 @@ makedocs(sitename = "BenchmarkingEconomicEfficiency",
                 "Revenue Russell model" => "revenue/revenuerussell.md"
                 ],
         "Profit Models" => [
-                "Profit Additive model" => "profit/profitadditive.md"
+                "Profit Additive model" => "profit/profitadditive.md",
+                "Profit Russell model" => "profit/profitrussell.md"
                 ],
         "Configuring Optimizer" => "optimizer.md",
         ],

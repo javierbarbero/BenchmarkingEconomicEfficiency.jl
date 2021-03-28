@@ -10,5 +10,6 @@ using Test
     include("deaprofitadd.jl")
     include("deacostrussell.jl")
     include("dearevenuerussell.jl")
+    include("deaprofitrussell.jl")
     
 end
