@@ -12,6 +12,9 @@ makedocs(sitename = "BenchmarkingEconomicEfficiency",
                 "Revenue Directional Distance Function model" => "revenue/revenueddf.md"
                 "Revenue Additive model" => "revenue/revenueadditive.md"
                 ],
+        "Profit Models" => [
+                "Profit Additive model" => "profit/profitadditive.md"
+                ],
         "Configuring Optimizer" => "optimizer.md",
         ],
         format = Documenter.HTML(prettyurls = get(ENV, "CI", nothing) == "true")

@@ -24,16 +24,17 @@ module BenchmarkingEconomicEfficiency
     export
     # Types
     CostDDFDEAModel, RevenueDDFDEAModel,
-    CostAdditiveDEAModel, RevenueAdditiveDEAModel,
+    CostAdditiveDEAModel, RevenueAdditiveDEAModel, ProfitAdditiveDEAModel,
 
     # Economic models
     deacostddf, dearevenueddf,
-    deacostadd, dearevenueadd
+    deacostadd, dearevenueadd, deaprofitadd
 
     # Include code of functions
     include("deacostddf.jl")
     include("dearevenueddf.jl")        
     include("deacostadd.jl")
     include("dearevenueadd.jl")
+    include("deaprofitadd.jl")
 
 end

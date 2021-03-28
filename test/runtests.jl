@@ -7,5 +7,6 @@ using Test
     include("dearevenueddf.jl")
     include("deacostadd.jl")
     include("dearevenueadd.jl")
+    include("deaprofitadd.jl")
     
 end
