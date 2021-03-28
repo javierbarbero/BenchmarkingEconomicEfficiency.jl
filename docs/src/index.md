@@ -25,6 +25,12 @@ Pages = ["cost/costddf.md"]
 Depth = 2
 ```
 
+Revenue DEA models:
+```@contents
+Pages = ["revenue/revenueddf.md"]
+Depth = 2
+```
+
 ## Authors
 
 DataEnvelopmentAnalysis.jl is being developed by [Javier Barbero](http://www.javierbarbero.net) and [José Luís Zofío](http://www.joselzofio.net).

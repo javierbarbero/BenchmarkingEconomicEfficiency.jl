@@ -30,12 +30,12 @@
     @test efficiency(deacostddfonesmon, :Technical) ≈ efficiency(deacostddfones, :Technical) .* normfactor(deacostddfones)
     @test efficiency(deacostddfonesmon, :Allocative) ≈ efficiency(deacostddfones, :Allocative) .* normfactor(deacostddfones)
 
-    # With Gx = :Ones and CRS
-    deacostddfonesvrs = deacostddf(X, Y, W, Gx = :Ones, rts = :CRS)
+    # With Gx = :Ones and CRS (Same result in this example)
+    deacostddfonescrs = deacostddf(X, Y, W, Gx = :Ones, rts = :CRS)
 
-    @test efficiency(deacostddfonesvrs, :Economic)   ≈ [0.0; 0.5; 0.5; 1.5; 3.0; 1.5; 1.5; 2.8]
-    @test efficiency(deacostddfonesvrs, :Technical)  ≈ [0.0; 0.0; 0.0; 4/3; 3; 0.0; 1.0; 0.6]
-    @test efficiency(deacostddfonesvrs, :Allocative) ≈ [0.0; 0.5; 0.5; 1/6; 0.0; 1.5; 0.5; 2.2]
+    @test efficiency(deacostddfonescrs, :Economic)   ≈ [0.0; 0.5; 0.5; 1.5; 3.0; 1.5; 1.5; 2.8]
+    @test efficiency(deacostddfonescrs, :Technical)  ≈ [0.0; 0.0; 0.0; 4/3; 3; 0.0; 1.0; 0.6]
+    @test efficiency(deacostddfonescrs, :Allocative) ≈ [0.0; 0.5; 0.5; 1/6; 0.0; 1.5; 0.5; 2.2]
 
     # With Gx = :Observed
     deacostddfobs = deacostddf(X, Y, W, Gx = :Observed)
@@ -70,7 +70,7 @@
     @test_throws DimensionMismatch deacostddf([1; 2; 3], [4; 5; 6], [1; 2; 3; 4], Gx = :Ones) # Different number of observation in prices
     @test_throws DimensionMismatch deacostddf([1 1; 2 2; 3 3 ], [4; 5; 6], [1 1 1; 2 2 2; 3 3 3], Gx = :Ones) # Different number of input prices and inputs
     @test_throws DimensionMismatch deacostddf([1; 2; 3] , [4; 5; 6], [1; 1; 1], Gx = [1 1; 2 2; 3 3]) # Different size of inputs direction
-    @test_throws ArgumentError deacost([1; 2; 3], [4; 5; 6], [1; 2; 3], rts = :Error) # Invalid returns to scale
+    @test_throws ArgumentError deacostddf([1; 2; 3], [4; 5; 6], [1; 2; 3], Gx = :Ones, rts = :Error) # Invalid returns to scale
     @test_throws ArgumentError deacostddf([1; 2; 3], [1; 2; 3], [1; 1; 1], Gx = :Error) # Invalid inuts direction
 
 end
