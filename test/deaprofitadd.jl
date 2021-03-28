@@ -5,7 +5,7 @@
     X = [2; 4; 8; 12; 6; 14; 14; 9.412];
     Y = [1; 5; 8; 9; 3; 7; 9; 2.353];
     W = [1; 1; 1; 1; 1; 1; 1; 1];
-    P = [1; 1; 1; 1; 1; 1; 1; 1];
+    P = [2; 2; 2; 2; 2; 2; 2; 2];
 
     # With :Ones 
     deaprofitaddones = deaprofitadd(X, Y, W, P, :Ones)
@@ -18,9 +18,9 @@
     @test ismonetary(deaprofitaddones) == false
 
     @test efficiency(deaprofitaddones) == efficiency(deaprofitaddones, :Economic)
-    @test efficiency(deaprofitaddones, :Economic)   ≈ [2.0; 0.0; 1.0; 4.0; 4.0; 8.0; 6.0; 8059/1000]
+    @test efficiency(deaprofitaddones, :Economic)   ≈ [8.0; 2.0; 0.0; 2.0; 8.0; 8.0; 4.0; 12.706]
     @test efficiency(deaprofitaddones, :Technical)  ≈ [0.0; 0.0; 0.0; 0.0; 4.0; 22/3; 2.0; 8059/1000]
-    @test efficiency(deaprofitaddones, :Allocative) ≈ [2.0; 0.0; 1.0; 4.0; 0.0; 2/3; 4.0; 0]
+    @test efficiency(deaprofitaddones, :Allocative) ≈ [8.0; 2.0; 0.0; 2.0; 4.0; 2/3; 2.0; 4647/1000] 
     @test normfactor(deaprofitaddones) ≈ [1.0; 1.0; 1.0; 1.0; 1.0; 1.0; 1.0; 1.0]
     
     # Default is :Ones
@@ -29,10 +29,10 @@
     # With :MIP
     deaprofitaddmip = deaprofitadd(X, Y, W, P, :MIP)
 
-    @test efficiency(deaprofitaddmip, :Economic)   ≈ [2.0; 0.0; 0.125; 4/9; 4/3; 8/7; 2/3; 3.424989] atol = 1e-5
+    @test efficiency(deaprofitaddmip, :Economic)   ≈ [4.0; 0.5; 0.0; 1/6; 4/3; 4/7; 2/7; 2.699958] atol = 1e-5
     @test efficiency(deaprofitaddmip, :Technical)  ≈ [0.0; 0.0; 0.0; 0.0; 7/6; 4/7; 1/7; 2.549936] atol = 1e-5
-    @test efficiency(deaprofitaddmip, :Allocative) ≈ [2.0; 0.0; 0.125; 4/9; 1/6; 4/7; 11/21; 0.875053] atol = 1e-5
-    @test normfactor(deaprofitaddmip) ≈ [1.0; 4.0; 8.0; 9.0; 3.0; 7.0; 9.0; 2.353]
+    @test efficiency(deaprofitaddmip, :Allocative) ≈ [4.0; 0.5; 0.0; 1/6; 1/6; 0.0; 1/7; 0.150021] atol = 1e-5
+    @test normfactor(deaprofitaddmip) ≈ [2.0; 4.0; 8.0; 12.0; 6.0; 14.0; 14.0; 4.706]
     
     # With :MIP and monetary = true     
     deaprofitaddmipmon = deaprofitadd(X, Y, W, P, :MIP, monetary = true)
