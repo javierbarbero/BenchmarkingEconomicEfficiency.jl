@@ -37,6 +37,20 @@ julia> using Pkg; Pkg.add("BenchmarkingEconomicEfficiency")
 **Cost DEA models**
 
 * Cost Directional Distance Function model.
+* Cost Additive model.
+* Cost Russell model.
+
+**Revenue DEA models**
+
+* Revenue Directional Distance Function model.
+* Revenue Additive model.
+* Revenue Russell model.
+
+**Profit DEA models**
+
+* Profit Additive model.
+* Profit Russell model.
+* Profit Enhanced Russell Graph Slack Based Measure
 
 ## Authors
 

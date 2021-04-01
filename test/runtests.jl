@@ -11,5 +11,6 @@ using Test
     include("deacostrussell.jl")
     include("dearevenuerussell.jl")
     include("deaprofitrussell.jl")
+    include("deaprofiterg.jl")
     
 end
