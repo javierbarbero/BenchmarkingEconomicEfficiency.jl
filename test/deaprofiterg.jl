@@ -7,7 +7,7 @@
     W = [1; 1; 1; 1; 1; 1; 1; 1];
     P = [2; 2; 2; 2; 2; 2; 2; 2];
 
-    # Profit Russell
+    # Profit Enhanced Russell Graph Slack Based Measure
     profiterg = deaprofiterg(X, Y, W, P)
 
     @test typeof(profiterg) == ProfitERGDEAModel
