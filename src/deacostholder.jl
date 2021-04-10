@@ -34,6 +34,7 @@ inputs `X`, outputs `Y` and price of inputs `W`.
 
 # Optional Arguments
 - `rts=:VRS`: chooses variable returns to scale. For constant returns to scale choose `:CRS`.
+- `names`: a vector of strings with the names of the decision making units.
 
 # Examples
 ```jldoctest
