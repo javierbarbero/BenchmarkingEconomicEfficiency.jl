@@ -39,12 +39,14 @@ julia> using Pkg; Pkg.add("BenchmarkingEconomicEfficiency")
 * Cost Directional Distance Function model.
 * Cost Additive model.
 * Cost Russell model.
+* Cost Hölder model.
 
 **Revenue DEA models**
 
 * Revenue Directional Distance Function model.
 * Revenue Additive model.
 * Revenue Russell model.
+* Revenue Hölder model.
 
 **Profit DEA models**
 
@@ -52,6 +54,7 @@ julia> using Pkg; Pkg.add("BenchmarkingEconomicEfficiency")
 * Profit Russell model.
 * Profit Enhanced Russell Graph Slack Based Measure
 * Profit Modified Directional Distance Function model.
+* Profit Hölder model.
 
 ## Authors
 
