@@ -20,7 +20,8 @@ makedocs(sitename = "BenchmarkingEconomicEfficiency",
                 "Profit Additive model" => "profit/profitadditive.md",
                 "Profit Russell model" => "profit/profitrussell.md",
                 "Profit Enhanced Russell Graph Slack Based Measure" => "profit/profitenhancedrussell.md",
-                "Profit Modified Directional Distance Function Model" => "profit/profitmodifiedddf.md"
+                "Profit Modified Directional Distance Function model" => "profit/profitmodifiedddf.md",
+                "Profit Hölder model" => "profit/profitholder.md"
                 ],
         "Configuring Optimizer" => "optimizer.md",
         ],

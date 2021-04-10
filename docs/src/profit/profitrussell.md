@@ -8,7 +8,7 @@ end
 
 # Profit Russell model
 
-The cost Russell model is computed by solving a graph [Russell DEA model](https://javierbarbero.github.io/DataEnvelopmentAnalysis.jl/stable/technical/russell/) for the technical efficiency.
+The profit Russell model is computed by solving a graph [Russell DEA model](https://javierbarbero.github.io/DataEnvelopmentAnalysis.jl/stable/technical/russell/) for the technical efficiency.
 
 In this example we compute the profit efficiency Russell measure under variable returns to scale:
 ```jldoctest 1

@@ -16,6 +16,7 @@ BenchmarkingEconomicEfficiency.jl will use a default optimizer/solver for each D
 | `deaprofitrussell`  |                  | NLP          | Ipopt             |
 | `deaprofiterg`      |                  | LP           | GLPK              |
 | `deaprofitmddf`     |                  | NLP          | Ipopt             |
+| `deaprofitholder`   |                  | LP           | GLPK              |
 
 Where:
 - LP = Linear programming.
