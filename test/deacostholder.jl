@@ -50,6 +50,7 @@
         costholderl2 = deacostholder(X, Y, W, l = 2, optimizer = DEAOptimizer(:NLP))
 
         @test normfactor(costholderl2) ≈ sqrt(2) .* ones(8)
+        show(IOBuffer(), costholderl2)
     end
      
     # Cost Hölder L2 Weighted (weakly)
@@ -57,6 +58,7 @@
         costholderl2weight = deacostholder(X, Y, W, l = 2, weight = true, optimizer = DEAOptimizer(:NLP))
 
         @test normfactor(costholderl2weight) ≈ sqrt.(sum((W .* X).^2, dims = 2))
+        show(IOBuffer(), costholderl2weight)
     end
 
     # Cost Hölder LInf
@@ -78,8 +80,6 @@
     # Print
     show(IOBuffer(), costholderl1)
     show(IOBuffer(), costholderl1weight)
-    show(IOBuffer(), costholderl2)
-    show(IOBuffer(), costholderl2weight)
     show(IOBuffer(), costholderlInf)
     show(IOBuffer(), costholderlInfweight)
 

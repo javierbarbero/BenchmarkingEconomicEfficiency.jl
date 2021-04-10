@@ -27,10 +27,10 @@ end
 Compute cost efficiency using data envelopment analysis for
 inputs `X`, outputs `Y` and price of inputs `W`.
 
-# l specification
-- 1.
-- 2.
-- Inf.
+# Hölder norm `l` specification
+- `1`.
+- `2`.
+- `Inf`.
 
 # Optional Arguments
 - `rts=:VRS`: chooses variable returns to scale. For constant returns to scale choose `:CRS`.
