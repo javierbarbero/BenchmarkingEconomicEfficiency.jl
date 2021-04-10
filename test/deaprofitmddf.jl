@@ -32,15 +32,14 @@
     @test efficiency(profitmddfobservedmon, :Technical) ≈ efficiency(profitmddfobserved, :Technical) .* normfactor(profitmddfobserved)
     @test efficiency(profitmddfobservedmon, :Allocative) ≈ efficiency(profitmddfobserved, :Allocative) .* normfactor(profitmddfobserved)
 
+    # Profit MDDF with :Ones
+    profitmddfones = deaprofitmddf(X, Y, W, P, Gx = :Ones, Gy = :Ones)
+
+    @test normfactor(profitmddfones) == [1.0; 1.0; 1.0; 1.0; 1.0; 1.0; 1.0; 2.0]
+
     # Test other directions technical efficiency
     @test efficiency(deaprofitmddf(X, Y, W, P,  Gx= :Ones, Gy = :Ones), :Technical) == efficiency(deamddf(X, Y, Gx = :Ones, Gy = :Ones, rts = :VRS))
     @test efficiency(deaprofitmddf(X, Y, W, P,  Gx= :Mean, Gy = :Mean), :Technical) == efficiency(deamddf(X, Y, Gx = :Mean, Gy = :Mean, rts = :VRS))
-    
-    GxGydollar = 1 ./ (sum(P, dims = 2) + sum(W, dims = 2));
-    GxGydollar = repeat(GxGydollar, 1, 1);
-    
-    @test efficiency(deaprofitmddf(X, Y, W, P,  Gx= :Monetary, Gy = :Monetary), :Technical) == efficiency(deamddf(X, Y, Gx = GxGydollar, Gy = GxGydollar, rts = :VRS))
-    @test efficiency(deaprofitmddf(X, Y, W, P,  Gx= GxGydollar, Gy = GxGydollar), :Technical) == efficiency(deamddf(X, Y, Gx = GxGydollar, Gy = GxGydollar, rts = :VRS))
     
     # Print
     show(IOBuffer(), profitmddfobserved)

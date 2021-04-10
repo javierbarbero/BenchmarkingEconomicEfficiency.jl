@@ -32,7 +32,6 @@ The directions `Gx` and `Gy` can be one of the following symbols.
 - `:Ones`: use ones.
 - `:Observed`: use observed values.
 - `:Mean`: use column means.
-- `:Monetary`: use direction so that profit inefficiency is expressed in monetary values.
 
 Alternatively, a vector or matrix with the desired directions can be supplied.
 
@@ -108,9 +107,6 @@ function deaprofitmddf(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
             Gx = X
         elseif Gx == :Mean
             Gx = repeat(mean(X, dims = 1), size(X, 1))
-        elseif Gx == :Monetary
-            GxGydollar = 1 ./ (sum(P, dims = 2) + sum(W, dims = 2));
-            Gx = repeat(GxGydollar, 1, m);
         else
             throw(ArgumentError("Invalid `Gx`"));
         end
@@ -128,9 +124,6 @@ function deaprofitmddf(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
             Gy = Y
         elseif Gy == :Mean
             Gy = repeat(mean(Y, dims = 1), size(Y, 1))
-        elseif Gy == :Monetary
-            GxGydollar = 1 ./ (sum(P, dims = 2) + sum(W, dims = 2));
-            Gy = repeat(GxGydollar, 1, s);
         else
             throw(ArgumentError("Invalid `Gy`"));
         end
@@ -164,9 +157,9 @@ function deaprofitmddf(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
     normalization = zeros(n)
     for i in 1:n
         if obsprofit[i] >= 0
-            normalization[i] = sum(W[i,:] .* X[i,:], dims = 2)[1]
+            normalization[i] = sum(W[i,:] .* Gx[i,:], dims = 2)[1]
         else
-            normalization[i] = sum(P[i,:] .* Y[i,:], dims = 2)[1]
+            normalization[i] = sum(P[i,:] .* Gy[i,:], dims = 2)[1]
         end
     end
     normalization = vec(normalization)
