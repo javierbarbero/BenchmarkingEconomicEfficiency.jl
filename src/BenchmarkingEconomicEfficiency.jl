@@ -6,9 +6,6 @@ module BenchmarkingEconomicEfficiency
     [BenchmarkingEconomicEfficiency repository](https://github.com/javierbarbero/BenchmarkingEconomicEfficiency.jl).
     """
 
-    using JuMP
-    using GLPK
-    using Ipopt
     using SparseArrays
     using LinearAlgebra
 
