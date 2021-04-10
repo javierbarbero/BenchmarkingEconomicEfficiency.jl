@@ -25,13 +25,15 @@ module BenchmarkingEconomicEfficiency
     CostRussellDEAModel, RevenueRussellDEAModel, ProfitRussellDEAModel,
     ProfitERGDEAModel,
     ProfitModifiedDDFDEAModel,
+    CostHolderDEAModel,
 
     # Economic models
     deacostddf, dearevenueddf,
     deacostadd, dearevenueadd, deaprofitadd,
     deacostrussell, dearevenuerussell, deaprofitrussell,
     deaprofiterg,
-    deaprofitmddf
+    deaprofitmddf,
+    deacostholder
 
     # Include code of functions
     include("deacostddf.jl")
@@ -44,5 +46,6 @@ module BenchmarkingEconomicEfficiency
     include("deaprofitrussell.jl")
     include("deaprofiterg.jl")
     include("deaprofitmddf.jl")
+    include("deacostholder.jl")
 
 end

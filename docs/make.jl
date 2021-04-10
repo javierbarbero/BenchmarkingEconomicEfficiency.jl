@@ -7,7 +7,8 @@ makedocs(sitename = "BenchmarkingEconomicEfficiency",
         "Cost Models" => Any[
                 "Cost Directional Distance Function model" => "cost/costddf.md",
                 "Cost Additive model" => "cost/costadditive.md",
-                "Cost Russell model" => "cost/costrussell.md"
+                "Cost Russell model" => "cost/costrussell.md",
+                "Cost Hölder model" => "cost/costholder.md"
                 ],
         "Revenue Models" => Any[
                 "Revenue Directional Distance Function model" => "revenue/revenueddf.md",
