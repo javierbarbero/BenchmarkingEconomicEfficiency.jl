@@ -101,7 +101,7 @@ function deacostgda(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
     normmeasure = normfactor(measuremodel)
     cimeasure = efficiency(measuremodel)  .* normmeasure   
     timeasure = efficiency(measuremodel, :Technical) 
-    clambdaeff = measuremodel.lambda
+    clambdaeff = peersmatrix(measuremodel)
     Xtarget = targets(measuremodel, :X)
     Ytarget = targets(measuremodel, :Y)
     Xtargetti = targets(measuretechnicalmodel, :X)

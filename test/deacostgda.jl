@@ -23,7 +23,7 @@
     @test normfactor(costgda) ≈ [4.0; 2.0; 2.0; 7.2; 10.0; 12.0; 40/7; 368/35]
     
     # With monetary = true
-    costgdamon = deacostrddf(X, Y, W, :ERG, monetary = true)
+    costgdamon = deacostgda(X, Y, W, :ERG, monetary = true)
 
     @test ismonetary(costgdamon) == true
 
@@ -32,7 +32,7 @@
     @test efficiency(costgdamon, :Allocative) ≈ efficiency(costgda, :Allocative) .* normfactor(costgda)
 
     # With CRS (Same result in this example)
-    costgdacrs = deacostrddf(X, Y, W, :ERG, rts = :CRS)
+    costgdacrs = deacostgda(X, Y, W, :ERG, rts = :CRS)
 
     @test efficiency(costgdacrs, :Economic)   ≈ [0.0; 0.5; 0.5; 5/12; 0.6; 0.25; 0.525; 0.532609] atol = 1e-5
     @test efficiency(costgdacrs, :Technical)  ≈ [0.0; 0.0; 0.0; 5/12; 0.6; 1/6; 0.35; 7/16] 
