@@ -21,7 +21,7 @@ For a tutorial on how to use the package, check the documentation on the [Cost D
 
 Cost DEA models:
 ```@contents
-Pages = ["cost/costddf.md", "cost/costadditive.md", "cost/costrussell.md", "cost/costholder.md", "cost/costrddf.md"]
+Pages = ["cost/costddf.md", "cost/costadditive.md", "cost/costrussell.md", "cost/costholder.md", "cost/costrddf.md", "cost/costgda.md"]
 Depth = 2
 ```
 
