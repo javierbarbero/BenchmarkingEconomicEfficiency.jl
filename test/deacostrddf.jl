@@ -1,15 +1,15 @@
-# Tests for Cost RDDF DEA Models
-@testset "CostRDDFDEAModel" begin
+# Tests for Cost Reverse DDF DEA Models
+@testset "CostReverseDDFDEAModel" begin
 
     # Test using Book data
     X = [2 2; 1 4; 4 1; 4 3; 5 5; 6 1; 2 5; 1.6 8];
     Y = [1; 1; 1; 1; 1; 1; 1; 1];
     W = [1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1];
 
-    # Cost RDDF
+    # Cost Reverse DDF
     costrddf = deacostrddf(X, Y, W, :ERG)
 
-    @test typeof(costrddf) == CostRDDFDEAModel
+    @test typeof(costrddf) == CostReverseDDFDEAModel
 
     @test nobs(costrddf) == 8
     @test ninputs(costrddf) == 2

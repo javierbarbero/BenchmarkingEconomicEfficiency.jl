@@ -1,9 +1,9 @@
 # This file contains functions for the Cost Efficiency Reverse DDF DEA model
 """
-    CostRDDFDEAModel
+CostReverseDDFDEAModel
 An data structure representing a cost RDDF DEA model.
 """
-struct CostRDDFDEAModel <: AbstractCostDEAModel
+struct CostReverseDDFDEAModel <: AbstractCostDEAModel
     n::Int64
     m::Int64
     s::Int64
@@ -29,7 +29,7 @@ Compute profit efficiency using data envelopment analysis Reverse DDF model for
 inputs `X`, outputs `Y`, price of inputs `W`, and efficiency `measure`.
 
 # Measure specification:
-- `:ERG`: Enhanced Russell Graph (or Slack Based Measure (SBM)).
+- `:ERG`: Enhanced Russell Graph Slack Based Measure.
 
 # Optional Arguments
 - `rts=:VRS`: choose between constant returns to scale `:CRS` or variable returns to scale `:VRS`.
@@ -68,7 +68,7 @@ function deacostrddf(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
     measure::Symbol; 
     rts::Symbol = :VRS, atol::Float64 = 1e-6, monetary::Bool = false,
     names::Union{Vector{String},Nothing} = nothing,
-    optimizer::Union{DEAOptimizer,Nothing} = nothing)::CostRDDFDEAModel
+    optimizer::Union{DEAOptimizer,Nothing} = nothing)::CostReverseDDFDEAModel
 
     # Check parameters
     nx, m = size(X, 1), size(X, 2)
@@ -94,8 +94,6 @@ function deacostrddf(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
     # Get normalization of efficiency measure model
     if measure == :ERG
         measurecostmodel = deacostrussell(X, Y, W, rts = rts, optimizer = optimizer)
-    else
-        throw(ArgumentError("invalid associated efficiency measure $(measure)"));
     end
 
     normmeasurecost = normfactor(measurecostmodel)
@@ -126,11 +124,11 @@ function deacostrddf(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
 
     allocefficiency = cefficiency - techefficiency
 
-    return CostRDDFDEAModel(n, m, s, measure, rts, monetary, names, cefficiency, clambdaeff, techefficiency, allocefficiency, normalization, Xtarget, Ytarget, Gxrddf, Gyrddf)
+    return CostReverseDDFDEAModel(n, m, s, measure, rts, monetary, names, cefficiency, clambdaeff, techefficiency, allocefficiency, normalization, Xtarget, Ytarget, Gxrddf, Gyrddf)
 
 end
 
-function Base.show(io::IO, x::CostRDDFDEAModel)
+function Base.show(io::IO, x::CostReverseDDFDEAModel)
     compact = get(io, :compact, false)
 
     n = nobs(x)

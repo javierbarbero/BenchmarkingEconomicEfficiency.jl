@@ -48,6 +48,7 @@ julia> using Pkg; Pkg.add("BenchmarkingEconomicEfficiency")
 * Revenue Additive model.
 * Revenue Russell model.
 * Revenue Hölder model.
+* Revenue Reverse Directional Distance Function model.
 
 **Profit DEA models**
 
