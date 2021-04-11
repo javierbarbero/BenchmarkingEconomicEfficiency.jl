@@ -16,5 +16,6 @@ using Test
     include("deacostholder.jl")
     include("dearevenueholder.jl")
     include("deaprofitholder.jl")
+    include("deacostrddf.jl")
     
 end

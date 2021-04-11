@@ -40,6 +40,7 @@ julia> using Pkg; Pkg.add("BenchmarkingEconomicEfficiency")
 * Cost Additive model.
 * Cost Russell model.
 * Cost Hölder model.
+* Cost Reverse Directional Distance Function model.
 
 **Revenue DEA models**
 
