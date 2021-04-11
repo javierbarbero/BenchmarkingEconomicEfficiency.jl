@@ -57,6 +57,7 @@ julia> using Pkg; Pkg.add("BenchmarkingEconomicEfficiency")
 * Profit Enhanced Russell Graph Slack Based Measure
 * Profit Modified Directional Distance Function model.
 * Profit Hölder model.
+* Profit Reverse Directional Distance Function model.
 
 ## Authors
 

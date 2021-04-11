@@ -66,7 +66,7 @@ Associated efficiency measure = ERG
 function deacostrddf(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
     W::Union{Matrix,Vector},
     measure::Symbol; 
-    rts::Symbol = :VRS, atol::Float64 = 1e-6, monetary::Bool = false,
+    rts::Symbol = :VRS, monetary::Bool = false, atol::Float64 = 1e-6,
     names::Union{Vector{String},Nothing} = nothing,
     optimizer::Union{DEAOptimizer,Nothing} = nothing)::CostReverseDDFDEAModel
 

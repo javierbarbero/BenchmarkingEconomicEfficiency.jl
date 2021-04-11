@@ -33,7 +33,7 @@ Depth = 2
 
 Profit DEA models:
 ```@contents
-Pages = ["profit/profitadditive.md", "profit/profitrussell.md", "profit/profitenhancedrussell.md", "profit/profitmodifiedddf.md", "profit/profitholder.md"]
+Pages = ["profit/profitadditive.md", "profit/profitrussell.md", "profit/profitenhancedrussell.md", "profit/profitmodifiedddf.md", "profit/profitholder.md", "profit/profitrddf.md"]
 Depth = 2
 ```
 
