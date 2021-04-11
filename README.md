@@ -60,6 +60,7 @@ julia> using Pkg; Pkg.add("BenchmarkingEconomicEfficiency")
 * Profit Modified Directional Distance Function model.
 * Profit Hölder model.
 * Profit Reverse Directional Distance Function model.
+* Profit General Direct Approach model.
 
 ## Authors
 

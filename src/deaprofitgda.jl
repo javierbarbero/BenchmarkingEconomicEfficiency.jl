@@ -1,14 +1,13 @@
-# This file contains functions for the Cost General Direct Approach DEA model
+# This file contains functions for the Profit General Direct Approach DEA model
 """
-    CostGDADEAModel
-An data structure representing a Cost General Direct Approach  DEA model.
+    ProfitGDADEAModel
+An data structure representing a profit General Direct Approach DEA model.
 """
-struct CostGDADEAModel <: AbstractCostDEAModel
+struct ProfitGDADEAModel <: AbstractProfitDEAModel
     n::Int64
     m::Int64
     s::Int64
     measure::Symbol
-    rts::Symbol 
     monetary::Bool
     dmunames::Union{Vector{String},Nothing}
     eff::Vector
@@ -21,57 +20,59 @@ struct CostGDADEAModel <: AbstractCostDEAModel
 end
 
 """
-    deacostgda(X, Y, W, measure)
-Compute cost efficiency using data envelopment analysis General Direct Approach model for
-inputs `X`, outputs `Y`, price of inputs `W`, and efficiency `measure`.
+    deaprofitgda(X, Y, W, P, measure)
+Compute profit efficiency using data envelopment analysis General Direct Approach model for
+inputs `X`, outputs `Y`, price of inputs `W`, price of outputs `P`, and efficiency `measure`.
 
 # Measure specification:
 - `:ERG`: Enhanced Russell Graph (or Slack Based Measure (SBM)).
 
 # Optional Arguments
-- `rts=:VRS`: choose between constant returns to scale `:CRS` or variable returns to scale `:VRS`.
 - `atol=1e-6`: tolerance for DMU to be considered efficient.
 - `names`: a vector of strings with the names of the decision making units.
 
 # Examples
 ```jldoctest
-julia> X = [2 2; 1 4; 4 1; 4 3; 5 5; 6 1; 2 5; 1.6 8];
+julia> X = [2; 4; 8; 12; 6; 14; 14; 9.412];
 
-julia> Y = [1; 1; 1; 1; 1; 1; 1; 1];
+julia> Y = [1; 5; 8; 9; 3; 7; 9; 2.353];
 
-julia> W = [1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1];
+julia> W = [1; 1; 1; 1; 1; 1; 1; 1];
 
-julia> deacostgda(X, Y, W, :ERG)
-General Direct Approach Cost DEA Model 
-DMUs = 8; Inputs = 2; Outputs = 1
+julia> P = [2; 2; 2; 2; 2; 2; 2; 2];
+
+julia> deaprofitgda(X, Y, W, P, :ERG)
+General Direct Approach Profit DEA Model 
+DMUs = 8; Inputs = 1; Outputs = 1
 Returns to Scale = VRS
 Associated efficiency measure = ERG
 ──────────────────────────────────
-       Cost  Technical  Allocative
+     Profit  Technical  Allocative
 ──────────────────────────────────
-1  0.0        0.0        0.0
-2  0.5        0.0        0.5
-3  0.5        0.0        0.5
-4  0.416667   0.416667   0.0
-5  0.6        0.6        0.0
-6  0.25       0.166667   0.0833333
-7  0.525      0.35       0.175
-8  0.532609   0.4375     0.0951087
+1  4.0        0.0         4.0
+2  0.5        0.0         0.5
+3  0.0        0.0         0.0
+4  0.166667   0.0         0.166667
+5  0.8        0.6         0.2
+6  0.571429   0.52381     0.047619
+7  0.285714   0.142857    0.142857
+8  0.949449   0.8         0.149449
 ──────────────────────────────────
 ```
 """
-function deacostgda(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
-    W::Union{Matrix,Vector},
-    measure::Symbol;    
-    rts::Symbol = :VRS, monetary::Bool = false, atol::Float64 = 1e-6,
+function deaprofitgda(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
+    W::Union{Matrix,Vector}, P::Union{Matrix,Vector},
+    measure::Symbol;
+    monetary::Bool = false, atol::Float64 = 1e-6,
     names::Union{Vector{String},Nothing} = nothing,
-    optimizer::Union{DEAOptimizer,Nothing} = nothing)::CostGDADEAModel
+    optimizer::Union{DEAOptimizer,Nothing} = nothing)::ProfitGDADEAModel
 
     # Check parameters
     nx, m = size(X, 1), size(X, 2)
     ny, s = size(Y, 1), size(Y, 2)
 
     nw, mw = size(W, 1), size(W, 2)
+    np, sp = size(P, 1), size(P, 2)
 
     if nx != ny
         throw(DimensionMismatch("number of rows in X and Y ($nx, $ny) are not equal"));
@@ -79,40 +80,49 @@ function deacostgda(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
     if nw != nx
         throw(DimensionMismatch("number of rows in W and X ($nw, $nx) are not equal"));
     end
+    if np != ny
+        throw(DimensionMismatch("number of rows in P and Y ($np, $ny) are not equal"));
+    end
     if mw != m
         throw(DimensionMismatch("number of columns in W and X ($mw, $m) are not equal"));
+    end
+    if sp != s
+        throw(DimensionMismatch("number of columns in P and Y ($sp, $s) are not equal"));
     end
 
     n = nx
 
     # Get efficiency measure model
     if measure == :ERG
-        measuremodel = deacostrussell(X, Y, W, rts = rts, optimizer = optimizer)
-        measuretechnicalmodel = dearussell(X, Y, orient = :Input, rts = rts, slack = false, optimizer = optimizer)
+        measuremodel = deaprofiterg(X, Y, W, P, optimizer = optimizer)
+        measuretechnicalmodel = deaerg(X, Y, rts = :VRS, optimizer = optimizer)
     else
         throw(ArgumentError("Invalid efficiency `measure`"));
     end
 
     normmeasure = normfactor(measuremodel)
-    cimeasure = efficiency(measuremodel)  .* normmeasure   
+    pimeasure = efficiency(measuremodel)  .* normmeasure   
     timeasure = efficiency(measuremodel, :Technical) 
-    clambdaeff = peersmatrix(measuremodel)
+    plambdaeff = peersmatrix(measuremodel)
     Xtarget = targets(measuremodel, :X)
     Ytarget = targets(measuremodel, :Y)
+    slackXmeasure = slacks(measuretechnicalmodel, :X)
+    slackYmeasure = slacks(measuretechnicalmodel, :Y)
     Xtargetti = targets(measuretechnicalmodel, :X)
     Ytargetti = targets(measuretechnicalmodel, :Y)
 
     # Calculate slack as the difference between target and observed
     slackXmeasure = X .- Xtargetti
+    slackYmeasure = Ytargetti .- Y
 
     # Get profit inefficiency of projection (target)
     if measure == :ERG
-        targetmodel = deacostrussell(Xtargetti, Ytargetti, W, rts = rts, optimizer = optimizer)
+        targetmodel = deaprofiterg(Xtargetti, Ytargetti, W, P, optimizer = optimizer)
     end
 
-    citarget = efficiency(targetmodel) .* normfactor(targetmodel)
-
-    monetaryti = sum(W .* slackXmeasure, dims = 2)
+    pitarget = efficiency(targetmodel) .* normfactor(targetmodel)
+    
+    monetaryti = sum(P .* slackYmeasure, dims=2).+ sum(W .* slackXmeasure, dims = 2)
 
     # Normalization factor (equation 13.13)
     normalization = zeros(n)
@@ -127,19 +137,19 @@ function deacostgda(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
     end
     
     if monetary
-        cefficiency = cimeasure 
+        pefficiency = pimeasure 
         techefficiency = timeasure .* normalization
-        allocefficiency = citarget
+        allocefficiency = pitarget
     else
-        cefficiency = cimeasure ./ normalization
+        pefficiency = pimeasure ./ normalization
         techefficiency = timeasure
-        allocefficiency = citarget ./ normalization
+        allocefficiency = pitarget ./ normalization
     end
 
-    return CostGDADEAModel(n, m, s, measure, rts, monetary, names, cefficiency, clambdaeff, techefficiency, allocefficiency, normalization, Xtarget, Ytarget)
+    return ProfitGDADEAModel(n, m, s, measure, monetary, names, pefficiency, plambdaeff, techefficiency, allocefficiency, normalization, Xtarget, Ytarget)
 end
 
-function Base.show(io::IO, x::CostGDADEAModel)
+function Base.show(io::IO, x::ProfitGDADEAModel)
     compact = get(io, :compact, false)
 
     n = nobs(x)
@@ -152,16 +162,16 @@ function Base.show(io::IO, x::CostGDADEAModel)
     alloceff = efficiency(x, :Allocative)
 
     if !compact
-        print(io, "General Direct Approach Cost DEA Model \n")
+        print(io, "General Direct Approach Profit DEA Model \n")
         print(io, "DMUs = ", n)
         print(io, "; Inputs = ", m)
         print(io, "; Outputs = ", s)
         print(io, "\n")
-        print(io, "Returns to Scale = ", string(x.rts))
+        print(io, "Returns to Scale = VRS")
         print(io, "\n")
         print(io, "Associated efficiency measure = ", string(x.measure))
         print(io, "\n")
-        show(io, CoefTable(hcat(eff, techeff, alloceff), ["Cost", "Technical", "Allocative"], dmunames))
+        show(io, CoefTable(hcat(eff, techeff, alloceff), ["Profit", "Technical", "Allocative"], dmunames))
     end
 
 end
