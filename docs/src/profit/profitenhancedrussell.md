@@ -20,7 +20,7 @@ julia> W = [1; 1; 1; 1; 1; 1; 1; 1];
 julia> P = [2; 2; 2; 2; 2; 2; 2; 2];
 
 julia> profiterg = deaprofiterg(X, Y, W, P)
-Enhanced Russell Graph Slack Based Measure DEA Model 
+Enhanced Russell Graph Slack Based Measure Profit DEA Model 
 DMUs = 8; Inputs = 1; Outputs = 1
 Returns to Scale = VRS
 ──────────────────────────────────
