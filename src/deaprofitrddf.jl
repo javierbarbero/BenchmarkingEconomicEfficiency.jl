@@ -32,9 +32,7 @@ inputs `X`, outputs `Y`, price of inputs `W`, price of outputs `P`, and efficien
 
 # Direction specification:
 For the Modified Directional Distance Function, the directions `Gx` and `Gy` can be one of the following symbols.
-- `:Ones`: use ones.
 - `:Observed`: use observed values.
-- `:Mean`: use column means.
 
 Alternatively, a vector or matrix with the desired directions can be supplied.
 

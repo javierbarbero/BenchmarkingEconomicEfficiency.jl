@@ -29,9 +29,7 @@ inputs `X`, outputs `Y`, price of inputs `W`, and price of outputs `P`.
 # Direction specification:
 
 The directions `Gx` and `Gy` can be one of the following symbols.
-- `:Ones`: use ones.
 - `:Observed`: use observed values.
-- `:Mean`: use column means.
 
 Alternatively, a vector or matrix with the desired directions can be supplied.
 
@@ -101,12 +99,8 @@ function deaprofitmddf(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
     if typeof(Gx) == Symbol
         Gxsym = Gx
 
-        if Gx == :Ones
-            Gx = ones(size(X))
-        elseif Gx == :Observed
+        if Gx == :Observed
             Gx = X
-        elseif Gx == :Mean
-            Gx = repeat(mean(X, dims = 1), size(X, 1))
         else
             throw(ArgumentError("Invalid `Gx`"));
         end
@@ -118,12 +112,8 @@ function deaprofitmddf(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
     if typeof(Gy) == Symbol
         Gysym = Gy
 
-        if Gy == :Ones
-            Gy = ones(size(Y))
-        elseif Gy == :Observed
+        if Gy == :Observed
             Gy = Y
-        elseif Gy == :Mean
-            Gy = repeat(mean(Y, dims = 1), size(Y, 1))
         else
             throw(ArgumentError("Invalid `Gy`"));
         end
@@ -141,7 +131,7 @@ function deaprofitmddf(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
 
     # Default optimizer
     if optimizer === nothing 
-        optimizer = DEAOptimizer(:NLP)
+        optimizer = DEAOptimizer(:LP)
     end
 
     # Get maximum profit targets and lambdas

@@ -48,6 +48,10 @@
     @test efficiency(profitrddfmddf, :Allocative) ≈ [4.0; 0.5; 0.0; 1/6; 1/6; 0.0; 1/7; 0.039571] atol = 1e-5
     @test normfactor(profitrddfmddf) ≈ [2.0; 4.0; 8.0; 12.0; 6.0; 14.0; 14.0; 4.906725] atol = 1e-5
 
+    # Profit Reverse DDF :MDDF with Custom Direction
+    profitrddfmddfcurstom = deaprofitrddf(X, Y, W, P, :MDDF, Gx = X, Gy = Y)
+    @test efficiency(profitrddfmddfcurstom) == efficiency(profitrddfmddf)
+
     # Test errors
     @test_throws DimensionMismatch deaprofitrddf([1; 2 ; 3], [4; 5], [1; 1; 1], [1; 1], :ERG) #  Different number of observations
     @test_throws DimensionMismatch deaprofitrddf([1; 2; 3], [4; 5; 6], [1; 2; 3; 4], [1; 1; 1], :ERG) # Different number of observation in input prices
@@ -55,5 +59,7 @@
     @test_throws DimensionMismatch deaprofitrddf([1 1; 2 2; 3 3 ], [4; 5; 6], [1 1 1; 2 2 2; 3 3 3], [1; 1; 1], :ERG) # Different number of input prices and inputs
     @test_throws DimensionMismatch deaprofitrddf([1; 2; 3 ], [4; 5; 6], [1; 1; 1], [1 1 1; 2 2 2; 3 3 3], :ERG) # Different number of output prices and outputs
     @test_throws ArgumentError deaprofitrddf([1; 2; 3], [4; 5; 6], [1; 2; 3], [4; 5; 6], :Error) # Invalid associated efficiency measure
+    @test_throws ArgumentError deaprofitrddf([1; 2; 3], [4; 5; 6], [1; 2; 3], [4; 5; 6], :MDDF, Gx = :Error, Gy = :Observed) # Invalid Gx direction
+    @test_throws ArgumentError deaprofitrddf([1; 2; 3], [4; 5; 6], [1; 2; 3], [4; 5; 6], :MDDF, Gx = :Observed, Gy = :Error) # Invalid Gx direction
 
 end
