@@ -22,7 +22,7 @@ BenchmarkingEconomicEfficiency.jl will use a default optimizer/solver for each D
 | `deaprofitmddf`     |                  | NLP          | Ipopt             |
 | `deaprofitholder`   |                  | LP           | GLPK              |
 | `deaprofitrddf`     | `:ERG`           | LP           | GLPK              |
-| `deaprofitrddf`     | `:MDDF`          | NLP          | Ipopt             |
+| `deaprofitrddf`     | `:DDF`           | LP           | GLPK              |
 | `deaprofitgda`      |                  | LP           | GLPK              |
 
 Where:
