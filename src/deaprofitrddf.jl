@@ -113,6 +113,7 @@ function deaprofitrddf(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
     end
 
     normmeasureprof = normfactor(measureprofitmodel)
+    pefficiencymeasure = efficiency(measureprofitmodel)
 
     # Profit model using calculated directions
     rddfprofitmodel = deaprofit(X, Y, W, P, Gx = Gxrddf, Gy = Gyrddf, optimizer = optimizer)
@@ -128,9 +129,8 @@ function deaprofitrddf(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
     # Change normalization factor of efficient DMUs
     for i=1:n
         if abs(techefficiency[i] ) <= atol
-            pefficiency[i] = pefficiency[i] ./ normmeasureprof[i] .* normalization[i]
+            pefficiency[i] = pefficiencymeasure[i]
             normalization[i] = normmeasureprof[i]
-            
         end
     end
 

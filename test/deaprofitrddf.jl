@@ -43,10 +43,10 @@
 
     @test profitrddfmddf.measure == :MDDF
     @test efficiency(profitrddfmddf) == efficiency(profitrddfmddf, :Economic)
-    @test efficiency(profitrddfmddf, :Economic)   ≈ [4.0; 0.5; 0.0; 1/6; 4/3; 4/7; 2/7; 2.589507] atol = 1e-5
+    @test efficiency(profitrddfmddf, :Economic)   ≈ [4.0; 0.5; 0.0; 1/6; 4/3; 4/7; 2/7; 2.699958] atol = 1e-5
     @test efficiency(profitrddfmddf, :Technical)  ≈ [0.0; 0.0; 0.0; 0.0; 7/6; 4/7; 1/7; 2.549936] atol = 1e-5
-    @test efficiency(profitrddfmddf, :Allocative) ≈ [4.0; 0.5; 0.0; 1/6; 1/6; 0.0; 1/7; 0.039571] atol = 1e-5
-    @test normfactor(profitrddfmddf) ≈ [2.0; 4.0; 8.0; 12.0; 6.0; 14.0; 14.0; 4.906725] atol = 1e-5
+    @test efficiency(profitrddfmddf, :Allocative) ≈ [4.0; 0.5; 0.0; 1/6; 1/6; 0.0; 1/7; 0.150021] atol = 1e-5
+    @test normfactor(profitrddfmddf) ≈ [2.0; 4.0; 8.0; 12.0; 6.0; 14.0; 14.0; 4.706] atol = 1e-5
 
     # Profit Reverse DDF :MDDF with Custom Direction
     profitrddfmddfcurstom = deaprofitrddf(X, Y, W, P, :MDDF, Gx = X, Gy = Y)
