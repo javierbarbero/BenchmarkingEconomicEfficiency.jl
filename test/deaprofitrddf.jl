@@ -60,6 +60,6 @@
     @test_throws DimensionMismatch deaprofitrddf([1; 2; 3 ], [4; 5; 6], [1; 1; 1], [1 1 1; 2 2 2; 3 3 3], :ERG) # Different number of output prices and outputs
     @test_throws ArgumentError deaprofitrddf([1; 2; 3], [4; 5; 6], [1; 2; 3], [4; 5; 6], :Error) # Invalid associated efficiency measure
     @test_throws ArgumentError deaprofitrddf([1; 2; 3], [4; 5; 6], [1; 2; 3], [4; 5; 6], :MDDF, Gx = :Error, Gy = :Observed) # Invalid Gx direction
-    @test_throws ArgumentError deaprofitrddf([1; 2; 3], [4; 5; 6], [1; 2; 3], [4; 5; 6], :MDDF, Gx = :Observed, Gy = :Error) # Invalid Gx direction
+    @test_throws ArgumentError deaprofitrddf([1; 2; 3], [4; 5; 6], [1; 2; 3], [4; 5; 6], :MDDF, Gx = :Observed, Gy = :Error) # Invalid Gy direction
 
 end
