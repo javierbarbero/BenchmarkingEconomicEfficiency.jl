@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Revenue Reverse Directional Distance Function model · BenchmarkingEconomicEfficiency</title><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit">BenchmarkingEconomicEfficiency</span></div><form class="docs-search" action="../../search/"><input class="docs-search-query" id="documenter-search-query" name="q" type="text" placeholder="Search docs"/></form><ul class="docs-menu"><li><a class="tocitem" href="../../">Home</a></li><li><span class="tocitem">Cost Models</span><ul><li><a class="tocitem" href="../../cost/costddf/">Cost Directional Distance Function model</a></li><li><a class="tocitem" href="../../cost/costadditive/">Cost Additive model</a></li><li><a class="tocitem" href="../../cost/costrussell/">Cost Russell model</a></li><li><a class="tocitem" href="../../cost/costholder/">Cost Hölder model</a></li><li><a class="tocitem" href="../../cost/costrddf/">Cost Reverse Directional Distance Function model</a></li><li><a class="tocitem" href="../../cost/costgda/">Cost General Direct Approach model</a></li></ul></li><li><span class="tocitem">Revenue Models</span><ul><li><a class="tocitem" href="../revenueddf/">Revenue Directional Distance Function model</a></li><li><a class="tocitem" href="../revenueadditive/">Revenue Additive model</a></li><li><a class="tocitem" href="../revenuerussell/">Revenue Russell model</a></li><li><a class="tocitem" href="../revenueholder/">Revenue Hölder model</a></li><li class="is-active"><a class="tocitem" href>Revenue Reverse Directional Distance Function model</a></li><li><a class="tocitem" href="../revenuegda/">Revenue General Direct Approach model</a></li></ul></li><li><span class="tocitem">Profit Models</span><ul><li><a class="tocitem" href="../../profit/profitadditive/">Profit Additive model</a></li><li><a class="tocitem" href="../../profit/profitrussell/">Profit Russell model</a></li><li><a class="tocitem" href="../../profit/profitenhancedrussell/">Profit Enhanced Russell Graph Slack Based Measure</a></li><li><a class="tocitem" href="../../profit/profitmodifiedddf/">Profit Modified Directional Distance Function model</a></li><li><a class="tocitem" href="../../profit/profitholder/">Profit Hölder model</a></li><li><a class="tocitem" href="../../profit/profitrddf/">Profit Reverse Directional Distance Function model</a></li><li><a class="tocitem" href="../../profit/profitgda/">Profit General Direct Approach model</a></li></ul></li><li><a class="tocitem" href="../../optimizer/">Configuring Optimizer</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">Revenue Models</a></li><li class="is-active"><a href>Revenue Reverse Directional Distance Function model</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Revenue Reverse Directional Distance Function model</a></li></ul></nav><div class="docs-right"><a class="docs-edit-link" href="https://github.com/javierbarbero/BenchmarkingEconomicEfficiency.jl/blob/master/docs/src/revenue/revenuerddf.md" title="Edit on GitHub"><span class="docs-icon fab"></span><span class="docs-label is-hidden-touch">Edit on GitHub</span></a><a class="docs-settings-button fas fa-cog" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a></div></header><article class="content" id="documenter-page"><h1 id="Revenue-Reverse-Directional-Distance-Function-model"><a class="docs-heading-anchor" href="#Revenue-Reverse-Directional-Distance-Function-model">Revenue Reverse Directional Distance Function model</a><a id="Revenue-Reverse-Directional-Distance-Function-model-1"></a><a class="docs-heading-anchor-permalink" href="#Revenue-Reverse-Directional-Distance-Function-model" title="Permalink"></a></h1><p>In this example we compute the revenue efficiency Reverse directional distance function measure for the Enhanced Russell Graph associated efficiency measure under variable returns to scale:</p><pre><code class="language-julia-repl">julia&gt; X = [1; 1; 1; 1; 1; 1; 1; 1];
+
+julia&gt; Y = [7 7; 4 8; 8 4; 3 5; 3 3; 8 2; 6 4; 1.5 5];
+
+julia&gt; P = [1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1];
+
+julia&gt; revenuerddf = dearevenuerddf(X, Y, P, :ERG)
+Revenue Reverse DDF DEA Model 
+DMUs = 8; Inputs = 1; Outputs = 2
+Returns to Scale: VRS
+Associated efficiency measure = ERG
+────────────────────────────────────
+    Revenue  Technical    Allocative
+────────────────────────────────────
+1  0.0        0.0        0.0
+2  0.25       0.0        0.25
+3  0.25       0.0        0.25
+4  0.464286   0.464286   0.0
+5  0.571429   0.571429   0.0
+6  0.666667   0.333333   0.333333
+7  0.314286   0.314286  -5.55112e-17
+8  0.818182   0.672727   0.145455
+────────────────────────────────────</code></pre><p>Estimated economic, technical and allocative efficiency scores are returned with the <code>efficiency</code> function:</p><pre><code class="language-julia-repl">julia&gt; efficiency(revenuerddf, :Economic)
+8-element Vector{Float64}:
+ 0.0
+ 0.25
+ 0.25
+ 0.4642857142857143
+ 0.5714285714285715
+ 0.6666666666666667
+ 0.3142857142857144
+ 0.8181818181818182</code></pre><pre><code class="language-julia-repl">julia&gt; efficiency(revenuerddf, :Technical)
+8-element Vector{Float64}:
+ 0.0
+ 0.0
+ 0.0
+ 0.4642857142857143
+ 0.5714285714285715
+ 0.33333333333333337
+ 0.31428571428571445
+ 0.6727272727272727</code></pre><pre><code class="language-julia-repl">julia&gt; efficiency(revenuerddf, :Allocative)
+8-element Vector{Float64}:
+  0.0
+  0.25
+  0.25
+  0.0
+  0.0
+  0.33333333333333337
+ -5.551115123125783e-17
+  0.1454545454545455</code></pre><h3 id="dearevenuerddf-Function-Documentation"><a class="docs-heading-anchor" href="#dearevenuerddf-Function-Documentation">dearevenuerddf Function Documentation</a><a id="dearevenuerddf-Function-Documentation-1"></a><a class="docs-heading-anchor-permalink" href="#dearevenuerddf-Function-Documentation" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="BenchmarkingEconomicEfficiency.dearevenuerddf" href="#BenchmarkingEconomicEfficiency.dearevenuerddf"><code>BenchmarkingEconomicEfficiency.dearevenuerddf</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">dearevenuerddf(X, Y, P, measure)</code></pre><p>Compute profit efficiency using data envelopment analysis Reverse DDF model for inputs <code>X</code>, outputs <code>Y</code>, price of outputs <code>P</code>, and efficiency <code>measure</code>.</p><p><strong>Measure specification:</strong></p><ul><li><code>:ERG</code>: Enhanced Russell Graph Slack Based Measure.</li></ul><p><strong>Optional Arguments</strong></p><ul><li><code>rts=:VRS</code>: choose between constant returns to scale <code>:CRS</code> or variable returns to scale <code>:VRS</code>.</li><li><code>atol=1e-6</code>: tolerance for DMU to be considered efficient.</li><li><code>names</code>: a vector of strings with the names of the decision making units.</li></ul><p><strong>Examples</strong></p><pre><code class="language-julia-repl">julia&gt; X = [1; 1; 1; 1; 1; 1; 1; 1];
+
+julia&gt; Y = [7 7; 4 8; 8 4; 3 5; 3 3; 8 2; 6 4; 1.5 5];
+
+julia&gt; P = [1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1];
+
+julia&gt; dearevenuerddf(X, Y, P, :ERG)
+Revenue Reverse DDF DEA Model 
+DMUs = 8; Inputs = 1; Outputs = 2
+Returns to Scale: VRS
+Associated efficiency measure = ERG
+────────────────────────────────────
+    Revenue  Technical    Allocative
+────────────────────────────────────
+1  0.0        0.0        0.0
+2  0.25       0.0        0.25
+3  0.25       0.0        0.25
+4  0.464286   0.464286   0.0
+5  0.571429   0.571429   0.0
+6  0.666667   0.333333   0.333333
+7  0.314286   0.314286  -5.55112e-17
+8  0.818182   0.672727   0.145455
+────────────────────────────────────</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/javierbarbero/BenchmarkingEconomicEfficiency.jl/blob/24db2e075447636c9e800cf0d54ffa08147e012e/src/dearevenuerddf.jl#L26-L65">source</a></section></article></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../revenueholder/">« Revenue Hölder model</a><a class="docs-footer-nextpage" href="../revenuegda/">Revenue General Direct Approach model »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Saturday 8 May 2021 15:05">Saturday 8 May 2021</span>. Using Julia version 1.6.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

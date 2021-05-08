@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Profit Hölder model · BenchmarkingEconomicEfficiency</title><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit">BenchmarkingEconomicEfficiency</span></div><form class="docs-search" action="../../search/"><input class="docs-search-query" id="documenter-search-query" name="q" type="text" placeholder="Search docs"/></form><ul class="docs-menu"><li><a class="tocitem" href="../../">Home</a></li><li><span class="tocitem">Cost Models</span><ul><li><a class="tocitem" href="../../cost/costddf/">Cost Directional Distance Function model</a></li><li><a class="tocitem" href="../../cost/costadditive/">Cost Additive model</a></li><li><a class="tocitem" href="../../cost/costrussell/">Cost Russell model</a></li><li><a class="tocitem" href="../../cost/costholder/">Cost Hölder model</a></li><li><a class="tocitem" href="../../cost/costrddf/">Cost Reverse Directional Distance Function model</a></li><li><a class="tocitem" href="../../cost/costgda/">Cost General Direct Approach model</a></li></ul></li><li><span class="tocitem">Revenue Models</span><ul><li><a class="tocitem" href="../../revenue/revenueddf/">Revenue Directional Distance Function model</a></li><li><a class="tocitem" href="../../revenue/revenueadditive/">Revenue Additive model</a></li><li><a class="tocitem" href="../../revenue/revenuerussell/">Revenue Russell model</a></li><li><a class="tocitem" href="../../revenue/revenueholder/">Revenue Hölder model</a></li><li><a class="tocitem" href="../../revenue/revenuerddf/">Revenue Reverse Directional Distance Function model</a></li><li><a class="tocitem" href="../../revenue/revenuegda/">Revenue General Direct Approach model</a></li></ul></li><li><span class="tocitem">Profit Models</span><ul><li><a class="tocitem" href="../profitadditive/">Profit Additive model</a></li><li><a class="tocitem" href="../profitrussell/">Profit Russell model</a></li><li><a class="tocitem" href="../profitenhancedrussell/">Profit Enhanced Russell Graph Slack Based Measure</a></li><li><a class="tocitem" href="../profitmodifiedddf/">Profit Modified Directional Distance Function model</a></li><li class="is-active"><a class="tocitem" href>Profit Hölder model</a></li><li><a class="tocitem" href="../profitrddf/">Profit Reverse Directional Distance Function model</a></li><li><a class="tocitem" href="../profitgda/">Profit General Direct Approach model</a></li></ul></li><li><a class="tocitem" href="../../optimizer/">Configuring Optimizer</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">Profit Models</a></li><li class="is-active"><a href>Profit Hölder model</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Profit Hölder model</a></li></ul></nav><div class="docs-right"><a class="docs-edit-link" href="https://github.com/javierbarbero/BenchmarkingEconomicEfficiency.jl/blob/master/docs/src/profit/profitholder.md" title="Edit on GitHub"><span class="docs-icon fab"></span><span class="docs-label is-hidden-touch">Edit on GitHub</span></a><a class="docs-settings-button fas fa-cog" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a></div></header><article class="content" id="documenter-page"><h1 id="Profit-Hölder-model"><a class="docs-heading-anchor" href="#Profit-Hölder-model">Profit Hölder model</a><a id="Profit-Hölder-model-1"></a><a class="docs-heading-anchor-permalink" href="#Profit-Hölder-model" title="Permalink"></a></h1><p>The profit Hölder model is computed by solving a graph <a href="https://javierbarbero.github.io/DataEnvelopmentAnalysis.jl/stable/technical/russell/">Hölder DEA model</a> for the technical efficiency.</p><p>In this example we compute the profit efficiency Hölder L1 measure under variable returns to scale:</p><pre><code class="language-julia-repl">julia&gt; X = [2; 4; 8; 12; 6; 14; 14; 9.412];
+
+julia&gt; Y = [1; 5; 8; 9; 3; 7; 9; 2.353];
+
+julia&gt; W = [1; 1; 1; 1; 1; 1; 1; 1];
+
+julia&gt; P = [2; 2; 2; 2; 2; 2; 2; 2];
+
+julia&gt; profitholderl1 = deaprofitholder(X, Y, W, P, l = 1)
+Profit Hölder L1 DEA Model 
+DMUs = 8; Inputs = 1; Outputs = 1
+Returns to Scale = VRS
+────────────────────────────────
+   Profit  Technical  Allocative
+────────────────────────────────
+1   4.0          0.0       4.0
+2   1.0          0.0       1.0
+3   0.0          0.0       0.0
+4   1.0          0.0       1.0
+5   4.0          3.0       1.0
+6   4.0          2.0       2.0
+7   2.0          0.0       2.0
+8   6.353        6.0       0.353
+────────────────────────────────</code></pre><p>Estimated economic, technical and allocative efficiency scores are returned with the <code>efficiency</code> function:</p><pre><code class="language-julia-repl">julia&gt; efficiency(profitholderl1, :Economic)
+8-element Vector{Float64}:
+ 4.0
+ 1.0
+ 0.0
+ 1.0
+ 4.0
+ 4.0
+ 2.0
+ 6.353</code></pre><pre><code class="language-julia-repl">julia&gt; efficiency(profitholderl1, :Technical)
+8-element Vector{Float64}:
+ 0.0
+ 0.0
+ 0.0
+ 0.0
+ 2.9999999999999996
+ 2.000000000000001
+ 0.0
+ 6.0</code></pre><pre><code class="language-julia-repl">julia&gt; efficiency(profitholderl1, :Allocative)
+8-element Vector{Float64}:
+ 4.0
+ 1.0
+ 0.0
+ 1.0
+ 1.0000000000000004
+ 1.9999999999999991
+ 2.0
+ 0.35299999999999976</code></pre><h3 id="deaprofitholder-Function-Documentation"><a class="docs-heading-anchor" href="#deaprofitholder-Function-Documentation">deaprofitholder Function Documentation</a><a id="deaprofitholder-Function-Documentation-1"></a><a class="docs-heading-anchor-permalink" href="#deaprofitholder-Function-Documentation" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="BenchmarkingEconomicEfficiency.deaprofitholder" href="#BenchmarkingEconomicEfficiency.deaprofitholder"><code>BenchmarkingEconomicEfficiency.deaprofitholder</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">deaprofitholder(X, Y, W, P; l)</code></pre><p>Compute profit efficiency using data envelopment analysis Hölder model for inputs <code>X</code>, outputs <code>Y</code>, price of inputs <code>W</code>, and price of outputs <code>P</code>.</p><p><strong>Hölder norm <code>l</code> specification</strong></p><ul><li><code>1</code>.</li><li><code>2</code>.</li><li><code>Inf</code>.</li></ul><p><strong>Optional Arguments</strong></p><ul><li><code>names</code>: a vector of strings with the names of the decision making units.</li></ul><p><strong>Examples</strong></p><pre><code class="language-julia-repl">julia&gt; X = [1 1; 1 1; 0.75 1.5; 0.5 2; 0.5 2; 2 2; 2.75 3.5; 1.375 1.75];
+
+julia&gt; Y = [1 11; 5 3; 5 5; 2 9; 4 5; 4 2; 3 3; 4.5 3.5];
+
+julia&gt; P = [2 1; 2 1; 2 1; 2 1; 2 1; 2 1; 2 1; 2 1];
+
+julia&gt; W = [2 1; 2 1; 2 1; 2 1; 2 1; 2 1; 2 1; 2 1];
+
+julia&gt; deaprofitholder(X, Y, W, P, l = 1)
+Profit Hölder L1 DEA Model 
+DMUs = 8; Inputs = 2; Outputs = 2
+Returns to Scale = VRS
+───────────────────────────────────
+   Profit     Technical  Allocative
+───────────────────────────────────
+1     1.0   0.0                 1.0
+2     1.0  -1.44329e-15         1.0
+3     0.0   0.0                 0.0
+4     1.0   0.0                 1.0
+5     1.0   0.0                 1.0
+6     4.0   1.0                 3.0
+7     6.0   2.0                 4.0
+8     2.0   0.5                 1.5
+───────────────────────────────────</code></pre></div><a class="docs-sourcelink" target="_blank" href="https://github.com/javierbarbero/BenchmarkingEconomicEfficiency.jl/blob/24db2e075447636c9e800cf0d54ffa08147e012e/src/deaprofitholder.jl#L24-L64">source</a></section></article></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../profitmodifiedddf/">« Profit Modified Directional Distance Function model</a><a class="docs-footer-nextpage" href="../profitrddf/">Profit Reverse Directional Distance Function model »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Saturday 8 May 2021 15:05">Saturday 8 May 2021</span>. Using Julia version 1.6.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
