@@ -43,10 +43,10 @@ Orientation = Graph; Returns to Scale = VRS
 ─────────────────────────────────────
        Profit   Technical  Allocative
 ─────────────────────────────────────
-1  2.0         3.50176e-7  2.0
-2  0.25        2.36616e-8  0.25
-3  2.84063e-8  1.05742e-8  1.78321e-8
-4  0.0833334   2.93062e-8  0.0833333
+1  2.0         3.50173e-7  2.0
+2  0.25        2.49141e-8  0.25
+3  2.84063e-8  8.48991e-9  1.99164e-8
+4  0.0833334   2.9862e-8   0.0833333
 5  0.666667    0.366667    0.3
 6  0.285714    0.276786    0.0089286
 7  0.142857    0.0714286   0.0714286
@@ -85,7 +85,7 @@ function deaprofitrussell(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
 
     # Default optimizer
     if optimizer === nothing 
-        optimizer = DEAOptimizer(Ipopt.Optimizer)
+        optimizer = DEAOptimizer(:NLP)
     end
 
     # Get maximum profit targets and lambdas

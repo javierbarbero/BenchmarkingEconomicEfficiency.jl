@@ -38,7 +38,7 @@ julia> W = [1; 1; 1; 1; 1; 1; 1; 1];
 julia> P = [2; 2; 2; 2; 2; 2; 2; 2];
 
 julia> deaprofiterg(X, Y, W, P)
-Enhanced Russell Graph Slack Based Measure DEA Model 
+Enhanced Russell Graph Slack Based Measure Profit DEA Model 
 DMUs = 8; Inputs = 1; Outputs = 1
 Returns to Scale = VRS
 ──────────────────────────────────
@@ -86,7 +86,7 @@ function deaprofiterg(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
 
     # Default optimizer
     if optimizer === nothing 
-        optimizer = DEAOptimizer(GLPK.Optimizer)
+        optimizer = DEAOptimizer(:LP)
     end
 
     # Get maximum profit targets and lambdas
@@ -126,7 +126,7 @@ function Base.show(io::IO, x::ProfitERGDEAModel)
     alloceff = efficiency(x, :Allocative)
 
     if !compact
-        print(io, "Enhanced Russell Graph Slack Based Measure DEA Model \n")
+        print(io, "Enhanced Russell Graph Slack Based Measure Profit DEA Model \n")
         print(io, "DMUs = ", n)
         print(io, "; Inputs = ", m)
         print(io, "; Outputs = ", s)

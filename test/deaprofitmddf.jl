@@ -32,16 +32,6 @@
     @test efficiency(profitmddfobservedmon, :Technical) ≈ efficiency(profitmddfobserved, :Technical) .* normfactor(profitmddfobserved)
     @test efficiency(profitmddfobservedmon, :Allocative) ≈ efficiency(profitmddfobserved, :Allocative) .* normfactor(profitmddfobserved)
 
-    # Test other directions technical efficiency
-    @test efficiency(deaprofitmddf(X, Y, W, P,  Gx= :Ones, Gy = :Ones), :Technical) == efficiency(deamddf(X, Y, Gx = :Ones, Gy = :Ones, rts = :VRS))
-    @test efficiency(deaprofitmddf(X, Y, W, P,  Gx= :Mean, Gy = :Mean), :Technical) == efficiency(deamddf(X, Y, Gx = :Mean, Gy = :Mean, rts = :VRS))
-    
-    GxGydollar = 1 ./ (sum(P, dims = 2) + sum(W, dims = 2));
-    GxGydollar = repeat(GxGydollar, 1, 1);
-    
-    @test efficiency(deaprofitmddf(X, Y, W, P,  Gx= :Monetary, Gy = :Monetary), :Technical) == efficiency(deamddf(X, Y, Gx = GxGydollar, Gy = GxGydollar, rts = :VRS))
-    @test efficiency(deaprofitmddf(X, Y, W, P,  Gx= GxGydollar, Gy = GxGydollar), :Technical) == efficiency(deamddf(X, Y, Gx = GxGydollar, Gy = GxGydollar, rts = :VRS))
-    
     # Print
     show(IOBuffer(), profitmddfobserved)
 
@@ -53,7 +43,7 @@
     @test_throws DimensionMismatch deaprofitmddf([1; 2; 3], [4 4; 5 5; 6 6], [1; 2; 3], [4 4 4; 5 5 5; 6 6 6], Gx = [1; 2; 3], Gy = [4 4; 5 5; 6 6]) # Different number of oputput prices and outputs
     @test_throws DimensionMismatch deaprofitmddf([1 1; 2 2; 3 3], [4; 5; 6], [1 1; 2 2; 3 3], [4; 5; 6], Gx = [1 1 1; 2 2 2; 3 3 3], Gy = [4; 5; 6]) # Different size of inputs direction
     @test_throws DimensionMismatch deaprofitmddf([1; 2; 3], [4 4; 5 5; 6 6], [1; 2; 3], [4 4; 5 5; 6 6], Gx = [1; 2; 3], Gy = [4 4 4; 5 5 5; 6 6 6]) # Different size of outputs direction
-    @test_throws ArgumentError deaprofitmddf([1; 2; 3], [1; 2; 3], [1; 1; 1], [1; 1; 1], Gx = :Error, Gy = :Ones) # Invalid inputs direction
-    @test_throws ArgumentError deaprofitmddf([1; 2; 3], [1; 2; 3], [1; 1; 1], [1; 1; 1], Gx = :Ones, Gy = :Error) # Invalid outputs direction
+    @test_throws ArgumentError deaprofitmddf([1; 2; 3], [1; 2; 3], [1; 1; 1], [1; 1; 1], Gx = :Error, Gy = :Observed) # Invalid inputs direction
+    @test_throws ArgumentError deaprofitmddf([1; 2; 3], [1; 2; 3], [1; 1; 1], [1; 1; 1], Gx = :Observed, Gy = :Error) # Invalid outputs direction
  
 end

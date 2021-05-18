@@ -6,9 +6,6 @@ module BenchmarkingEconomicEfficiency
     [BenchmarkingEconomicEfficiency repository](https://github.com/javierbarbero/BenchmarkingEconomicEfficiency.jl).
     """
 
-    using JuMP
-    using GLPK
-    using Ipopt
     using SparseArrays
     using LinearAlgebra
 
@@ -28,13 +25,19 @@ module BenchmarkingEconomicEfficiency
     CostRussellDEAModel, RevenueRussellDEAModel, ProfitRussellDEAModel,
     ProfitERGDEAModel,
     ProfitModifiedDDFDEAModel,
+    CostHolderDEAModel, RevenueHolderDEAModel, ProfitHolderDEAModel,
+    CostReverseDDFDEAModel, RevenueReverseDDFDEAModel, ProfitReverseDDFDEAModel,
+    CostGDADEAModel, RevenueGDADEAModel, ProfitGDADEAModel,
 
     # Economic models
     deacostddf, dearevenueddf,
     deacostadd, dearevenueadd, deaprofitadd,
     deacostrussell, dearevenuerussell, deaprofitrussell,
     deaprofiterg,
-    deaprofitmddf
+    deaprofitmddf,
+    deacostholder, dearevenueholder,deaprofitholder,
+    deacostrddf, dearevenuerddf, deaprofitrddf,
+    deacostgda, dearevenuegda, deaprofitgda
 
     # Include code of functions
     include("deacostddf.jl")
@@ -47,5 +50,14 @@ module BenchmarkingEconomicEfficiency
     include("deaprofitrussell.jl")
     include("deaprofiterg.jl")
     include("deaprofitmddf.jl")
+    include("deacostholder.jl")
+    include("dearevenueholder.jl")
+    include("deaprofitholder.jl")
+    include("deacostrddf.jl")
+    include("dearevenuerddf.jl")
+    include("deaprofitrddf.jl")
+    include("deacostgda.jl")
+    include("dearevenuegda.jl")
+    include("deaprofitgda.jl")
 
 end

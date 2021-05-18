@@ -29,10 +29,7 @@ inputs `X`, outputs `Y`, price of inputs `W`, and price of outputs `P`.
 # Direction specification:
 
 The directions `Gx` and `Gy` can be one of the following symbols.
-- `:Ones`: use ones.
 - `:Observed`: use observed values.
-- `:Mean`: use column means.
-- `:Monetary`: use direction so that profit inefficiency is expressed in monetary values.
 
 Alternatively, a vector or matrix with the desired directions can be supplied.
 
@@ -57,14 +54,14 @@ Gx = Observed; Gy = Observed
 ─────────────────────────────────────
        Profit   Technical  Allocative
 ─────────────────────────────────────
-1  4.0         7.62306e-7   4.0
-2  0.5         8.2947e-8    0.5
-3  5.68126e-8  4.71577e-8   9.6549e-9
-4  0.166667    1.08317e-7   0.166667
-5  1.33333     1.16667      0.166667
-6  0.571429    0.571429     3.2471e-9
-7  0.285714    0.142857     0.142857
-8  2.69996     2.54994      0.150021
+1  4.0         7.623e-7    4.0
+2  0.5         8.28765e-8  0.5
+3  5.68126e-8  4.78858e-8  8.92688e-9
+4  0.166667    1.08205e-7  0.166667
+5  1.33333     1.16667     0.166667
+6  0.571429    0.571429    3.2471e-9
+7  0.285714    0.142857    0.142857
+8  2.69996     2.54994     0.150021
 ─────────────────────────────────────
 ```
 """
@@ -102,15 +99,8 @@ function deaprofitmddf(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
     if typeof(Gx) == Symbol
         Gxsym = Gx
 
-        if Gx == :Ones
-            Gx = ones(size(X))
-        elseif Gx == :Observed
+        if Gx == :Observed
             Gx = X
-        elseif Gx == :Mean
-            Gx = repeat(mean(X, dims = 1), size(X, 1))
-        elseif Gx == :Monetary
-            GxGydollar = 1 ./ (sum(P, dims = 2) + sum(W, dims = 2));
-            Gx = repeat(GxGydollar, 1, m);
         else
             throw(ArgumentError("Invalid `Gx`"));
         end
@@ -122,15 +112,8 @@ function deaprofitmddf(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
     if typeof(Gy) == Symbol
         Gysym = Gy
 
-        if Gy == :Ones
-            Gy = ones(size(Y))
-        elseif Gy == :Observed
+        if Gy == :Observed
             Gy = Y
-        elseif Gy == :Mean
-            Gy = repeat(mean(Y, dims = 1), size(Y, 1))
-        elseif Gy == :Monetary
-            GxGydollar = 1 ./ (sum(P, dims = 2) + sum(W, dims = 2));
-            Gy = repeat(GxGydollar, 1, s);
         else
             throw(ArgumentError("Invalid `Gy`"));
         end
@@ -148,7 +131,7 @@ function deaprofitmddf(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
 
     # Default optimizer
     if optimizer === nothing 
-        optimizer = DEAOptimizer(Ipopt.Optimizer)
+        optimizer = DEAOptimizer(:LP)
     end
 
     # Get maximum profit targets and lambdas
@@ -164,9 +147,9 @@ function deaprofitmddf(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
     normalization = zeros(n)
     for i in 1:n
         if obsprofit[i] >= 0
-            normalization[i] = sum(W[i,:] .* X[i,:], dims = 2)[1]
+            normalization[i] = sum(W[i,:] .* Gx[i,:], dims = 2)[1]
         else
-            normalization[i] = sum(P[i,:] .* Y[i,:], dims = 2)[1]
+            normalization[i] = sum(P[i,:] .* Gy[i,:], dims = 2)[1]
         end
     end
     normalization = vec(normalization)

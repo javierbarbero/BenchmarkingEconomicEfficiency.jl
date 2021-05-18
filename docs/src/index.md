@@ -21,19 +21,19 @@ For a tutorial on how to use the package, check the documentation on the [Cost D
 
 Cost DEA models:
 ```@contents
-Pages = ["cost/costddf.md", "cost/costadditive.md", "cost/costrussell.md"]
+Pages = ["cost/costddf.md", "cost/costadditive.md", "cost/costrussell.md", "cost/costholder.md", "cost/costrddf.md", "cost/costgda.md"]
 Depth = 2
 ```
 
 Revenue DEA models:
 ```@contents
-Pages = ["revenue/revenueddf.md", "revenue/revenueadditive.md", "revenue/revenuerussell.md"]
+Pages = ["revenue/revenueddf.md", "revenue/revenueadditive.md", "revenue/revenuerussell.md", "revenue/revenueholder.md", "revenue/revenuerddf.md", "revenue/revenuegda.md"]
 Depth = 2
 ```
 
 Profit DEA models:
 ```@contents
-Pages = ["profit/profitadditive.md", "profit/profitrussell.md", "profit/profitenhancedrussell.md", "profit/profitmodifiedddf.md"]
+Pages = ["profit/profitadditive.md", "profit/profitrussell.md", "profit/profitenhancedrussell.md", "profit/profitmodifiedddf.md", "profit/profitholder.md", "profit/profitrddf.md", "profit/profitgda.md"]
 Depth = 2
 ```
 

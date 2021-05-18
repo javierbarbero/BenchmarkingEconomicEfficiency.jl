@@ -123,7 +123,7 @@ function deacostadd(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
 
     # Default optimizer
     if optimizer === nothing 
-        optimizer = DEAOptimizer(GLPK.Optimizer)
+        optimizer = DEAOptimizer(:LP)
     end
 
     # Get minimum cost targets and lambdas

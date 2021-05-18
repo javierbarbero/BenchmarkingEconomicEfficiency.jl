@@ -13,5 +13,14 @@ using Test
     include("deaprofitrussell.jl")
     include("deaprofiterg.jl")
     include("deaprofitmddf.jl")
+    include("deacostholder.jl")
+    include("dearevenueholder.jl")
+    include("deaprofitholder.jl")
+    include("deacostrddf.jl")
+    include("dearevenuerddf.jl")
+    include("deaprofitrddf.jl")
+    include("deacostgda.jl")
+    include("dearevenuegda.jl")
+    include("deaprofitgda.jl")
     
 end
