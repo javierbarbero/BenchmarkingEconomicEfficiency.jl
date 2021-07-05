@@ -1,4 +1,4 @@
-# BenchmarkingEconomicEfficiency
+# BenchmarkingEconomicEfficiency.jl
 
 A Julia package for economic efficiency measurement using Data Envelopment Analysis (DEA). 
 
