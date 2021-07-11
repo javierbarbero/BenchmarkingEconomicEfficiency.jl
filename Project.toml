@@ -1,7 +1,7 @@
 name = "BenchmarkingEconomicEfficiency"
 uuid = "9d9a57f5-5434-4194-99f6-8bfcf011f0e1"
 authors = ["Javier Barbero and José L. Zofío"]
-version = "1.0.0"
+version = "1.0.1"
 
 [deps]
 DataEnvelopmentAnalysis = "a100299e-89d6-11e9-0fa0-2daf497e6a05"
@@ -14,7 +14,7 @@ StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
 
 [compat]
 DataEnvelopmentAnalysis = "0.5"
-Reexport = "1.0"
+Reexport = "1"
 StatsBase = "0.33"
 julia = "1"
 
