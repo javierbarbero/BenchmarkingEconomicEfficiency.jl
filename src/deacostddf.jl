@@ -38,33 +38,8 @@ Alternatively, a vector or matrix with the desired directions can be supplied.
 
 # Optional Arguments
 - `rts=:VRS`: chooses variable returns to scale. For constant returns to scale choose `:CRS`.
-
-# Examples
-```jldoctest
-julia> X = [2 2; 1 4; 4 1; 4 3; 5 5; 6 1; 2 5; 1.6 8];
-
-julia> Y = [1; 1; 1; 1; 1; 1; 1; 1];
-
-julia> W = [1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1];
-
-julia> deacostddf(X, Y, W, Gx = :Monetary)
-Cost DDF DEA Model 
-DMUs = 8; Inputs = 2; Outputs = 1
-Orientation = Input; Returns to Scale = VRS
-Gx = Monetary
-──────────────────────────────
-   Cost  Technical  Allocative
-──────────────────────────────
-1   0.0    0.0        0.0
-2   1.0    0.0        1.0
-3   1.0    0.0        1.0
-4   3.0    2.66667    0.333333
-5   6.0    6.0        0.0
-6   3.0    0.0        3.0
-7   3.0    2.0        1.0
-8   5.6    1.2        4.4
-──────────────────────────────
-```
+- `monetary=false`: decomposition in normalized terms. Monetary terms if `true`.
+- `names`: a vector of strings with the names of the decision making units.
 """
 function deacostddf(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
     W::Union{Matrix,Vector};

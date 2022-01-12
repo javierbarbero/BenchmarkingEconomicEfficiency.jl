@@ -28,37 +28,9 @@ inputs `X`, outputs `Y`, price of inputs `W`, price of outputs `P`, and efficien
 - `:ERG`: Enhanced Russell Graph (or Slack Based Measure (SBM)).
 
 # Optional Arguments
+- `monetary=false`: decomposition in normalized terms. Monetary terms if `true`.
 - `atol=1e-6`: tolerance for DMU to be considered efficient.
 - `names`: a vector of strings with the names of the decision making units.
-
-# Examples
-```jldoctest
-julia> X = [2; 4; 8; 12; 6; 14; 14; 9.412];
-
-julia> Y = [1; 5; 8; 9; 3; 7; 9; 2.353];
-
-julia> W = [1; 1; 1; 1; 1; 1; 1; 1];
-
-julia> P = [2; 2; 2; 2; 2; 2; 2; 2];
-
-julia> deaprofitgda(X, Y, W, P, :ERG)
-General Direct Approach Profit DEA Model 
-DMUs = 8; Inputs = 1; Outputs = 1
-Returns to Scale = VRS
-Associated efficiency measure = ERG
-──────────────────────────────────
-     Profit  Technical  Allocative
-──────────────────────────────────
-1  4.0        0.0         4.0
-2  0.5        0.0         0.5
-3  0.0        0.0         0.0
-4  0.166667   0.0         0.166667
-5  0.8        0.6         0.2
-6  0.571429   0.52381     0.047619
-7  0.285714   0.142857    0.142857
-8  0.949449   0.8         0.149449
-──────────────────────────────────
-```
 """
 function deaprofitgda(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
     W::Union{Matrix,Vector}, P::Union{Matrix,Vector},

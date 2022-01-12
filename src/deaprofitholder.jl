@@ -32,35 +32,9 @@ inputs `X`, outputs `Y`, price of inputs `W`, and price of outputs `P`.
 - `Inf`.
 
 # Optional Arguments
+- `weigt=false`:  set to `true` for weighted (weakly) Hölder distance function.
+- `monetary=false`: decomposition in normalized terms. Monetary terms if `true`.
 - `names`: a vector of strings with the names of the decision making units.
-
-# Examples
-```jldoctest
-julia> X = [1 1; 1 1; 0.75 1.5; 0.5 2; 0.5 2; 2 2; 2.75 3.5; 1.375 1.75];
-
-julia> Y = [1 11; 5 3; 5 5; 2 9; 4 5; 4 2; 3 3; 4.5 3.5];
-
-julia> P = [2 1; 2 1; 2 1; 2 1; 2 1; 2 1; 2 1; 2 1];
-
-julia> W = [2 1; 2 1; 2 1; 2 1; 2 1; 2 1; 2 1; 2 1];
-
-julia> deaprofitholder(X, Y, W, P, l = 1)
-Profit Hölder L1 DEA Model 
-DMUs = 8; Inputs = 2; Outputs = 2
-Returns to Scale = VRS
-───────────────────────────────────
-   Profit     Technical  Allocative
-───────────────────────────────────
-1     1.0   0.0                 1.0
-2     1.0  -1.44329e-15         1.0
-3     0.0   0.0                 0.0
-4     1.0   0.0                 1.0
-5     1.0   0.0                 1.0
-6     4.0   1.0                 3.0
-7     6.0   2.0                 4.0
-8     2.0   0.5                 1.5
-───────────────────────────────────
-```
 """
 function deaprofitholder(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
     W::Union{Matrix,Vector}, P::Union{Matrix,Vector};

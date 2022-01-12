@@ -34,36 +34,8 @@ The directions `Gx` and `Gy` can be one of the following symbols.
 Alternatively, a vector or matrix with the desired directions can be supplied.
 
 # Optional Arguments
+- `monetary=false`: decomposition in normalized terms. Monetary terms if `true`.
 - `names`: a vector of strings with the names of the decision making units.
-
-# Examples
-```jldoctest
-julia> X = [2; 4; 8; 12; 6; 14; 14; 9.412];
-
-julia> Y = [1; 5; 8; 9; 3; 7; 9; 2.353];
-
-julia> W = [1; 1; 1; 1; 1; 1; 1; 1];
-
-julia> P = [2; 2; 2; 2; 2; 2; 2; 2];
-
-julia> deaprofitmddf(X, Y, W, P, Gx = :Observed, Gy = :Observed)
-Profit Modified DDF DEA Model 
-DMUs = 8; Inputs = 1; Outputs = 1
-Returns to Scale = VRS
-Gx = Observed; Gy = Observed
-─────────────────────────────────────
-       Profit   Technical  Allocative
-─────────────────────────────────────
-1  4.0         7.623e-7    4.0
-2  0.5         8.28765e-8  0.5
-3  5.68126e-8  4.78858e-8  8.92688e-9
-4  0.166667    1.08205e-7  0.166667
-5  1.33333     1.16667     0.166667
-6  0.571429    0.571429    3.2471e-9
-7  0.285714    0.142857    0.142857
-8  2.69996     2.54994     0.150021
-─────────────────────────────────────
-```
 """
 function deaprofitmddf(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
     W::Union{Matrix,Vector}, P::Union{Matrix,Vector};

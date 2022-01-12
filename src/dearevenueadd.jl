@@ -39,35 +39,8 @@ Model specification:
 - `rts=:VRS`: chooses variable returns to scale. For constant returns to scale choose `:CRS`.
 - `rhoY`: matrix of weights of outputs. Only if `model=:Custom`.
 - `disposal=:Strong`: chooses strong disposal of inputs. For weak disposal choose `:Weak`.
+- `monetary=false`: decomposition in normalized terms. Monetary terms if `true`.
 - `names`: a vector of strings with the names of the decision making units.
-
-# Examples
-```jldoctest
-julia> X = [1; 1; 1; 1; 1; 1; 1; 1];
-
-julia> Y = [7 7; 4 8; 8 4; 3 5; 3 3; 8 2; 6 4; 1.5 5];
-
-julia> P = [1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1];
-
-julia> dearevenueadd(X, Y, P, :Ones)
-Revenue Additive DEA Model 
-DMUs = 8; Inputs = 1; Outputs = 2
-Orientation = Output; Returns to Scale = VRS
-Weights = Ones
-───────────────────────────────────
-   Revenue  Technical    Allocative
-───────────────────────────────────
-1      0.0        0.0   0.0
-2      2.0        0.0   2.0
-3      2.0        0.0   2.0
-4      6.0        6.0   0.0
-5      8.0        8.0   0.0
-6      4.0        2.0   2.0
-7      4.0        4.0  -8.88178e-16
-8      7.5        7.5   0.0
-───────────────────────────────────
-
-```
 """
 function dearevenueadd(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector}, 
     P::Union{Matrix,Vector}, model::Symbol = :Default;
