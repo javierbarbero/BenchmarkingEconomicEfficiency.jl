@@ -7,14 +7,15 @@
 &amp; \quad \quad \lambda \ge 0. \\
 \end{split}\]</p><p>Denoting the optimal solution to this program by <span>$\theta^*$</span>, the constraints require the projection <span>$\left( {\theta^{*}\mathbf{x}_o,\mathbf{y}_o} \right)$</span> to belong to the technology <span>$L(\textbf{y}_o)$</span>, while the objective functions seeks the minimum value of <span>$\theta$</span> that projects radially the input vector <span>$\mathbf{x}_o$</span> to its frontier benchmark represented by <span>$\hat{\textbf{x}}_o=\theta^*\mathbf{x}_o$</span>. A feasible solution signaling technical efficiency is <span>$\theta^*=1$</span>. Therefore if  <span>$\theta^*&lt;1$</span>, the observation is technically inefficient and <span>$(\pmb{\lambda} X,\pmb{\lambda} Y)$</span> outperforms  <span>$\left( {{\mathbf{x}_o,\mathbf{y}_o}} \right)$</span>. </p><p>We can now show the main duality result relating cost efficiency and Farrell&#39;s radial input distance function <span>$R(I)$</span>, allowing its decomposition:   <span>$CE^{{}}_{R(I)}\left( {{\textbf{x}}_{o}},{{\textbf{y}}_{o}},\textbf{w} \right)=TE_{R(I)}\left( {{\textbf{x}}_{o}},{{\textbf{\textbf{y}}}_{o}} \right)+AE_{R(I)}\left( {{\textbf{x}}_{o}},{{\textbf{y}}_{o}},\textbf{w} \right)$</span>, i.e.,		</p><p class="math-container">\[\begin{split}
  \underbrace{\frac{C(\textbf{y}_o,\textbf{w})}{\sum\limits_{m=1}^{M}{{{w}_{m}}{{x}_{om}}}}}_{\text{Cost Efficiency}}=\underbrace{\theta^{*}}_{\text{Technical Efficiency}}\times \underbrace{A{{E}_{R\left( I \right)}}\left( {{\textbf{x}}_{o}},{{\textbf{y}}_{o}},{\textbf{w}} \right)}_{\text{Allocative Efficiency}} \le 1. 
-\end{split}\]</p><p><strong>Example</strong></p><p>In this example we compute the cost efficiency measure:</p><pre><code class="language-julia-repl hljs">julia&gt; X = [2 2; 1 4; 4 1; 4 3; 5 5; 6 1; 2 5; 1.6 8];
+\end{split}\]</p><p><strong>Example</strong></p><p>In this example we compute the cost efficiency measure:</p><pre><code class="language-julia hljs">using BenchmarkingEconomicEfficiency
 
-julia&gt; Y = [1; 1; 1; 1; 1; 1; 1; 1];
+X = [2 2; 1 4; 4 1; 4 3; 5 5; 6 1; 2 5; 1.6 8];
 
-julia&gt; W = [1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1];
+Y = [1; 1; 1; 1; 1; 1; 1; 1];
 
-julia&gt; deacost(X, Y, W)
-Cost DEA Model 
+W = [1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1];
+
+costradial = deacost(X, Y, W)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">Cost DEA Model 
 DMUs = 8; Inputs = 2; Outputs = 1
 Orientation = Input; Returns to Scale = VRS
 ──────────────────────────────────
@@ -28,4 +29,28 @@ Orientation = Input; Returns to Scale = VRS
 6  0.571429   1.0         0.571429
 7  0.571429   0.666667    0.857143
 8  0.416667   0.625       0.666667
-──────────────────────────────────</code></pre><p><strong>Reference</strong></p><p>Chapter 3 in Pastor, J.T., Aparicio, J. and Zofío, J.L. (2022) Benchmarking Economic Efficiency: Technical and Allocative Fundamentals, International Series in Operations Research and Management Science, Vol. 315,  Springer, Cham. </p><h3 id="deacost-Function-Documentation"><a class="docs-heading-anchor" href="#deacost-Function-Documentation">deacost Function Documentation</a><a id="deacost-Function-Documentation-1"></a><a class="docs-heading-anchor-permalink" href="#deacost-Function-Documentation" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="DataEnvelopmentAnalysis.deacost" href="#DataEnvelopmentAnalysis.deacost"><code>DataEnvelopmentAnalysis.deacost</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">deacost(X, Y, W)</code></pre><p>Compute cost efficiency using data envelopment analysis for inputs <code>X</code>, outputs <code>Y</code> and price of inputs <code>W</code>.</p><p><strong>Optional Arguments</strong></p><ul><li><code>rts=:VRS</code>: chooses variable returns to scale. For constant returns to scale choose <code>:CRS</code>.</li><li><code>dispos=:Strong</code>: chooses strong disposability of outputs. For weak disposability choose <code>:Weak</code>.</li><li><code>names</code>: a vector of strings with the names of the decision making units.</li></ul></div></section></article></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../costefficiency/">« Cost (In)Efficiency measurement</a><a class="docs-footer-nextpage" href="../costrussell/">Cost Russell model »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.10 on <span class="colophon-date" title="Wednesday 12 January 2022 19:45">Wednesday 12 January 2022</span>. Using Julia version 1.7.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+──────────────────────────────────</code></pre><p>Estimated economic, technical and allocative efficiency scores are returned with the <code>efficiency</code> function:</p><pre><code class="language-julia hljs">efficiency(costradial, :Economic)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">8-element Vector{Float64}:
+ 1.0
+ 0.8
+ 0.8
+ 0.5714285714285714
+ 0.4
+ 0.5714285714285714
+ 0.5714285714285714
+ 0.4166666666666667</code></pre><pre><code class="language-julia hljs">efficiency(costradial, :Technical)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">8-element Vector{Float64}:
+ 1.0
+ 1.0
+ 1.0
+ 0.6000000000000001
+ 0.4
+ 1.0
+ 0.6666666666666667
+ 0.625</code></pre><pre><code class="language-julia hljs">efficiency(costradial, :Allocative)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">8-element Vector{Float64}:
+ 1.0
+ 0.8
+ 0.8
+ 0.9523809523809522
+ 1.0
+ 0.5714285714285714
+ 0.857142857142857
+ 0.6666666666666667</code></pre><p><strong>Reference</strong></p><p>Chapter 3 in Pastor, J.T., Aparicio, J. and Zofío, J.L. (2022) Benchmarking Economic Efficiency: Technical and Allocative Fundamentals, International Series in Operations Research and Management Science, Vol. 315,  Springer, Cham. </p><h3 id="deacost-Function-Documentation"><a class="docs-heading-anchor" href="#deacost-Function-Documentation">deacost Function Documentation</a><a id="deacost-Function-Documentation-1"></a><a class="docs-heading-anchor-permalink" href="#deacost-Function-Documentation" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="DataEnvelopmentAnalysis.deacost" href="#DataEnvelopmentAnalysis.deacost"><code>DataEnvelopmentAnalysis.deacost</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">deacost(X, Y, W)</code></pre><p>Compute cost efficiency using data envelopment analysis for inputs <code>X</code>, outputs <code>Y</code> and price of inputs <code>W</code>.</p><p><strong>Optional Arguments</strong></p><ul><li><code>rts=:VRS</code>: chooses variable returns to scale. For constant returns to scale choose <code>:CRS</code>.</li><li><code>dispos=:Strong</code>: chooses strong disposability of outputs. For weak disposability choose <code>:Weak</code>.</li><li><code>names</code>: a vector of strings with the names of the decision making units.</li></ul></div></section></article></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../costefficiency/">« Cost (In)Efficiency measurement</a><a class="docs-footer-nextpage" href="../costrussell/">Cost Russell model »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.10 on <span class="colophon-date" title="Wednesday 12 January 2022 21:42">Wednesday 12 January 2022</span>. Using Julia version 1.7.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

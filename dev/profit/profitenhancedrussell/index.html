@@ -22,16 +22,17 @@
 \end{split}\]</p><p>Resorting to the duality between this expression and the profit function we can establish the associated decomposition of profit inefficiency:  <span>$\Pi I_{ERG=SBM(G)}^{{}}\left( {{\textbf{x}}_{o}},{{\textbf{y}}_{o}},\tilde{\textbf{w}},\tilde{\textbf{p}} \right)=T{{I}_{ERG=SBM(G)}}\left( {{\textbf{x}}_{o}},{{\textbf{\textbf{y}}}_{o}} \right)+A{{I}_{ERG=SBM(G)}}\left( {{\textbf{x}}_{o}},{{\textbf{y}}_{o}},\tilde{\textbf{w}},\tilde{\textbf{p}} \right)$</span>; i.e.,		   </p><p class="math-container">\[\begin{split}
 &amp; \underbrace{\frac{\Pi \left( \mathbf{w},\mathbf{p} \right)-\left( \sum\limits_{n=1}^{N}{{{p}_{n}}{{y}_{on}}}-\sum\limits_{m=1}^{M}{{{w}_{m}}{{x}_{om}}} \right)}{{{\delta }_{\left( {{\textbf{x}}_{o}},{{\textbf{y}}_{o}},\textbf{p},\textbf{w} \right)}}\left( 1+\frac{1}{N}\sum\limits_{n=1}^{N}{\frac{s_{n}^{+*}}{y_{on}^{{}}}} \right)}}_{\text{Norm}\text{.}\ \text{Profit}\ \text{Inefficency}}=  \\ 
 &amp; \quad =\underbrace{\left( \frac{\frac{1}{N}\sum\limits_{n=1}^{N}{\frac{s_{n}^{+*}}{y_{on}^{{}}}+}\frac{1}{M}\sum\limits_{m=1}^{M}{\frac{s_{m}^{-*}}{x_{om}^{{}}}}}{\left( 1+\frac{1}{N}\sum\limits_{n=1}^{N}{\frac{s_{n}^{+*}}{y_{on}^{{}}}} \right)} \right)}_{\text{Graph Techncial Inefficency}}+\underbrace{A{{I}_{ERG=SBM(G)}}\left( {{\mathbf{x}}_{o}},{{\mathbf{y}}_{o}},\tilde{\textbf{p}},\tilde{\textbf{w}} \right)}_{\text{Norm}\text{.}\ \text{Allocative}\ \text{Inefficency}}\ge 0, 
-\end{split}\]</p><p>where <span>${{\delta }_{\left( {{\textbf{x}}_{o}},{{\textbf{y}}_{o}},\textbf{p},\textbf{w} \right)}}=\min \left\{ N{{p}_{n}}y_{on}^{{}},n=1,...,N,M{{w}_{m}}x_{om}^{{}},m=1,...,M \right\}$</span> in the normalization factor of the <em>ERG=SBM</em>. </p><p><strong>Reference</strong></p><p>Chapter 7 in Pastor, J.T., Aparicio, J. and Zofío, J.L. (2022) Benchmarking Economic Efficiency: Technical and Allocative Fundamentals, International Series in Operations Research and Management Science, Vol. 315,  Springer, Cham. </p><p><strong>Example</strong></p><p>In this example we compute the profit efficiency Enhanced Russell Graph Slack Based measure:</p><pre><code class="language-julia-repl hljs">julia&gt; X = [2; 4; 8; 12; 6; 14; 14; 9.412];
+\end{split}\]</p><p>where <span>${{\delta }_{\left( {{\textbf{x}}_{o}},{{\textbf{y}}_{o}},\textbf{p},\textbf{w} \right)}}=\min \left\{ N{{p}_{n}}y_{on}^{{}},n=1,...,N,M{{w}_{m}}x_{om}^{{}},m=1,...,M \right\}$</span> in the normalization factor of the <em>ERG=SBM</em>. </p><p><strong>Reference</strong></p><p>Chapter 7 in Pastor, J.T., Aparicio, J. and Zofío, J.L. (2022) Benchmarking Economic Efficiency: Technical and Allocative Fundamentals, International Series in Operations Research and Management Science, Vol. 315,  Springer, Cham. </p><p><strong>Example</strong></p><p>In this example we compute the profit efficiency Enhanced Russell Graph Slack Based measure:</p><pre><code class="language-julia hljs">using BenchmarkingEconomicEfficiency
 
-julia&gt; Y = [1; 5; 8; 9; 3; 7; 9; 2.353];
+X = [2; 4; 8; 12; 6; 14; 14; 9.412];
 
-julia&gt; W = [1; 1; 1; 1; 1; 1; 1; 1];
+Y = [1; 5; 8; 9; 3; 7; 9; 2.353];
 
-julia&gt; P = [2; 2; 2; 2; 2; 2; 2; 2];
+W = [1; 1; 1; 1; 1; 1; 1; 1];
 
-julia&gt; profiterg = deaprofiterg(X, Y, W, P)
-Enhanced Russell Graph Slack Based Measure Profit DEA Model 
+P = [2; 2; 2; 2; 2; 2; 2; 2];
+
+profiterg = deaprofiterg(X, Y, W, P)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">Enhanced Russell Graph Slack Based Measure Profit DEA Model 
 DMUs = 8; Inputs = 1; Outputs = 1
 Returns to Scale = VRS
 ──────────────────────────────────
@@ -45,8 +46,7 @@ Returns to Scale = VRS
 6  0.571429   0.52381     0.047619
 7  0.285714   0.142857    0.142857
 8  1.2706     0.8         0.4706
-──────────────────────────────────</code></pre><p>Estimated economic, technical and allocative efficiency scores are returned with the <code>efficiency</code> function:</p><pre><code class="language-julia-repl hljs">julia&gt; efficiency(profiterg, :Economic)
-8-element Vector{Float64}:
+──────────────────────────────────</code></pre><p>Estimated economic, technical and allocative efficiency scores are returned with the <code>efficiency</code> function:</p><pre><code class="language-julia hljs">efficiency(profiterg, :Economic)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">8-element Vector{Float64}:
  4.0
  0.5
  0.0
@@ -54,10 +54,7 @@ Returns to Scale = VRS
  0.8
  0.5714285714285714
  0.2857142857142857
- 1.2705999999999997
-
-julia&gt; efficiency(profiterg, :Technical)
-8-element Vector{Float64}:
+ 1.2705999999999997</code></pre><pre><code class="language-julia hljs">efficiency(profiterg, :Technical)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">8-element Vector{Float64}:
  0.0
  0.0
  0.0
@@ -65,10 +62,7 @@ julia&gt; efficiency(profiterg, :Technical)
  0.6000000000000001
  0.5238095238095238
  0.14285714285714257
- 0.8
-
-julia&gt; efficiency(profiterg, :Allocative)
-8-element Vector{Float64}:
+ 0.8</code></pre><pre><code class="language-julia hljs">efficiency(profiterg, :Allocative)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">8-element Vector{Float64}:
  4.0
  0.5
  0.0
@@ -76,4 +70,4 @@ julia&gt; efficiency(profiterg, :Allocative)
  0.19999999999999996
  0.04761904761904756
  0.14285714285714313
- 0.4705999999999997</code></pre><h3 id="deaprofiterg-Function-Documentation"><a class="docs-heading-anchor" href="#deaprofiterg-Function-Documentation">deaprofiterg Function Documentation</a><a id="deaprofiterg-Function-Documentation-1"></a><a class="docs-heading-anchor-permalink" href="#deaprofiterg-Function-Documentation" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="BenchmarkingEconomicEfficiency.deaprofiterg" href="#BenchmarkingEconomicEfficiency.deaprofiterg"><code>BenchmarkingEconomicEfficiency.deaprofiterg</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">deaprofiterg(X, Y, W, P)</code></pre><p>Compute profit efficiency using data envelopment analysis Enhanced Russell Graph Slack Based Measure model for inputs <code>X</code>, outputs <code>Y</code>, price of inputs <code>W</code>, and price of outputs <code>P</code>.</p><p><strong>Optional Arguments</strong></p><ul><li><code>monetary=false</code>: decomposition in normalized terms. Monetary terms if <code>true</code>.</li><li><code>names</code>: a vector of strings with the names of the decision making units.</li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/javierbarbero/BenchmarkingEconomicEfficiency.jl/blob/694879faa031c6a7fde9e7a80c5b74b299b7c614/src/deaprofiterg.jl#L22-L30">source</a></section></article></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../profitadditive/">« Profit Additive model</a><a class="docs-footer-nextpage" href="../profitddf/">Profit Directional Distance Function model »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.10 on <span class="colophon-date" title="Wednesday 12 January 2022 19:45">Wednesday 12 January 2022</span>. Using Julia version 1.7.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+ 0.4705999999999997</code></pre><h3 id="deaprofiterg-Function-Documentation"><a class="docs-heading-anchor" href="#deaprofiterg-Function-Documentation">deaprofiterg Function Documentation</a><a id="deaprofiterg-Function-Documentation-1"></a><a class="docs-heading-anchor-permalink" href="#deaprofiterg-Function-Documentation" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="BenchmarkingEconomicEfficiency.deaprofiterg" href="#BenchmarkingEconomicEfficiency.deaprofiterg"><code>BenchmarkingEconomicEfficiency.deaprofiterg</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">deaprofiterg(X, Y, W, P)</code></pre><p>Compute profit efficiency using data envelopment analysis Enhanced Russell Graph Slack Based Measure model for inputs <code>X</code>, outputs <code>Y</code>, price of inputs <code>W</code>, and price of outputs <code>P</code>.</p><p><strong>Optional Arguments</strong></p><ul><li><code>monetary=false</code>: decomposition in normalized terms. Monetary terms if <code>true</code>.</li><li><code>names</code>: a vector of strings with the names of the decision making units.</li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/javierbarbero/BenchmarkingEconomicEfficiency.jl/blob/b8defa9bac8f375bf8f48c8efce31ca08bf4f048/src/deaprofiterg.jl#L22-L30">source</a></section></article></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../profitadditive/">« Profit Additive model</a><a class="docs-footer-nextpage" href="../profitddf/">Profit Directional Distance Function model »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.10 on <span class="colophon-date" title="Wednesday 12 January 2022 21:42">Wednesday 12 January 2022</span>. Using Julia version 1.7.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

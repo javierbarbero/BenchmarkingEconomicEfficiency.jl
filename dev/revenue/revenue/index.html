@@ -7,14 +7,15 @@
 &amp; \quad \quad \lambda \ge 0. \\
 \end{split}\]</p><p>where <span>$\xi^*$</span> denotes now the optimal solution. The constraints require the observation <span>$\left( {\mathbf{x}_o,\xi^{*}\mathbf{y}_o} \right)$</span> to belong to the technology <span>$P(\textbf{x}_o$</span>, while the objective functions seeks the maximum value of <span>$\xi$</span> that projects radially the output vector <span>$\mathbf{y}_o$</span> to its frontier benchmark represented by <span>$\hat{\textbf{y}}_o=\xi^*\mathbf{y}_o$</span>. A feasible solution signaling technical efficiency is <span>$\xi^*=1$</span>. Therefore if  <span>$\xi^*&gt;1$</span>, the observation is technically inefficient and <span>$(\pmb{\lambda} X, \pmb{\lambda} Y)$</span> outperforms  <span>$\left( {{\mathbf{x}_o,\mathbf{y}_o}} \right)$</span>. </p><p>We now show the main duality result relating revenue efficiency and Farrell&#39;s radial output distance function, allowing its decomposition:   <span>$RE^{{}}_{R(O)}\left( {{\textbf{x}}_{o}},{{\textbf{y}}_{o}},\textbf{p} \right)=TE_{R(O)}\left( {{\textbf{x}}_{o}},{{\textbf{\textbf{y}}}_{o}} \right)+AE_{R(O)}\left( {{\textbf{x}}_{o}},{{\textbf{y}}_{o}},\textbf{p} \right)$</span>, i.e.,		</p><p class="math-container">\[\begin{split}
  \underbrace{\frac{\sum\limits_{n=1}^{N}{{{p}_{n}}{{y}_{on}}}}{R(\textbf{x}_o,\textbf{p})}}_{\text{Revenue Efficiency}}=\underbrace{\xi^{*}}_{\text{Technical Efficiency}}\times \underbrace{A{{E}_{R\left( O \right)}}\left( {{\textbf{x}}_{o}},{{\textbf{y}}_{o}},{\textbf{p}} \right)}_{\text{Allocative Efficiency}} \le 1  
-\end{split}\]</p><p><strong>Example</strong></p><p>In this example we compute the revnue efficiency measure:</p><pre><code class="language-julia-repl hljs">julia&gt; X = [1; 1; 1; 1; 1; 1; 1; 1];
+\end{split}\]</p><p><strong>Example</strong></p><p>In this example we compute the revnue efficiency measure:</p><pre><code class="language-julia hljs">using BenchmarkingEconomicEfficiency
 
-julia&gt; Y = [7 7; 4 8; 8 4; 3 5; 3 3; 8 2; 6 4; 1.5 5];
+X = [1; 1; 1; 1; 1; 1; 1; 1];
 
-julia&gt; P = [1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1];
+Y = [7 7; 4 8; 8 4; 3 5; 3 3; 8 2; 6 4; 1.5 5];
 
-julia&gt; dearevenue(X, Y, P)
-Revenue DEA Model 
+P = [1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1];
+
+revenueradial = dearevenue(X, Y, P)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">Revenue DEA Model 
 DMUs = 8; Inputs = 1; Outputs = 2
 Orientation = Output; Returns to Scale = VRS
 ──────────────────────────────────
@@ -28,4 +29,28 @@ Orientation = Output; Returns to Scale = VRS
 6  0.714286   1.0         0.714286
 7  0.714286   0.785714    0.909091
 8  0.464286   0.625       0.742857
-──────────────────────────────────</code></pre><p><strong>Reference</strong></p><p>Chapter 3 in Pastor, J.T., Aparicio, J. and Zofío, J.L. (2022) Benchmarking Economic Efficiency: Technical and Allocative Fundamentals, International Series in Operations Research and Management Science, Vol. 315,  Springer, Cham. </p><h3 id="dearevenue-Function-Documentation"><a class="docs-heading-anchor" href="#dearevenue-Function-Documentation">dearevenue Function Documentation</a><a id="dearevenue-Function-Documentation-1"></a><a class="docs-heading-anchor-permalink" href="#dearevenue-Function-Documentation" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="DataEnvelopmentAnalysis.dearevenue" href="#DataEnvelopmentAnalysis.dearevenue"><code>DataEnvelopmentAnalysis.dearevenue</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">dearevenue(X, Y, P)</code></pre><p>Compute revenue efficiency using data envelopment analysis for inputs <code>X</code>, outputs <code>Y</code> and price of outputs <code>P</code>.</p><p><strong>Optional Arguments</strong></p><ul><li><code>rts=:VRS</code>: chooses variable returns to scale. For constant returns to scale choose <code>:CRS</code>.</li><li><code>dispos=:Strong</code>: chooses strong disposability of inputs. For weak disposability choose <code>:Weak</code>.</li><li><code>names</code>: a vector of strings with the names of the decision making units.</li></ul></div></section></article></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../revenueefficiency/">« Revenue (In)Efficiency measurement</a><a class="docs-footer-nextpage" href="../revenuerussell/">Revenue Russell model »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.10 on <span class="colophon-date" title="Wednesday 12 January 2022 19:45">Wednesday 12 January 2022</span>. Using Julia version 1.7.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+──────────────────────────────────</code></pre><p>Estimated economic, technical and allocative efficiency scores are returned with the <code>efficiency</code> function:</p><pre><code class="language-julia hljs">efficiency(revenueradial, :Economic)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">8-element Vector{Float64}:
+ 1.0
+ 0.8571428571428571
+ 0.8571428571428571
+ 0.5714285714285714
+ 0.42857142857142855
+ 0.7142857142857143
+ 0.7142857142857143
+ 0.4642857142857143</code></pre><pre><code class="language-julia hljs">efficiency(revenueradial, :Technical)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">8-element Vector{Float64}:
+ 1.0
+ 1.0
+ 1.0
+ 0.6428571428571428
+ 0.42857142857142855
+ 1.0
+ 0.7857142857142857
+ 0.625</code></pre><pre><code class="language-julia hljs">efficiency(revenueradial, :Allocative)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">8-element Vector{Float64}:
+ 1.0
+ 0.8571428571428571
+ 0.8571428571428571
+ 0.888888888888889
+ 1.0
+ 0.7142857142857143
+ 0.9090909090909092
+ 0.7428571428571429</code></pre><p><strong>Reference</strong></p><p>Chapter 3 in Pastor, J.T., Aparicio, J. and Zofío, J.L. (2022) Benchmarking Economic Efficiency: Technical and Allocative Fundamentals, International Series in Operations Research and Management Science, Vol. 315,  Springer, Cham. </p><h3 id="dearevenue-Function-Documentation"><a class="docs-heading-anchor" href="#dearevenue-Function-Documentation">dearevenue Function Documentation</a><a id="dearevenue-Function-Documentation-1"></a><a class="docs-heading-anchor-permalink" href="#dearevenue-Function-Documentation" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="DataEnvelopmentAnalysis.dearevenue" href="#DataEnvelopmentAnalysis.dearevenue"><code>DataEnvelopmentAnalysis.dearevenue</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">dearevenue(X, Y, P)</code></pre><p>Compute revenue efficiency using data envelopment analysis for inputs <code>X</code>, outputs <code>Y</code> and price of outputs <code>P</code>.</p><p><strong>Optional Arguments</strong></p><ul><li><code>rts=:VRS</code>: chooses variable returns to scale. For constant returns to scale choose <code>:CRS</code>.</li><li><code>dispos=:Strong</code>: chooses strong disposability of inputs. For weak disposability choose <code>:Weak</code>.</li><li><code>names</code>: a vector of strings with the names of the decision making units.</li></ul></div></section></article></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../revenueefficiency/">« Revenue (In)Efficiency measurement</a><a class="docs-footer-nextpage" href="../revenuerussell/">Revenue Russell model »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.10 on <span class="colophon-date" title="Wednesday 12 January 2022 21:42">Wednesday 12 January 2022</span>. Using Julia version 1.7.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

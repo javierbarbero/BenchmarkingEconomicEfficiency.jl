@@ -15,16 +15,17 @@
 &amp; \underbrace{TE_{GDF}\left( {{\mathbf{x}}_{o}},{{\mathbf{y}}_{o}},\alpha  \right)}_{\text{Graph Technical Efficiency} \, VRS} \times 
 \underbrace{SE_{GDF}\left( {{\mathbf{x}}_{o}},{{\mathbf{y}}_{o}},\alpha  \right)}_{\text{Scale Efficiency}} \times
  \underbrace{A{{E}_{GDF}}\left( {{\mathbf{x}}_{o}},{{\mathbf{y}}_{o}},\mathbf{w},\mathbf{p} \right)}_{\text{Allocative Inefficiency}}  \ge 0. 
-\end{split}  \]</p><p><strong>Reference</strong></p><p>Chapter 4 in Pastor, J.T., Aparicio, J. and Zofío, J.L. (2022) Benchmarking Economic Efficiency: Technical and Allocative Fundamentals, International Series in Operations Research and Management Science, Vol. 315,  Springer, Cham. </p><p><strong>Example</strong></p><p>In this example we compute the profitability efficiency measure:</p><pre><code class="language-julia-repl hljs">julia&gt; X = [2; 4; 8; 12; 6; 14; 14; 9.412];
+\end{split}  \]</p><p><strong>Reference</strong></p><p>Chapter 4 in Pastor, J.T., Aparicio, J. and Zofío, J.L. (2022) Benchmarking Economic Efficiency: Technical and Allocative Fundamentals, International Series in Operations Research and Management Science, Vol. 315,  Springer, Cham. </p><p><strong>Example</strong></p><p>In this example we compute the profitability efficiency measure:</p><pre><code class="language-julia hljs">using BenchmarkingEconomicEfficiency
 
-julia&gt; Y = [1; 5; 8; 9; 3; 7; 9; 2.353];
+X = [2; 4; 8; 12; 6; 14; 14; 9.412];
 
-julia&gt; W = [1; 1; 1; 1; 1; 1; 1; 1];
+Y = [1; 5; 8; 9; 3; 7; 9; 2.353];
 
-julia&gt; P = [2; 2; 2; 2; 2; 2; 2; 2];
+W = [1; 1; 1; 1; 1; 1; 1; 1];
 
-julia&gt; deaprofitability(X, Y, W, P)
-Profitability DEA Model 
+P = [2; 2; 2; 2; 2; 2; 2; 2];
+
+profitability = deaprofitability(X, Y, W, P)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">Profitability DEA Model 
 DMUs = 8; Inputs = 1; Outputs = 1
 alpha = 0.5; Returns to Scale = VRS
 ──────────────────────────────────────────────────────────
@@ -38,4 +39,44 @@ alpha = 0.5; Returns to Scale = VRS
 6       0.4       0.4       0.634489  0.630429         1.0
 7       0.514286  0.514286  1.0       0.514286         1.0
 8       0.2       0.2       0.20504   0.975422         1.0
-──────────────────────────────────────────────────────────</code></pre><h3 id="deaprofitability-Function-Documentation"><a class="docs-heading-anchor" href="#deaprofitability-Function-Documentation">deaprofitability Function Documentation</a><a id="deaprofitability-Function-Documentation-1"></a><a class="docs-heading-anchor-permalink" href="#deaprofitability-Function-Documentation" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="DataEnvelopmentAnalysis.deaprofitability" href="#DataEnvelopmentAnalysis.deaprofitability"><code>DataEnvelopmentAnalysis.deaprofitability</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">deaprofitability(X, Y, W, P)</code></pre><p>Compute profitability efficiency using data envelopment analysis for inputs <code>X</code>, outputs <code>Y</code>, price of inputs <code>W</code>, and price of outputs <code>P</code>.</p><p><strong>Optional Arguments</strong></p><ul><li><code>alpha=0.5</code>: alpha to use for the generalized distance function.</li><li><code>names</code>: a vector of strings with the names of the decision making units.</li></ul></div></section></article></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../../profit/profitgda/">« Profit General Direct Approach model</a><a class="docs-footer-nextpage" href="../../cost/costefficiency/">Cost (In)Efficiency measurement »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.10 on <span class="colophon-date" title="Wednesday 12 January 2022 19:45">Wednesday 12 January 2022</span>. Using Julia version 1.7.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+──────────────────────────────────────────────────────────</code></pre><p>Estimated economic, technical (CRS and VRS), scale, and allocative efficiency scores are returned with the <code>efficiency</code> function:</p><pre><code class="language-julia hljs">efficiency(profitability, :Economic)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">8-element Vector{Float64}:
+ 0.3999999761547797
+ 0.9999999139576936
+ 0.7999999346859734
+ 0.599999955417482
+ 0.3999999761547798
+ 0.3999999761547798
+ 0.5142856785897278
+ 0.19999999696915494</code></pre><pre><code class="language-julia hljs">efficiency(profitability, :CRS)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">8-element Vector{Float64}:
+ 0.39999991027723375
+ 0.9999999335326197
+ 0.7999999828302874
+ 0.5999999997885156
+ 0.39999998533892306
+ 0.4000000068602393
+ 0.5142857188852133
+ 0.2000000064722402</code></pre><pre><code class="language-julia hljs">efficiency(profitability, :VRS)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">8-element Vector{Float64}:
+ 0.9999997134409037
+ 0.9999999534911989
+ 0.9999999830399826
+ 0.9999999825466027
+ 0.41009702156719485
+ 0.6344889178604333
+ 0.9999999537051627
+ 0.20503955516458106</code></pre><pre><code class="language-julia hljs">efficiency(profitability, :Scale)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">8-element Vector{Float64}:
+ 0.40000002490087944
+ 0.99999998004142
+ 0.7999999963983012
+ 0.6000000102605542
+ 0.9753789086551135
+ 0.6304286735363062
+ 0.5142857426939881
+ 0.9754215781033289</code></pre><pre><code class="language-julia hljs">efficiency(profitability, :Allocative)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">8-element Vector{Float64}:
+ 1.0000001646939018
+ 0.9999999804250725
+ 0.9999999398196062
+ 0.9999999260482773
+ 0.9999999770396409
+ 0.9999999232363526
+ 0.9999999216476678
+ 0.9999999524845752</code></pre><h3 id="deaprofitability-Function-Documentation"><a class="docs-heading-anchor" href="#deaprofitability-Function-Documentation">deaprofitability Function Documentation</a><a id="deaprofitability-Function-Documentation-1"></a><a class="docs-heading-anchor-permalink" href="#deaprofitability-Function-Documentation" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="DataEnvelopmentAnalysis.deaprofitability" href="#DataEnvelopmentAnalysis.deaprofitability"><code>DataEnvelopmentAnalysis.deaprofitability</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">deaprofitability(X, Y, W, P)</code></pre><p>Compute profitability efficiency using data envelopment analysis for inputs <code>X</code>, outputs <code>Y</code>, price of inputs <code>W</code>, and price of outputs <code>P</code>.</p><p><strong>Optional Arguments</strong></p><ul><li><code>alpha=0.5</code>: alpha to use for the generalized distance function.</li><li><code>names</code>: a vector of strings with the names of the decision making units.</li></ul></div></section></article></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../../profit/profitgda/">« Profit General Direct Approach model</a><a class="docs-footer-nextpage" href="../../cost/costefficiency/">Cost (In)Efficiency measurement »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.10 on <span class="colophon-date" title="Wednesday 12 January 2022 21:42">Wednesday 12 January 2022</span>. Using Julia version 1.7.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

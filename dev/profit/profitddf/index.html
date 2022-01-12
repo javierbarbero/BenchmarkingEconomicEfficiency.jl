@@ -8,16 +8,17 @@
 \end{split} \]</p><p>A firm is technically efficient if its optimal solution is <span>$\beta^{*}=0$</span>. Therefore if <span>$\beta^{*}&gt;0$</span>, the observation is inefficient. The decomposition of the so-called <em>Nerlovian</em> economic inefficiency based on the directional distance function:  <span>$\Pi{{I}_{DDF\left( G \right)}}\left( {{\textbf{x}}_{o}},{{\textbf{y}}_{o}},{{\mathbf{g_{x}^-},\mathbf{g^{+}_y}}},{\tilde{\textbf{w}}}, \tilde{{\textbf{p}}} \right)$</span> = <span>$T{{I}_{DDDF\left( G \right)}}\left( {{\textbf{x}}_{o}},{{\textbf{y}}_{o}},{{\mathbf{g_{x}^-},\mathbf{g^{+}_y}}} \right)$</span> + <span>$A{{I}_{DDF\left( G \right)}}\left( {{\textbf{x}}_{o}},{{\textbf{y}}_{o}},{{\mathbf{g_{x}^-},\mathbf{g^{+}_y}}}, {\tilde{\textbf{w}}}, \tilde{{\textbf{p}}} \right)$</span>. This results in the following expression: </p><p class="math-container">\[\begin{split}
   &amp; \underbrace{\frac{\Pi \left( \mathbf{w},\mathbf{p} \right)-\left( \sum\limits_{n=1}^{N}{{{p}_{n}}{{y}_{on}}}-\sum\limits_{m=1}^{M}{{{w}_{m}}{{x}_{om}}} \right)}{\sum\limits_{m=1}^{M}{w_{m}^{{}}g_{om}^{-}}+\sum\limits_{n=1}^{N}{p_{n}^{{}}y_{on}^{+}}}}_{\text{Norm}\text{. Profit Inefficiency}}= \\ 
   &amp; \quad =\underbrace{\beta _{DDF(G)}^{*}}_{\text{Graph Technical Inefficiency}}+\ \,\underbrace{A{{I}_{DDF(G)}}\left( {{\mathbf{x}}_{o}},{{\mathbf{y}}_{o}},\mathbf{g}_{\mathbf{x}}^{\mathbf{-}},\mathbf{g}_{\mathbf{y}}^{+},\mathbf{\tilde{w}},\mathbf{\tilde{p}} \right)}_{\text{Norm}\text{. Allocative Inefficiency}} \ge 0.  
-\end{split}  \]</p><p><strong>Reference</strong></p><p>Chapter 8 in Pastor, J.T., Aparicio, J. and Zofío, J.L. (2022) Benchmarking Economic Efficiency: Technical and Allocative Fundamentals, International Series in Operations Research and Management Science, Vol. 315,  Springer, Cham. </p><p><strong>Example</strong></p><p>In this example we compute the profit efficiency measure considering a choice of directional vector that returns profit inefficiency in monetary terms:</p><pre><code class="language-julia-repl hljs">julia&gt; X = [2; 4; 8; 12; 6; 14; 14; 9.412];
+\end{split}  \]</p><p><strong>Reference</strong></p><p>Chapter 8 in Pastor, J.T., Aparicio, J. and Zofío, J.L. (2022) Benchmarking Economic Efficiency: Technical and Allocative Fundamentals, International Series in Operations Research and Management Science, Vol. 315,  Springer, Cham. </p><p><strong>Example</strong></p><p>In this example we compute the profit efficiency measure considering a choice of directional vector that returns profit inefficiency in monetary terms:</p><pre><code class="language-julia hljs">using BenchmarkingEconomicEfficiency
 
-julia&gt; Y = [1; 5; 8; 9; 3; 7; 9; 2.353];
+X = [2; 4; 8; 12; 6; 14; 14; 9.412];
 
-julia&gt; W = [1; 1; 1; 1; 1; 1; 1; 1];
+Y = [1; 5; 8; 9; 3; 7; 9; 2.353];
 
-julia&gt; P = [2; 2; 2; 2; 2; 2; 2; 2];
+W = [1; 1; 1; 1; 1; 1; 1; 1];
 
-julia&gt; deaprofit(X, Y, W, P, Gx = :Monetary, Gy = :Monetary)
-Profit DEA Model 
+P = [2; 2; 2; 2; 2; 2; 2; 2];
+
+profitddf = deaprofit(X, Y, W, P, Gx = :Monetary, Gy = :Monetary)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">Profit DEA Model 
 DMUs = 8; Inputs = 1; Outputs = 1
 Returns to Scale = VRS
 Gx = Monetary; Gy = Monetary
@@ -32,4 +33,28 @@ Gx = Monetary; Gy = Monetary
 6   8.0        6.0          2.0
 7   4.0        0.0          4.0
 8  12.706     11.496        1.21
-────────────────────────────────</code></pre><h3 id="deaprofit-Function-Documentation"><a class="docs-heading-anchor" href="#deaprofit-Function-Documentation">deaprofit Function Documentation</a><a id="deaprofit-Function-Documentation-1"></a><a class="docs-heading-anchor-permalink" href="#deaprofit-Function-Documentation" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="DataEnvelopmentAnalysis.deaprofit" href="#DataEnvelopmentAnalysis.deaprofit"><code>DataEnvelopmentAnalysis.deaprofit</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">deaprofit(X, Y, W, P; Gx, Gy)</code></pre><p>Compute profit efficiency using data envelopment analysis model for inputs <code>X</code>, outputs <code>Y</code>, price of inputs <code>W</code>, and price of outputs <code>P</code>.</p><p><strong>Direction specification:</strong></p><p>The directions <code>Gx</code> and <code>Gy</code> can be one of the following symbols.</p><ul><li><code>:Zeros</code>: use zeros.</li><li><code>:Ones</code>: use ones.</li><li><code>:Observed</code>: use observed values.</li><li><code>:Mean</code>: use column means.</li><li><code>:Monetary</code>: use direction so that profit inefficiency is expressed in monetary values.</li></ul><p>Alternatively, a vector or matrix with the desired directions can be supplied.</p><p><strong>Optional Arguments</strong></p><ul><li><code>monetary=false</code>: decomposition in normalized terms. Monetary terms if <code>true</code>.</li><li><code>names</code>: a vector of strings with the names of the decision making units.</li></ul></div></section></article></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../profitenhancedrussell/">« Profit Enhanced Russell Graph Slack Based Measure</a><a class="docs-footer-nextpage" href="../profitholder/">Profit Hölder model »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.10 on <span class="colophon-date" title="Wednesday 12 January 2022 19:45">Wednesday 12 January 2022</span>. Using Julia version 1.7.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+────────────────────────────────</code></pre><p>Estimated economic, technical and allocative efficiency scores are returned with the <code>efficiency</code> function:</p><pre><code class="language-julia hljs">efficiency(profitddf, :Economic)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">8-element Vector{Float64}:
+  8.0
+  2.0
+  0.0
+  2.0
+  8.0
+  8.0
+  4.0
+ 12.706</code></pre><pre><code class="language-julia hljs">efficiency(profitddf, :Technical)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">8-element Vector{Float64}:
+  0.0
+  0.0
+  0.0
+  0.0
+  6.0
+  6.000000000000003
+  0.0
+ 11.496000000000002</code></pre><pre><code class="language-julia hljs">efficiency(profitddf, :Allocative)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">8-element Vector{Float64}:
+ 8.0
+ 2.0
+ 0.0
+ 2.0
+ 2.0
+ 1.9999999999999973
+ 4.0
+ 1.2099999999999973</code></pre><h3 id="deaprofit-Function-Documentation"><a class="docs-heading-anchor" href="#deaprofit-Function-Documentation">deaprofit Function Documentation</a><a id="deaprofit-Function-Documentation-1"></a><a class="docs-heading-anchor-permalink" href="#deaprofit-Function-Documentation" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="DataEnvelopmentAnalysis.deaprofit" href="#DataEnvelopmentAnalysis.deaprofit"><code>DataEnvelopmentAnalysis.deaprofit</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">deaprofit(X, Y, W, P; Gx, Gy)</code></pre><p>Compute profit efficiency using data envelopment analysis model for inputs <code>X</code>, outputs <code>Y</code>, price of inputs <code>W</code>, and price of outputs <code>P</code>.</p><p><strong>Direction specification:</strong></p><p>The directions <code>Gx</code> and <code>Gy</code> can be one of the following symbols.</p><ul><li><code>:Zeros</code>: use zeros.</li><li><code>:Ones</code>: use ones.</li><li><code>:Observed</code>: use observed values.</li><li><code>:Mean</code>: use column means.</li><li><code>:Monetary</code>: use direction so that profit inefficiency is expressed in monetary values.</li></ul><p>Alternatively, a vector or matrix with the desired directions can be supplied.</p><p><strong>Optional Arguments</strong></p><ul><li><code>monetary=false</code>: decomposition in normalized terms. Monetary terms if <code>true</code>.</li><li><code>names</code>: a vector of strings with the names of the decision making units.</li></ul></div></section></article></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../profitenhancedrussell/">« Profit Enhanced Russell Graph Slack Based Measure</a><a class="docs-footer-nextpage" href="../profitholder/">Profit Hölder model »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.10 on <span class="colophon-date" title="Wednesday 12 January 2022 21:42">Wednesday 12 January 2022</span>. Using Julia version 1.7.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
