@@ -1,8 +1,5 @@
 ```@meta
-CurrentModule = DataEnvelopmentAnalysis
-DocTestSetup = quote
-    using DataEnvelopmentAnalysis
-end
+CurrentModule = BenchmarkingEconomicEfficiency
 ```
 # Profit Directional Distance Function model
 
@@ -43,32 +40,31 @@ Chapter 8 in Pastor, J.T., Aparicio, J. and Zofío, J.L. (2022) Benchmarking Eco
 **Example**
 
 In this example we compute the profit efficiency measure considering a choice of directional vector that returns profit inefficiency in monetary terms:
-```jldoctest 1
-julia> X = [2; 4; 8; 12; 6; 14; 14; 9.412];
+```@example profitddf
+using BenchmarkingEconomicEfficiency
 
-julia> Y = [1; 5; 8; 9; 3; 7; 9; 2.353];
+X = [2; 4; 8; 12; 6; 14; 14; 9.412];
 
-julia> W = [1; 1; 1; 1; 1; 1; 1; 1];
+Y = [1; 5; 8; 9; 3; 7; 9; 2.353];
 
-julia> P = [2; 2; 2; 2; 2; 2; 2; 2];
+W = [1; 1; 1; 1; 1; 1; 1; 1];
 
-julia> deaprofit(X, Y, W, P, Gx = :Monetary, Gy = :Monetary)
-Profit DEA Model 
-DMUs = 8; Inputs = 1; Outputs = 1
-Returns to Scale = VRS
-Gx = Monetary; Gy = Monetary
-────────────────────────────────
-   Profit  Technical  Allocative
-────────────────────────────────
-1   8.0        0.0          8.0
-2   2.0        0.0          2.0
-3   0.0        0.0          0.0
-4   2.0        0.0          2.0
-5   8.0        6.0          2.0
-6   8.0        6.0          2.0
-7   4.0        0.0          4.0
-8  12.706     11.496        1.21
-────────────────────────────────
+P = [2; 2; 2; 2; 2; 2; 2; 2];
+
+profitddf = deaprofit(X, Y, W, P, Gx = :Monetary, Gy = :Monetary)
+```
+
+Estimated economic, technical and allocative efficiency scores are returned with the `efficiency` function:
+```@example profitddf
+efficiency(profitddf, :Economic)
+```
+
+```@example profitddf
+efficiency(profitddf, :Technical)
+```
+
+```@example profitddf
+efficiency(profitddf, :Allocative)
 ```
 
 ### deaprofit Function Documentation

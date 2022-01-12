@@ -1,8 +1,5 @@
 ```@meta
 CurrentModule = BenchmarkingEconomicEfficiency
-DocTestSetup = quote
-    using BenchmarkingEconomicEfficiency
-end
 ```
 
 # Profit Additive model
@@ -46,67 +43,31 @@ Chapter 6 in Pastor, J.T., Aparicio, J. and Zofío, J.L. (2022) Benchmarking Eco
 **Example**
 
 In this example we compute the profit efficiency additive measure:
-```jldoctest 1
-julia> X = [2; 4; 8; 12; 6; 14; 14; 9.412];
+```@example profitadditive
+using BenchmarkingEconomicEfficiency
 
-julia> Y = [1; 5; 8; 9; 3; 7; 9; 2.353];
+X = [2; 4; 8; 12; 6; 14; 14; 9.412];
 
-julia> W = [1; 1; 1; 1; 1; 1; 1; 1];
+Y = [1; 5; 8; 9; 3; 7; 9; 2.353];
 
-julia> P = [2; 2; 2; 2; 2; 2; 2; 2];
+W = [1; 1; 1; 1; 1; 1; 1; 1];
 
-julia> profitadd = deaprofitadd(X, Y, W, P, :Ones)
-Profit Additive DEA Model 
-DMUs = 8; Inputs = 1; Outputs = 1
-Weights = Ones; Returns to Scale = VRS
-────────────────────────────────
-   Profit  Technical  Allocative
-────────────────────────────────
-1   8.0      0.0        8.0
-2   2.0      0.0        2.0
-3   0.0      0.0        0.0
-4   2.0      0.0        2.0
-5   8.0      4.0        4.0
-6   8.0      7.33333    0.666667
-7   4.0      2.0        2.0
-8  12.706    8.059      4.647
-────────────────────────────────
+P = [2; 2; 2; 2; 2; 2; 2; 2];
+
+profitadd = deaprofitadd(X, Y, W, P, :Ones)
 ```
 
 Estimated economic, technical and allocative efficiency scores are returned with the `efficiency` function:
-```jldoctest 1
-julia> efficiency(profitadd, :Economic)
-8-element Vector{Float64}:
-  8.0
-  2.0
-  0.0
-  2.0
-  8.0
-  8.0
-  4.0
- 12.706
+```@example profitadditive
+efficiency(profitadd, :Economic)
+```
 
-julia> efficiency(profitadd, :Technical)
-8-element Vector{Float64}:
- 0.0
- 0.0
- 0.0
- 0.0
- 3.999999999999999
- 7.333333333333333
- 1.9999999999999944
- 8.059000000000001
+```@example profitadditive
+efficiency(profitadd, :Technical)
+```
 
-julia> efficiency(profitadd, :Allocative)
-8-element Vector{Float64}:
- 8.0
- 2.0
- 0.0
- 2.0
- 4.000000000000001
- 0.666666666666667
- 2.0000000000000053
- 4.6469999999999985
+```@example profitadditive
+efficiency(profitadd, :Allocative)
 ```
 
 ### deaprofitadd Function Documentation

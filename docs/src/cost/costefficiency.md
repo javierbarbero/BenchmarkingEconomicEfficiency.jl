@@ -1,8 +1,5 @@
 ```@meta
 CurrentModule = BenchmarkingEconomicEfficiency
-DocTestSetup = quote
-    using BenchmarkingEconomicEfficiency
-end
 ```
 
 # Cost (In)Efficiency measurement

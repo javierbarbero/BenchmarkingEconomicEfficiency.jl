@@ -1,8 +1,5 @@
 ```@meta
-CurrentModule = DataEnvelopmentAnalysis
-DocTestSetup = quote
-    using DataEnvelopmentAnalysis
-end
+CurrentModule = BenchmarkingEconomicEfficiency
 ```
 
 # Revenue Radial model
@@ -33,29 +30,29 @@ We now show the main duality result relating revenue efficiency and Farrell's ra
 **Example**
 
 In this example we compute the revnue efficiency measure:
-```jldoctest 1
-julia> X = [1; 1; 1; 1; 1; 1; 1; 1];
+```@example revenue
+using BenchmarkingEconomicEfficiency
 
-julia> Y = [7 7; 4 8; 8 4; 3 5; 3 3; 8 2; 6 4; 1.5 5];
+X = [1; 1; 1; 1; 1; 1; 1; 1];
 
-julia> P = [1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1];
+Y = [7 7; 4 8; 8 4; 3 5; 3 3; 8 2; 6 4; 1.5 5];
 
-julia> dearevenue(X, Y, P)
-Revenue DEA Model 
-DMUs = 8; Inputs = 1; Outputs = 2
-Orientation = Output; Returns to Scale = VRS
-──────────────────────────────────
-    Revenue  Technical  Allocative
-──────────────────────────────────
-1  1.0        1.0         1.0
-2  0.857143   1.0         0.857143
-3  0.857143   1.0         0.857143
-4  0.571429   0.642857    0.888889
-5  0.428571   0.428571    1.0
-6  0.714286   1.0         0.714286
-7  0.714286   0.785714    0.909091
-8  0.464286   0.625       0.742857
-──────────────────────────────────
+P = [1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1];
+
+revenueradial = dearevenue(X, Y, P)
+```
+
+Estimated economic, technical and allocative efficiency scores are returned with the `efficiency` function:
+```@example revenue
+efficiency(revenueradial, :Economic)
+```
+
+```@example revenue
+efficiency(revenueradial, :Technical)
+```
+
+```@example revenue
+efficiency(revenueradial, :Allocative)
 ```
 
 **Reference**

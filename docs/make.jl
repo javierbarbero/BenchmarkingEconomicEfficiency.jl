@@ -1,5 +1,14 @@
 using Documenter, BenchmarkingEconomicEfficiency
 
+# Solve nonlinear problem to display Ipopt initial message
+begin
+  X = [1; 2; 3];
+  Y = [1; 1; 1];
+  deagdf(X, Y, alpha = 0.5, rts = :VRS)
+end
+
+DocMeta.setdocmeta!(BenchmarkingEconomicEfficiency, :DocTestSetup, :(using BenchmarkingEconomicEfficiency); recursive=true)
+
 makedocs(sitename = "BenchmarkingEconomicEfficiency",
         authors = "Javier Barbero and José Luis Zofío.",
         pages = [

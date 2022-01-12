@@ -1,8 +1,5 @@
 ```@meta
-CurrentModule = DataEnvelopmentAnalysis
-DocTestSetup = quote
-    using DataEnvelopmentAnalysis
-end
+CurrentModule = BenchmarkingEconomicEfficiency
 ```
 
 # Cost Radial model
@@ -34,29 +31,29 @@ We can now show the main duality result relating cost efficiency and Farrell's r
 **Example**
 
 In this example we compute the cost efficiency measure:
-```jldoctest 1
-julia> X = [2 2; 1 4; 4 1; 4 3; 5 5; 6 1; 2 5; 1.6 8];
+```@example cost
+using BenchmarkingEconomicEfficiency
 
-julia> Y = [1; 1; 1; 1; 1; 1; 1; 1];
+X = [2 2; 1 4; 4 1; 4 3; 5 5; 6 1; 2 5; 1.6 8];
 
-julia> W = [1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1];
+Y = [1; 1; 1; 1; 1; 1; 1; 1];
 
-julia> deacost(X, Y, W)
-Cost DEA Model 
-DMUs = 8; Inputs = 2; Outputs = 1
-Orientation = Input; Returns to Scale = VRS
-──────────────────────────────────
-       Cost  Technical  Allocative
-──────────────────────────────────
-1  1.0        1.0         1.0
-2  0.8        1.0         0.8
-3  0.8        1.0         0.8
-4  0.571429   0.6         0.952381
-5  0.4        0.4         1.0
-6  0.571429   1.0         0.571429
-7  0.571429   0.666667    0.857143
-8  0.416667   0.625       0.666667
-──────────────────────────────────
+W = [1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1];
+
+costradial = deacost(X, Y, W)
+```
+
+Estimated economic, technical and allocative efficiency scores are returned with the `efficiency` function:
+```@example cost
+efficiency(costradial, :Economic)
+```
+
+```@example cost
+efficiency(costradial, :Technical)
+```
+
+```@example cost
+efficiency(costradial, :Allocative)
 ```
 
 **Reference**

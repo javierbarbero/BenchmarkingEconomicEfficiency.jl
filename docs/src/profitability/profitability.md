@@ -1,12 +1,5 @@
 ```@meta
-CurrentModule = DataEnvelopmentAnalysis
-DocTestSetup = quote
-    using DataEnvelopmentAnalysis
-    # Solve nonlinear problem to display Ipopt initial message
-    X = [1; 2; 3];
-    Y = [1; 1; 1];
-    deagdf(X, Y, alpha = 0.5, rts = :VRS)
-end
+CurrentModule = BenchmarkingEconomicEfficiency
 ```
 
 # Profitability model
@@ -72,31 +65,39 @@ Chapter 4 in Pastor, J.T., Aparicio, J. and Zofío, J.L. (2022) Benchmarking Eco
 **Example**
 
 In this example we compute the profitability efficiency measure:
-```jldoctest 1
-julia> X = [2; 4; 8; 12; 6; 14; 14; 9.412];
+```@example profitability
+using BenchmarkingEconomicEfficiency
 
-julia> Y = [1; 5; 8; 9; 3; 7; 9; 2.353];
+X = [2; 4; 8; 12; 6; 14; 14; 9.412];
 
-julia> W = [1; 1; 1; 1; 1; 1; 1; 1];
+Y = [1; 5; 8; 9; 3; 7; 9; 2.353];
 
-julia> P = [2; 2; 2; 2; 2; 2; 2; 2];
+W = [1; 1; 1; 1; 1; 1; 1; 1];
 
-julia> deaprofitability(X, Y, W, P)
-Profitability DEA Model 
-DMUs = 8; Inputs = 1; Outputs = 1
-alpha = 0.5; Returns to Scale = VRS
-──────────────────────────────────────────────────────────
-   Profitability       CRS       VRS     Scale  Allocative
-──────────────────────────────────────────────────────────
-1       0.4       0.4       1.0       0.4              1.0
-2       1.0       1.0       1.0       1.0              1.0
-3       0.8       0.8       1.0       0.8              1.0
-4       0.6       0.6       1.0       0.6              1.0
-5       0.4       0.4       0.410097  0.975379         1.0
-6       0.4       0.4       0.634489  0.630429         1.0
-7       0.514286  0.514286  1.0       0.514286         1.0
-8       0.2       0.2       0.20504   0.975422         1.0
-──────────────────────────────────────────────────────────
+P = [2; 2; 2; 2; 2; 2; 2; 2];
+
+profitability = deaprofitability(X, Y, W, P)
+```
+
+Estimated economic, technical (CRS and VRS), scale, and allocative efficiency scores are returned with the `efficiency` function:
+```@example profitability
+efficiency(profitability, :Economic)
+```
+
+```@example profitability
+efficiency(profitability, :CRS)
+```
+
+```@example profitability
+efficiency(profitability, :VRS)
+```
+
+```@example profitability
+efficiency(profitability, :Scale)
+```
+
+```@example profitability
+efficiency(profitability, :Allocative)
 ```
 
 ### deaprofitability Function Documentation
