@@ -32,7 +32,7 @@ inputs `X`, outputs `Y` and price of outputs `P`.
 function dearevenuerussell(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector}, 
     P::Union{Matrix,Vector}; rts::Symbol = :VRS,
     monetary::Bool = false,
-    names::Union{Vector{String},Nothing} = nothing,
+    names::Union{Vector{<: AbstractString},Nothing} = nothing,
     optimizer::Union{DEAOptimizer,Nothing} = nothing)::RevenueRussellDEAModel
 
     # Check parameters

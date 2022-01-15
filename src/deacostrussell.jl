@@ -32,7 +32,7 @@ inputs `X`, outputs `Y` and price of inputs `W`.
 function deacostrussell(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector}, 
     W::Union{Matrix,Vector}; rts::Symbol = :VRS,
     monetary::Bool = false,
-    names::Union{Vector{String},Nothing} = nothing,
+    names::Union{Vector{<: AbstractString},Nothing} = nothing,
     optimizer::Union{DEAOptimizer,Nothing} = nothing)::CostRussellDEAModel
 
     # Check parameters

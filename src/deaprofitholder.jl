@@ -39,7 +39,7 @@ inputs `X`, outputs `Y`, price of inputs `W`, and price of outputs `P`.
 function deaprofitholder(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
     W::Union{Matrix,Vector}, P::Union{Matrix,Vector};
     l::Union{Int64,Float64}, weight::Bool = false, monetary::Bool = false,
-    names::Union{Vector{String},Nothing} = nothing,
+    names::Union{Vector{<: AbstractString},Nothing} = nothing,
     optimizer::Union{DEAOptimizer,Nothing} = nothing)::ProfitHolderDEAModel
 
     # Check parameters

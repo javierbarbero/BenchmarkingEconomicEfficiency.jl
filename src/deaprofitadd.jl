@@ -44,7 +44,7 @@ function deaprofitadd(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
     model::Symbol = :Default;
     rhoX::Union{Matrix,Vector,Nothing} = nothing, rhoY::Union{Matrix,Vector,Nothing} = nothing,
     monetary::Bool = false, 
-    names::Union{Vector{String},Nothing} = nothing,
+    names::Union{Vector{<: AbstractString},Nothing} = nothing,
     optimizer::Union{DEAOptimizer,Nothing} = nothing)::ProfitAdditiveDEAModel
 
     # Check parameters

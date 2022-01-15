@@ -47,7 +47,7 @@ function dearevenueadd(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
     rts::Symbol = :VRS, 
     rhoY::Union{Matrix,Vector,Nothing} = nothing,
     dispos::Symbol = :Strong, monetary::Bool = false,
-    names::Union{Vector{String},Nothing} = nothing,
+    names::Union{Vector{<: AbstractString},Nothing} = nothing,
     optimizer::Union{DEAOptimizer,Nothing} = nothing)::RevenueAdditiveDEAModel
 
     # Check parameters

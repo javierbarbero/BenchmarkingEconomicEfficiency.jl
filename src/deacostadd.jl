@@ -47,7 +47,7 @@ function deacostadd(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
     rts::Symbol = :VRS, 
     rhoX::Union{Matrix,Vector,Nothing} = nothing,
     dispos::Symbol = :Strong, monetary::Bool = false, 
-    names::Union{Vector{String},Nothing} = nothing,
+    names::Union{Vector{<: AbstractString},Nothing} = nothing,
     optimizer::Union{DEAOptimizer,Nothing} = nothing)::CostAdditiveDEAModel
 
     # Check parameters

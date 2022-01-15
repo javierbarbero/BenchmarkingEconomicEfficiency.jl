@@ -42,7 +42,7 @@ function dearevenueholder(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
     P::Union{Matrix,Vector};
     l::Union{Int64,Float64}, weight::Bool = false,
     rts::Symbol = :VRS, monetary::Bool = false,
-    names::Union{Vector{String},Nothing} = nothing,
+    names::Union{Vector{<: AbstractString},Nothing} = nothing,
     optimizer::Union{DEAOptimizer,Nothing} = nothing)::RevenueHolderDEAModel
 
     # Check parameters

@@ -36,7 +36,7 @@ function deaprofitgda(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
     W::Union{Matrix,Vector}, P::Union{Matrix,Vector},
     measure::Symbol;
     monetary::Bool = false, atol::Float64 = 1e-6,
-    names::Union{Vector{String},Nothing} = nothing,
+    names::Union{Vector{<: AbstractString},Nothing} = nothing,
     optimizer::Union{DEAOptimizer,Nothing} = nothing)::ProfitGDADEAModel
 
     # Check parameters

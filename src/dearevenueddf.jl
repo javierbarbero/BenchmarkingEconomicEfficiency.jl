@@ -45,7 +45,7 @@ function dearevenueddf(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
     P::Union{Matrix,Vector};
     Gy::Union{Symbol,Matrix,Vector},
     rts::Symbol = :VRS, monetary::Bool = false,
-    names::Union{Vector{String},Nothing} = nothing,
+    names::Union{Vector{<: AbstractString},Nothing} = nothing,
     optimizer::Union{DEAOptimizer,Nothing} = nothing)::RevenueDDFDEAModel
 
     # Check parameters
