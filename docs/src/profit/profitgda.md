@@ -47,7 +47,7 @@ where the dollar-valued $k_{o}$ is a normalization factor for technically effici
 ```  
 where the last term represents normalized allocative inefficiency: $A{{I}_{GDA(G)}}\left( {{\mathbf{x}}_{o}},{{\mathbf{y}}_{o}},\mathbf{\tilde{w}},\mathbf{\tilde{p}} \right) = A{{I}_{GDA(G)}}\left( {{\mathbf{x}}_{o}},{{\mathbf{y}}_{o}},\mathbf{w},\mathbf{p} \right) / NF_{EM(G)}^{GDA}\left(\mathbf{x}_{o}^{{}},\mathbf{y}_{o}^{{}},\mathbf{w},\mathbf{p} \right)$ 
 
-**Benchmarking Economic Efficiency** with *Julia* implements the profit inefficiency decomposition associated with the general direct approach considering the [Enhanced Russell graph model](https://javierbarbero.github.io/DataEnvelopmentAnalysis.jl/stable/technical/enhancedrussell/). The decomposition can be calculated both in normalized terms, and monetary terms. For this last option one needs to add `monetary=true` to the syntax--see the documentation below accompanying this function.  
+**BenchmarkingEconomicEfficiency.jl** implements the profit inefficiency decomposition associated with the general direct approach considering the [Enhanced Russell graph model](https://javierbarbero.github.io/DataEnvelopmentAnalysis.jl/stable/technical/enhancedrussell/). The decomposition can be calculated both in normalized terms, and monetary terms. For this last option one needs to add `monetary=true` to the syntax--see the documentation below accompanying this function.  
 
 **Reference**
 

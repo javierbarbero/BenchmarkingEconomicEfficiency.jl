@@ -27,7 +27,7 @@ We now present the expression corresponding to the cost inefficiency measure and
 ```
 where the efficiency score $\beta _{RDDF\left( EM\left( I \right),{{F}_{J}},{{{\hat{F}}}_{J}} \right)}^{*}$ for technically inefficient firms is obtained by solving the [Input-oriented Directional Distance Function model](https://javierbarbero.github.io/DataEnvelopmentAnalysis.jl/stable/technical/directional/) with the corresponding directional vector. 
 
-**Benchmarking Economic Efficiency** with *Julia* offers the possibility of decomposing cost inefficiency based on the $RDDF$ considering as original measure the [Russell input-oriented model](https://javierbarbero.github.io/DataEnvelopmentAnalysis.jl/stable/technical/russell/#Russell-Input-Model). 
+**BenchmarkingEconomicEfficiency.jl** offers the possibility of decomposing cost inefficiency based on the $RDDF$ considering as original measure the [Russell input-oriented model](https://javierbarbero.github.io/DataEnvelopmentAnalysis.jl/stable/technical/russell/#Russell-Input-Model). 
 
 **Reference**
 

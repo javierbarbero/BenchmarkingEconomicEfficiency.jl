@@ -44,7 +44,7 @@ where the dollar-valued $k_{o}$ is a normalization factor for technically effici
 
 where the last term represents normalized allocative inefficiency: $A{{I}_{GDA(O)}}\left( {{\mathbf{x}}_{o}},{{\mathbf{y}}_{o}},\mathbf{\tilde{p}} \right) = A{{I}_{GDA(O)}}\left( {{\mathbf{x}}_{o}},{{\mathbf{y}}_{o}},\mathbf{p}\right) / NF_{EM(O)}^{GDA}\left(\mathbf{x}_{o}^{{}},\mathbf{y}_{o}^{{}},\mathbf{p} \right)$.
 
-**Benchmarking Economic Efficiency** with *Julia* implements the revenue inefficiency decomposition associated with the general direct approach considering the [Russell output-oriented model](https://javierbarbero.github.io/DataEnvelopmentAnalysis.jl/stable/technical/russell/#Russell-Output-Model). The decomposition can be calculated both in normalized terms and monetary terms. For the latter one needs to add `monetary=true` to the syntax--see the documentation below accompanying this function.  
+**BenchmarkingEconomicEfficiency.jl** implements the revenue inefficiency decomposition associated with the general direct approach considering the [Russell output-oriented model](https://javierbarbero.github.io/DataEnvelopmentAnalysis.jl/stable/technical/russell/#Russell-Output-Model). The decomposition can be calculated both in normalized terms and monetary terms. For the latter one needs to add `monetary=true` to the syntax--see the documentation below accompanying this function.  
 
 **Reference**
 

@@ -28,7 +28,7 @@ We now present the expressions corresponding to the revenue inefficiency measure
 
 where the efficiency scores $\beta _{RDDF\left( EM\left( O \right),{{F}_{J}},{{{\hat{F}}}_{J}} \right)}^{*}$ for technically inefficient firms is obtained by solving the [Output-oriented Directional Distance Function model](https://javierbarbero.github.io/DataEnvelopmentAnalysis.jl/stable/technical/directional/) with the corresponding directional vectors. . 
 
-**Benchmarking Economic Efficiency** with *Julia* offers the possibility of decomposing revenue inefficiency based on the $RDDF$ considering as original measure the [Russell output-oriented model](https://javierbarbero.github.io/DataEnvelopmentAnalysis.jl/stable/technical/russell/#Russell-Output-Model). 
+**BenchmarkingEconomicEfficiency.jl** with *Julia* offers the possibility of decomposing revenue inefficiency based on the $RDDF$ considering as original measure the [Russell output-oriented model](https://javierbarbero.github.io/DataEnvelopmentAnalysis.jl/stable/technical/russell/#Russell-Output-Model). 
 
 **Reference**
 

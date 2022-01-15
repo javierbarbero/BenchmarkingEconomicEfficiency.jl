@@ -42,7 +42,7 @@ Afterwards, a scalar representing normalized allocative inefficiency is obtained
 \end{split}
 ```
 
-The following functions available in **Benchmarking Economic Efficiency** with *Julia* present alternative decompositions of profit inefficiency based on the most relevant technical inefficiency measures proposed in the literature. As for the decompositions, being normalized, they all satisfy the property of commensurability (or units' invariance), and therefore they are independent of the units of measurement of quantities and prices. Additionally, each of these measures results in a particular decomposition whose pros and cons in terms of a series of properties are inherited from those of the underlying technical inefficiency measure: $TI_{EM(G)}(\textbf{x}_o, \textbf{y}_o)$. Pastor, Aparicio and Zofío (2022, Chap. 14) discuss the properties of the different decompositions proposed in the literature. 
+The following functions available in **BenchmarkingEconomicEfficiency.jl** present alternative decompositions of profit inefficiency based on the most relevant technical inefficiency measures proposed in the literature. As for the decompositions, being normalized, they all satisfy the property of commensurability (or units' invariance), and therefore they are independent of the units of measurement of quantities and prices. Additionally, each of these measures results in a particular decomposition whose pros and cons in terms of a series of properties are inherited from those of the underlying technical inefficiency measure: $TI_{EM(G)}(\textbf{x}_o, \textbf{y}_o)$. Pastor, Aparicio and Zofío (2022, Chap. 14) discuss the properties of the different decompositions proposed in the literature. 
 
 **Reference**
 

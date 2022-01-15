@@ -30,7 +30,7 @@ researcher. Customarily, to keep consistency with the radial models, the observe
 $\mathbf{g}= \left({{\mathbf{g_{x}^-}},{\mathbf{g_{y}^+}}} \right)=\:$$\left({\textbf{0},{\mathbf{y}_o}}\right)$. In this case it can be shown that the directional
 model nests  [Radial Output Oriented Model](https://javierbarbero.github.io/DataEnvelopmentAnalysis.jl/stable/technical/radial/#Radial-Output-Oriented-Model). Indeed, if
 $\left({{\mathbf{g_{x}^-},\mathbf{g^+_y}}} \right)=\:\left( {\mathbf{0},{\mathbf{y}_o}} \right)$, then $\beta_O^{*}=\phi^*-1$ (in the [Revenue Radial model](@ref).
-However, other choices are available, which are included as options in **Benchmarking Economic Efficiency** with *Julia*--see the documentation below accompanying this function.       
+However, other choices are available, which are included as options in **BenchmarkingEconomicEfficiency.jl**--see the documentation below accompanying this function.       
 
 The notion of *Nerlovian* revenue inefficiency corresponds to the decompostion of economic efficiency based on the output-oriented directional distance function: $R{{I}_{DDF\left( O \right)}}\left( {{\textbf{x}}_{o}},{{\textbf{y}}_{o}},\mathbf{g_{y}^+},{\tilde{\textbf{p}}} \right)$ = $T{{I}_{DDF\left( O \right)}}\left( {{\textbf{x}}_{o}},{{\textbf{y}}_{o},\mathbf{g_{y}^+}} \right)$ + $A{{I}_{DDF\left( O \right)}}\left( {{\textbf{x}}_{o}},{{\textbf{y}}_{o}},\mathbf{g_{y}^+}, {\tilde{\textbf{p}}} \right)$. This results in the following expression: 
 

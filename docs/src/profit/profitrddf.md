@@ -34,7 +34,7 @@ We now present the expression corresponding to the profit inefficiency measure a
 
 where the efficiency score $\beta _{RDDF\left( EM\left( G \right),{{F}_{J}},{{{\hat{F}}}_{J}} \right)}^{*}$ for technically inefficient firms is obtained by solving the $DDF$ program with the associated directional vectors.  
 
-**Benchmarking Economic Efficiency** with *Julia* offers the possibility of decomposing profit inefficiency based on the $RDDF$ considering as original $EM(G)$ measure the [enhanced Russell graph measure](https://javierbarbero.github.io/DataEnvelopmentAnalysis.jl/stable/technical/enhancedrussell/). 
+**BenchmarkingEconomicEfficiency.jl** offers the possibility of decomposing profit inefficiency based on the $RDDF$ considering as original $EM(G)$ measure the [enhanced Russell graph measure](https://javierbarbero.github.io/DataEnvelopmentAnalysis.jl/stable/technical/enhancedrussell/). 
 
 **Reference**
 
