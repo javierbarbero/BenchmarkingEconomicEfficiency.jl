@@ -38,39 +38,14 @@ Alternatively, a vector or matrix with the desired directions can be supplied.
 
 # Optional Arguments
 - `rts=:VRS`: chooses variable returns to scale. For constant returns to scale choose `:CRS`.
-
-# Examples
-```jldoctest
-julia> X = [1; 1; 1; 1; 1; 1; 1; 1];
-
-julia> Y = [7 7; 4 8; 8 4; 3 5; 3 3; 8 2; 6 4; 1.5 5];
-
-julia> P = [1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1];
-
-julia> dearevenueddf(X, Y, P, Gy = :Monetary)
-Revenue DDF DEA Model 
-DMUs = 8; Inputs = 1; Outputs = 2
-Orientation = Output; Returns to Scale = VRS
-Gy = Monetary
-─────────────────────────────────
-   Revenue  Technical  Allocative
-─────────────────────────────────
-1      0.0       0.0         0.0
-2      2.0       0.0         2.0
-3      2.0       0.0         2.0
-4      6.0       5.0         1.0
-5      8.0       8.0         0.0
-6      4.0       0.0         4.0
-7      4.0       3.0         1.0
-8      7.5       5.75        1.75
-─────────────────────────────────
-```
+- `monetary=false`: decomposition in normalized terms. Monetary terms if `true`.
+- `names`: a vector of strings with the names of the decision making units.
 """
 function dearevenueddf(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
     P::Union{Matrix,Vector};
     Gy::Union{Symbol,Matrix,Vector},
     rts::Symbol = :VRS, monetary::Bool = false,
-    names::Union{Vector{String},Nothing} = nothing,
+    names::Union{Vector{<: AbstractString},Nothing} = nothing,
     optimizer::Union{DEAOptimizer,Nothing} = nothing)::RevenueDDFDEAModel
 
     # Check parameters

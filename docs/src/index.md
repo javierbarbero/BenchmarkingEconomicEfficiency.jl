@@ -19,21 +19,27 @@ For a tutorial on how to use the package, check the documentation on the [Cost D
 
 ## Available models
 
+Profit DEA models:
+```@contents
+Pages = ["profit/profitefficiency.md", "profit/profitrussell.md", "profit/profitadditive.md", "profit/profitenhancedrussell.md", "profit/profitddf.md", "profit/profitholder.md",  "profit/profitmddf.md", "profit/profitrddf.md", "profit/profitgda.md"]
+Depth = 2
+```
+
+Profitability DEA models:
+```@contents
+Pages = ["profitability/profitability.md"]
+Depth = 2
+```
+
 Cost DEA models:
 ```@contents
-Pages = ["cost/costddf.md", "cost/costadditive.md", "cost/costrussell.md", "cost/costholder.md", "cost/costrddf.md", "cost/costgda.md"]
+Pages = ["cost/costefficiency.md", "cost/cost.md", "cost/costrussell.md", "cost/costadditive.md", "cost/costddf.md", "cost/costholder.md", "cost/costrddf.md", "cost/costgda.md"]
 Depth = 2
 ```
 
 Revenue DEA models:
 ```@contents
-Pages = ["revenue/revenueddf.md", "revenue/revenueadditive.md", "revenue/revenuerussell.md", "revenue/revenueholder.md", "revenue/revenuerddf.md", "revenue/revenuegda.md"]
-Depth = 2
-```
-
-Profit DEA models:
-```@contents
-Pages = ["profit/profitadditive.md", "profit/profitrussell.md", "profit/profitenhancedrussell.md", "profit/profitmodifiedddf.md", "profit/profitholder.md", "profit/profitrddf.md", "profit/profitgda.md"]
+Pages = ["revenue/revenueefficiency.md", "revenue/revenue.md",  "revenue/revenuerussell.md", "revenue/revenueadditive.md", "revenue/revenueddf.md", "revenue/revenueholder.md", "revenue/revenuerddf.md", "revenue/revenuegda.md"]
 Depth = 2
 ```
 

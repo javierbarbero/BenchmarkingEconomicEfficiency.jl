@@ -26,38 +26,13 @@ inputs `X`, outputs `Y` and price of outputs `P`.
 
 # Optional Arguments
 - `rts=:VRS`: chooses variable returns to scale. For constant returns to scale choose `:CRS`.
+- `monetary=false`: decomposition in normalized terms. Monetary terms if `true`.
 - `names`: a vector of strings with the names of the decision making units.
-
-# Examples
-```jldoctest
-julia> X = [1; 1; 1; 1; 1; 1; 1; 1];
-
-julia> Y = [7 7; 4 8; 8 4; 3 5; 3 3; 8 2; 6 4; 1.5 5];
-
-julia> P = [1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1];
-
-julia> dearevenuerussell(X, Y, P)
-Russell Revenue DEA Model 
-DMUs = 8; Inputs = 1; Outputs = 2
-Orientation = Output; Returns to Scale = VRS
-──────────────────────────────────
-   Revenue  Technical   Allocative
-──────────────────────────────────
-1  0.0       0.0       0.0
-2  0.25      0.0       0.25
-3  0.25      0.0       0.25
-4  1.0       0.866667  0.133333
-5  1.33333   1.33333   2.22045e-16
-6  1.0       0.5       0.5
-7  0.5       0.458333  0.0416667
-8  2.5       2.05556   0.444444
-──────────────────────────────────
-```
 """
 function dearevenuerussell(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector}, 
     P::Union{Matrix,Vector}; rts::Symbol = :VRS,
     monetary::Bool = false,
-    names::Union{Vector{String},Nothing} = nothing,
+    names::Union{Vector{<: AbstractString},Nothing} = nothing,
     optimizer::Union{DEAOptimizer,Nothing} = nothing)::RevenueRussellDEAModel
 
     # Check parameters

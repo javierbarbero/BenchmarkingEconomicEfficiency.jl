@@ -34,40 +34,14 @@ inputs `X`, outputs `Y`, price of outputs `P`, and efficiency `measure`.
 # Optional Arguments
 - `rts=:VRS`: choose between constant returns to scale `:CRS` or variable returns to scale `:VRS`.
 - `atol=1e-6`: tolerance for DMU to be considered efficient.
+- `monetary=false`: decomposition in normalized terms. Monetary terms if `true`.
 - `names`: a vector of strings with the names of the decision making units.
-
-# Examples
-```jldoctest
-julia> X = [1; 1; 1; 1; 1; 1; 1; 1];
-
-julia> Y = [7 7; 4 8; 8 4; 3 5; 3 3; 8 2; 6 4; 1.5 5];
-
-julia> P = [1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1];
-
-julia> dearevenuerddf(X, Y, P, :ERG)
-Revenue Reverse DDF DEA Model 
-DMUs = 8; Inputs = 1; Outputs = 2
-Returns to Scale: VRS
-Associated efficiency measure = ERG
-────────────────────────────────────
-    Revenue  Technical    Allocative
-────────────────────────────────────
-1  0.0        0.0        0.0
-2  0.25       0.0        0.25
-3  0.25       0.0        0.25
-4  0.464286   0.464286   0.0
-5  0.571429   0.571429   0.0
-6  0.666667   0.333333   0.333333
-7  0.314286   0.314286  -5.55112e-17
-8  0.818182   0.672727   0.145455
-────────────────────────────────────
-```
 """
 function dearevenuerddf(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
     P::Union{Matrix,Vector},
     measure::Symbol; 
     rts::Symbol = :VRS, monetary::Bool = false, atol::Float64 = 1e-6,
-    names::Union{Vector{String},Nothing} = nothing,
+    names::Union{Vector{<: AbstractString},Nothing} = nothing,
     optimizer::Union{DEAOptimizer,Nothing} = nothing)::RevenueReverseDDFDEAModel
 
     # Check parameters

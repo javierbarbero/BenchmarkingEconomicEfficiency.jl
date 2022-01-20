@@ -4,6 +4,16 @@ BenchmarkingEconomicEfficiency.jl will use a default optimizer/solver for each D
 
 | Model               | Function            | Specific Options | Problem type | Default Optimizer |
 |:--------------------|:--------------------|:-----------------|-------------:|------------------:|
+| Profit Russell      | `deaprofitrussell`  |                  | NLP          | Ipopt             |
+| Profit Additive     | `deaprofitadd `     |                  | LP           | GLPK              |
+| Profit ERG=SBM      | `deaprofiterg`      |                  | LP           | GLPK              |
+| Profit DDF          | `deaprofit`         |                  | LP           | GLPK              |
+| Profit Hölder       | `deaprofitholder`   |                  | LP           | GLPK              |
+| Profit MDDF         | `deaprofitmddf`     |                  | LP           | GLPK              |
+| Profit Reverse DDF  | `deaprofitrddf`     | `:ERG`           | LP           | GLPK              |
+| Profit Reverse DDF  | `deaprofitrddf`     | `:MDDF`          | LP           | GLPK              |
+| Profit GDA          | `deaprofitgda`      |                  | LP           | GLPK              |
+| Profitability GDF   | `deaprofitability`  |                  | NLP          | Ipopt             |
 | Cost Radial         | `deacost`           |                  | LP           | GLPK              |
 | Cost Russell        | `deacostrussell`    |                  | LP           | GLPK              |
 | Cost Additive       | `deacostadd`        |                  | LP           | GLPK              | 
@@ -18,16 +28,6 @@ BenchmarkingEconomicEfficiency.jl will use a default optimizer/solver for each D
 | Revenue Hölder      | `dearevenueholder`  |                  | LP           | GLPK              |
 | Revenue Reverse DDF | `dearevenuerddf`    |                  | LP           | GLPK              |
 | Revenue GDA         | `dearevenuegda`     |                  | LP           | GLPK              |
-| Profitability GDF   | `deaprofitability`  |                  | NLP          | Ipopt             |
-| Profit Russell      | `deaprofitrussell`  |                  | NLP          | Ipopt             |
-| Profit Additive     | `deaprofitadd `     |                  | LP           | GLPK              |
-| Profit ERG=SBM      | `deaprofiterg`      |                  | LP           | GLPK              |
-| Profit DDF          | `deaprofit`         |                  | LP           |                   |
-| Profit Hölder       | `deaprofitholder`   |                  | LP           | GLPK              |
-| Profit MDDF         | `deaprofitmddf`     |                  | LP           | GLPK              |
-| Profit Reverse DDF  | `deaprofitrddf`     | `:ERG`           | LP           | GLPK              |
-| Profit Reverse DDF  | `deaprofitrddf`     | `:MDDF`          | LP           | GLPK              |
-| Profit GDA          | `deaprofitgda`      |                  | LP           | GLPK              |
 
 Where:
 - LP = Linear programming.

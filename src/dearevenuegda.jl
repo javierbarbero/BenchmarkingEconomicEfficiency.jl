@@ -31,40 +31,14 @@ inputs `X`, outputs `Y`, price of outputs `P`, and efficiency `measure`.
 # Optional Arguments
 - `rts=:VRS`: choose between constant returns to scale `:CRS` or variable returns to scale `:VRS`.
 - `atol=1e-6`: tolerance for DMU to be considered efficient.
+- `monetary=false`: decomposition in normalized terms. Monetary terms if `true`.
 - `names`: a vector of strings with the names of the decision making units.
-
-# Examples
-```jldoctest
-julia> X = [1; 1; 1; 1; 1; 1; 1; 1];
-
-julia> Y = [7 7; 4 8; 8 4; 3 5; 3 3; 8 2; 6 4; 1.5 5];
-
-julia> P = [1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1];
-
-julia> dearevenuegda(X, Y, P, :ERG)
-General Direct Approach Revenue DEA Model 
-DMUs = 8; Inputs = 1; Outputs = 2
-Returns to Scale = VRS
-Returns to Scale = VRS
-───────────────────────────────────
-    Revenue  Technical   Allocative
-───────────────────────────────────
-1  0.0        0.0       0.0
-2  0.25       0.0       0.25
-3  0.25       0.0       0.25
-4  0.866667   0.866667  0.0
-5  1.33333    1.33333   2.96059e-16
-6  1.0        0.5       0.5
-7  0.458333   0.458333  0.0
-8  2.5        2.05556   0.444444
-───────────────────────────────────
-```
 """
 function dearevenuegda(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
     P::Union{Matrix,Vector},
     measure::Symbol;
     rts::Symbol = :VRS, monetary::Bool = false, atol::Float64 = 1e-6,
-    names::Union{Vector{String},Nothing} = nothing,
+    names::Union{Vector{<: AbstractString},Nothing} = nothing,
     optimizer::Union{DEAOptimizer,Nothing} = nothing)::RevenueGDADEAModel
 
     # Check parameters

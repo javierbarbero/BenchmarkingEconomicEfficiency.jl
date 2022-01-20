@@ -24,40 +24,13 @@ Compute profit efficiency using Russell data envelopment analysis for
 inputs `X`, outputs `Y`, price of inputs `W`, and price of outputs `P`.
 
 # Optional Arguments
+- `monetary=false`: decomposition in normalized terms. Monetary terms if `true`.
 - `names`: a vector of strings with the names of the decision making units.
-
-# Examples
-```jldoctest
-julia> X = [2; 4; 8; 12; 6; 14; 14; 9.412];
-
-julia> Y = [1; 5; 8; 9; 3; 7; 9; 2.353];
-
-julia> W = [1; 1; 1; 1; 1; 1; 1; 1];
-
-julia> P = [2; 2; 2; 2; 2; 2; 2; 2];
-
-julia> deaprofitrussell(X, Y, W, P)
-Russell Profit DEA Model 
-DMUs = 8; Inputs = 1; Outputs = 1
-Orientation = Graph; Returns to Scale = VRS
-─────────────────────────────────────
-       Profit   Technical  Allocative
-─────────────────────────────────────
-1  2.0         3.50173e-7  2.0
-2  0.25        2.49141e-8  0.25
-3  2.84063e-8  8.48991e-9  1.99164e-8
-4  0.0833334   2.9862e-8   0.0833333
-5  0.666667    0.366667    0.3
-6  0.285714    0.276786    0.0089286
-7  0.142857    0.0714286   0.0714286
-8  1.34998     0.552205    0.797773
-─────────────────────────────────────
-```
 """
 function deaprofitrussell(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector}, 
     W::Union{Matrix,Vector}, P::Union{Matrix,Vector};
     monetary::Bool = false,
-    names::Union{Vector{String},Nothing} = nothing,
+    names::Union{Vector{<: AbstractString},Nothing} = nothing,
     optimizer::Union{DEAOptimizer,Nothing} = nothing)::ProfitRussellDEAModel
 
     # Check parameters

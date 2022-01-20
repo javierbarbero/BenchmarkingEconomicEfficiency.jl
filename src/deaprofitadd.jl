@@ -36,42 +36,15 @@ Model specification:
 # Optional Arguments
 - `rhoX`: matrix of weights of inputs. Only if `model=:Custom`.
 - `rhoY`: matrix of weights of outputs. Only if `model=:Custom`.
+- `monetary=false`: decomposition in normalized terms. Monetary terms if `true`.
 - `names`: a vector of strings with the names of the decision making units.
-
-# Examples
-```jldoctest
-julia> X = [2; 4; 8; 12; 6; 14; 14; 9.412];
-
-julia> Y = [1; 5; 8; 9; 3; 7; 9; 2.353];
-
-julia> W = [1; 1; 1; 1; 1; 1; 1; 1];
-
-julia> P = [2; 2; 2; 2; 2; 2; 2; 2];
-
-julia> deaprofitadd(X, Y, W, P, :Ones)
-Profit Additive DEA Model 
-DMUs = 8; Inputs = 1; Outputs = 1
-Weights = Ones; Returns to Scale = VRS
-────────────────────────────────
-   Profit  Technical  Allocative
-────────────────────────────────
-1   8.0      0.0        8.0
-2   2.0      0.0        2.0
-3   0.0      0.0        0.0
-4   2.0      0.0        2.0
-5   8.0      4.0        4.0
-6   8.0      7.33333    0.666667
-7   4.0      2.0        2.0
-8  12.706    8.059      4.647
-────────────────────────────────
-```
 """
 function deaprofitadd(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector}, 
     W::Union{Matrix,Vector}, P::Union{Matrix,Vector}, 
     model::Symbol = :Default;
     rhoX::Union{Matrix,Vector,Nothing} = nothing, rhoY::Union{Matrix,Vector,Nothing} = nothing,
     monetary::Bool = false, 
-    names::Union{Vector{String},Nothing} = nothing,
+    names::Union{Vector{<: AbstractString},Nothing} = nothing,
     optimizer::Union{DEAOptimizer,Nothing} = nothing)::ProfitAdditiveDEAModel
 
     # Check parameters

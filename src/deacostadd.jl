@@ -39,41 +39,15 @@ Model specification:
 - `rts=:VRS`: chooses variable returns to scale. For constant returns to scale choose `:CRS`.
 - `rhoX`: matrix of weights of inputs. Only if `model=:Custom`.
 - `disposal=:Strong`: chooses strong disposal of outputs. For weak disposal choose `:Weak`.
+- `monetary=false`: decomposition in normalized terms. Monetary terms if `true`.
 - `names`: a vector of strings with the names of the decision making units.
-
-# Examples
-```jldoctest
-julia> X = [2 2; 1 4; 4 1; 4 3; 5 5; 6 1; 2 5; 1.6 8];
-
-julia> Y = [1; 1; 1; 1; 1; 1; 1; 1];
-
-julia> W = [1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1; 1 1];
-
-julia> deacostadd(X, Y, W, :Ones)
-Cost Additive DEA Model 
-DMUs = 8; Inputs = 2; Outputs = 1
-Orientation = Input; Returns to Scale = VRS
-Weights = Ones
-──────────────────────────────
-   Cost  Technical  Allocative
-──────────────────────────────
-1   0.0        0.0         0.0
-2   1.0        0.0         1.0
-3   1.0        0.0         1.0
-4   3.0        3.0         0.0
-5   6.0        6.0         0.0
-6   3.0        2.0         1.0
-7   3.0        3.0         0.0
-8   5.6        5.2         0.4
-──────────────────────────────
-```
 """
 function deacostadd(X::Union{Matrix,Vector}, Y::Union{Matrix,Vector},
     W::Union{Matrix,Vector}, model::Symbol = :Default;
     rts::Symbol = :VRS, 
     rhoX::Union{Matrix,Vector,Nothing} = nothing,
     dispos::Symbol = :Strong, monetary::Bool = false, 
-    names::Union{Vector{String},Nothing} = nothing,
+    names::Union{Vector{<: AbstractString},Nothing} = nothing,
     optimizer::Union{DEAOptimizer,Nothing} = nothing)::CostAdditiveDEAModel
 
     # Check parameters
