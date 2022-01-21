@@ -45,4 +45,4 @@ Depth = 2
 
 ## Authors
 
-DataEnvelopmentAnalysis.jl is being developed by [Javier Barbero](http://www.javierbarbero.net) and [José Luís Zofío](http://www.joselzofio.net).
+BenchmarkingEconomicEfficiency.jl is being developed by [Javier Barbero](http://www.javierbarbero.net) and [José Luís Zofío](http://www.joselzofio.net).
