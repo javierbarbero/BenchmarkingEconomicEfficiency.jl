@@ -19,11 +19,11 @@ A Julia package for economic efficiency measurement using Data Envelopment Analy
 [codecov-url]: https://codecov.io/gh/javierbarbero/BenchmarkingEconomicEfficiency.jl
 
 
-BenchmarkingEconomicEfficiency.jl is a Julia package that provides functions for economic efficiency measurement using Data Envelopment Analysis (DEA). The package is an extension of the [DataEnvelopmentAnalysis.jl](https://github.com/javierbarbero/DataEnvelopmentAnalysis.jl) package.
+BenchmarkingEconomicEfficiency.jl is a Julia package that provides functions for economic efficiency measurement using Data Envelopment Analysis (DEA). The package is an extension of the [DataEnvelopmentAnalysis.jl](https://github.com/javierbarbero/DataEnvelopmentAnalysis.jl) package. The package is being developed for Julia `1.0` and above on Linux, macOS, and Windows. 
 
-The package is being developed for Julia `1.0` and above on Linux, macOS, and Windows.
+For the methodological understanding and empirical interpretation of the different models we refer the reader to the accompanying book: Pastor, Jesús T., Aparicio, Juan, & Zofío, José L. (2022), Benchmarking Economic Efficiency: Technical and Allocative Fundamentals, International Series in Operations Research & Management Science (ISOR, Vol. 346). Springer, Cham. https://doi.org/10.1007/978-3-030-84397-7.
 
-The packes uses internally the [JuMP](https://github.com/JuliaOpt/JuMP.jl) modelling language for mathematicall optimization with solvers [GLPK](http://www.gnu.org/software/glpk/) and [Ipopt](https://coin-or.github.io/Ipopt/).
+The package uses internally the [JuMP](https://github.com/JuliaOpt/JuMP.jl) modelling language for mathematicall optimization with solvers [GLPK](http://www.gnu.org/software/glpk/) and [Ipopt](https://coin-or.github.io/Ipopt/).
 
 ## Installation
 
@@ -38,7 +38,7 @@ julia> using Pkg; Pkg.add("BenchmarkingEconomicEfficiency")
 
 * Profit Russell model.
 * Profit Additive model.
-* Profit Enhanced Russell Graph Slack Based Measure
+* Profit Enhanced Russell Graph (or Slack Based) model.
 * Profit Directional Distance Function model.
 * Profit Hölder model.
 * Profit Modified Directional Distance Function model.
@@ -47,7 +47,7 @@ julia> using Pkg; Pkg.add("BenchmarkingEconomicEfficiency")
 
 **Profitability DEA models**
 
-* Profitability Efficiency measuremen
+* Profitability Efficiency measurement.
 
 **Cost DEA models**
 
