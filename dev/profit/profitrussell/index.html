@@ -26,10 +26,10 @@ Orientation = Graph; Returns to Scale = VRS
 ─────────────────────────────────────
        Profit   Technical  Allocative
 ─────────────────────────────────────
-1  2.0         3.50176e-7  2.0
-2  0.25        2.36616e-8  0.25
-3  2.84063e-8  1.05742e-8  1.78321e-8
-4  0.0833334   2.93062e-8  0.0833333
+1  2.0         3.5013e-7   2.0
+2  0.25        2.48891e-8  0.25
+3  2.84063e-8  1.26812e-8  1.57252e-8
+4  0.0833334   2.96429e-8  0.0833333
 5  0.666667    0.366667    0.3
 6  0.285714    0.276786    0.0089286
 7  0.142857    0.0714286   0.0714286
@@ -43,19 +43,19 @@ Orientation = Graph; Returns to Scale = VRS
  0.28571430194647046
  0.14285715908932758
  1.349978798820779</code></pre><pre><code class="language-julia hljs">efficiency(profitrussell, :Technical)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">8-element Vector{Float64}:
- 3.5017596855535515e-7
- 2.3661629988680488e-8
- 1.0574210618230495e-8
- 2.9306198690015606e-8
+ 3.5013043286902246e-7
+ 2.488906769571031e-8
+ 1.2681167449457575e-8
+ 2.9642925225559225e-8
  0.36666667736489766
  0.2767857062834501
- 0.07142859511533883
+ 0.07142859511753397
  0.5522053118262116</code></pre><pre><code class="language-julia hljs">efficiency(profitrussell, :Allocative)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">8-element Vector{Float64}:
- 1.9999997634493245
- 0.2500000331510166
- 1.7832112675364442e-8
- 0.0833333229646835
+ 1.9999997634948603
+ 0.2500000319235789
+ 1.5725155844137362e-8
+ 0.08333332262795697
  0.3000000271768667
  0.008928595663020344
- 0.07142856397398875
- 0.7977734869945674</code></pre><h3 id="deaprofitrussell-Function-Documentation"><a class="docs-heading-anchor" href="#deaprofitrussell-Function-Documentation">deaprofitrussell Function Documentation</a><a id="deaprofitrussell-Function-Documentation-1"></a><a class="docs-heading-anchor-permalink" href="#deaprofitrussell-Function-Documentation" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="BenchmarkingEconomicEfficiency.deaprofitrussell" href="#BenchmarkingEconomicEfficiency.deaprofitrussell"><code>BenchmarkingEconomicEfficiency.deaprofitrussell</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">deaprofitrussell(X, Y, W, P)</code></pre><p>Compute profit efficiency using Russell data envelopment analysis for inputs <code>X</code>, outputs <code>Y</code>, price of inputs <code>W</code>, and price of outputs <code>P</code>.</p><p><strong>Optional Arguments</strong></p><ul><li><code>monetary=false</code>: decomposition in normalized terms. Monetary terms if <code>true</code>.</li><li><code>names</code>: a vector of strings with the names of the decision making units.</li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/javierbarbero/BenchmarkingEconomicEfficiency.jl/blob/9dee2febbbc8a3536679126eace674ba20cfe75b/src/deaprofitrussell.jl#L21-L29">source</a></section></article></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../profitefficiency/">« Profit Efficiency measurement</a><a class="docs-footer-nextpage" href="../profitadditive/">Profit Additive model »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.23 on <span class="colophon-date" title="Saturday 15 October 2022 13:38">Saturday 15 October 2022</span>. Using Julia version 1.8.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+ 0.07142856397179362
+ 0.7977734869945674</code></pre><h3 id="deaprofitrussell-Function-Documentation"><a class="docs-heading-anchor" href="#deaprofitrussell-Function-Documentation">deaprofitrussell Function Documentation</a><a id="deaprofitrussell-Function-Documentation-1"></a><a class="docs-heading-anchor-permalink" href="#deaprofitrussell-Function-Documentation" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="BenchmarkingEconomicEfficiency.deaprofitrussell" href="#BenchmarkingEconomicEfficiency.deaprofitrussell"><code>BenchmarkingEconomicEfficiency.deaprofitrussell</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">deaprofitrussell(X, Y, W, P)</code></pre><p>Compute profit efficiency using Russell data envelopment analysis for inputs <code>X</code>, outputs <code>Y</code>, price of inputs <code>W</code>, and price of outputs <code>P</code>.</p><p><strong>Optional Arguments</strong></p><ul><li><code>monetary=false</code>: decomposition in normalized terms. Monetary terms if <code>true</code>.</li><li><code>names</code>: a vector of strings with the names of the decision making units.</li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/javierbarbero/BenchmarkingEconomicEfficiency.jl/blob/04a9b87b97e43a32c2da3d7134f8afb7e52ec093/src/deaprofitrussell.jl#L21-L29">source</a></section></article></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../profitefficiency/">« Profit Efficiency measurement</a><a class="docs-footer-nextpage" href="../profitadditive/">Profit Additive model »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.24 on <span class="colophon-date" title="Saturday 6 May 2023 11:59">Saturday 6 May 2023</span>. Using Julia version 1.8.5.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
