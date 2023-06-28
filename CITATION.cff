@@ -21,7 +21,7 @@ preferred-citation:
   - family-names: "Zofío"
     given-names: "José L."
     orcid: "https://orcid.org/0000-0003-1170-9501"
-  doi: "https://doi.org/10.1016/j.seps.2023.101656"
+  doi: "10.1016/j.seps.2023.101656"
   journal: "Socio-Economic Planning Sciences"
   start:  # First page number
   end:  # Last page number
