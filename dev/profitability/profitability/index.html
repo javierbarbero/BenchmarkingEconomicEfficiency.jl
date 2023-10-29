@@ -40,43 +40,43 @@ alpha = 0.5; Returns to Scale = VRS
 7       0.514286  0.514286  1.0       0.514286         1.0
 8       0.2       0.2       0.20504   0.975422         1.0
 ──────────────────────────────────────────────────────────</code></pre><p>Estimated economic, technical (CRS and VRS), scale, and allocative efficiency scores are returned with the <code>efficiency</code> function:</p><pre><code class="language-julia hljs">efficiency(profitability, :Economic)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">8-element Vector{Float64}:
- 0.39999997615477967
+ 0.3999999761547797
  0.9999999139576936
  0.7999999346859734
- 0.599999955417482
- 0.39999997615477967
+ 0.5999999554174821
+ 0.3999999761547797
  0.3999999761547798
- 0.514285678589728
+ 0.5142856785897278
  0.19999999696915496</code></pre><pre><code class="language-julia hljs">efficiency(profitability, :CRS)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">8-element Vector{Float64}:
- 0.3999999102772338
- 0.9999999335326195
- 0.7999999828302875
+ 0.39999991027723375
+ 0.9999999335326196
+ 0.7999999828302874
  0.5999999997885156
- 0.39999998533892306
- 0.40000000686023923
+ 0.399999985338923
+ 0.4000000068602393
  0.5142857188852132
- 0.20000000647224023</code></pre><pre><code class="language-julia hljs">efficiency(profitability, :VRS)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">8-element Vector{Float64}:
- 0.999999713440904
- 0.9999999534911985
+ 0.2000000064722402</code></pre><pre><code class="language-julia hljs">efficiency(profitability, :VRS)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">8-element Vector{Float64}:
+ 0.9999997134409042
+ 0.999999953491199
  0.9999999830399828
- 0.9999999825466026
- 0.4100970215671949
- 0.6344889178604335
- 0.9999999537051625
- 0.2050395551645811</code></pre><pre><code class="language-julia hljs">efficiency(profitability, :Scale)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">8-element Vector{Float64}:
- 0.4000000249008793
- 0.9999999800414201
- 0.7999999963983012
- 0.6000000102605542
- 0.9753789086551133
- 0.6304286735363059
- 0.5142857426939882
+ 0.9999999825466025
+ 0.41009702156719496
+ 0.6344889178604334
+ 0.9999999537051626
+ 0.20503955516458108</code></pre><pre><code class="language-julia hljs">efficiency(profitability, :Scale)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">8-element Vector{Float64}:
+ 0.4000000249008792
+ 0.9999999800414198
+ 0.7999999963983011
+ 0.6000000102605543
+ 0.9753789086551131
+ 0.630428673536306
+ 0.5142857426939881
  0.9754215781033287</code></pre><pre><code class="language-julia hljs">efficiency(profitability, :Allocative)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">8-element Vector{Float64}:
- 1.0000001646939016
- 0.9999999804250728
- 0.9999999398196061
- 0.9999999260482773
- 0.9999999770396407
- 0.9999999232363527
- 0.9999999216476682
- 0.9999999524845752</code></pre><h3 id="deaprofitability-Function-Documentation"><a class="docs-heading-anchor" href="#deaprofitability-Function-Documentation">deaprofitability Function Documentation</a><a id="deaprofitability-Function-Documentation-1"></a><a class="docs-heading-anchor-permalink" href="#deaprofitability-Function-Documentation" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="DataEnvelopmentAnalysis.deaprofitability" href="#DataEnvelopmentAnalysis.deaprofitability"><code>DataEnvelopmentAnalysis.deaprofitability</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">deaprofitability(X, Y, W, P)</code></pre><p>Compute profitability efficiency using data envelopment analysis for inputs <code>X</code>, outputs <code>Y</code>, price of inputs <code>W</code>, and price of outputs <code>P</code>.</p><p><strong>Optional Arguments</strong></p><ul><li><code>alpha=0.5</code>: alpha to use for the generalized distance function.</li><li><code>names</code>: a vector of strings with the names of the decision making units.</li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/javierbarbero/DataEnvelopmentAnalysis.jl/blob/v0.8.1/src/deaprofitability.jl#L23-L31">source</a></section></article></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../../profit/profitgda/">« Profit General Direct Approach model</a><a class="docs-footer-nextpage" href="../../cost/costefficiency/">Cost (In)Efficiency measurement »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="auto">Automatic (OS)</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.1.2 on <span class="colophon-date" title="Sunday 29 October 2023 09:44">Sunday 29 October 2023</span>. Using Julia version 1.9.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+ 1.0000001646939018
+ 0.9999999804250727
+ 0.9999999398196062
+ 0.9999999260482775
+ 0.9999999770396409
+ 0.9999999232363526
+ 0.999999921647668
+ 0.9999999524845754</code></pre><h3 id="deaprofitability-Function-Documentation"><a class="docs-heading-anchor" href="#deaprofitability-Function-Documentation">deaprofitability Function Documentation</a><a id="deaprofitability-Function-Documentation-1"></a><a class="docs-heading-anchor-permalink" href="#deaprofitability-Function-Documentation" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-article-toggle-button fa-solid fa-chevron-down" href="javascript:;" title="Collapse docstring"></a><a class="docstring-binding" id="DataEnvelopmentAnalysis.deaprofitability" href="#DataEnvelopmentAnalysis.deaprofitability"><code>DataEnvelopmentAnalysis.deaprofitability</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia hljs">deaprofitability(X, Y, W, P)</code></pre><p>Compute profitability efficiency using data envelopment analysis for inputs <code>X</code>, outputs <code>Y</code>, price of inputs <code>W</code>, and price of outputs <code>P</code>.</p><p><strong>Optional Arguments</strong></p><ul><li><code>alpha=0.5</code>: alpha to use for the generalized distance function.</li><li><code>names</code>: a vector of strings with the names of the decision making units.</li></ul></div><a class="docs-sourcelink" target="_blank" href="https://github.com/javierbarbero/DataEnvelopmentAnalysis.jl/blob/v0.8.2/src/deaprofitability.jl#L23-L31">source</a></section></article></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../../profit/profitgda/">« Profit General Direct Approach model</a><a class="docs-footer-nextpage" href="../../cost/costefficiency/">Cost (In)Efficiency measurement »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="auto">Automatic (OS)</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.1.2 on <span class="colophon-date" title="Sunday 29 October 2023 11:11">Sunday 29 October 2023</span>. Using Julia version 1.9.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
