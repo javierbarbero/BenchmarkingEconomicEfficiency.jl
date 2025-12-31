@@ -19,7 +19,7 @@ A Julia package for economic efficiency measurement using Data Envelopment Analy
 [codecov-url]: https://codecov.io/gh/javierbarbero/BenchmarkingEconomicEfficiency.jl
 
 
-BenchmarkingEconomicEfficiency.jl is a Julia package that provides functions for economic efficiency measurement using Data Envelopment Analysis (DEA). The package is an extension of the [DataEnvelopmentAnalysis.jl](https://github.com/javierbarbero/DataEnvelopmentAnalysis.jl) package. The package is being developed for Julia `1.0` and above on Linux, macOS, and Windows. 
+BenchmarkingEconomicEfficiency.jl is a Julia package that provides functions for economic efficiency measurement using Data Envelopment Analysis (DEA). The package is an extension of the [DataEnvelopmentAnalysis.jl](https://github.com/javierbarbero/DataEnvelopmentAnalysis.jl) package.
 
 For the methodological understanding and empirical interpretation of the different models we refer the reader to the accompanying book: Pastor, Jesús T., Aparicio, Juan, & Zofío, José L. (2022), Benchmarking Economic Efficiency: Technical and Allocative Fundamentals, International Series in Operations Research & Management Science (ISOR, Vol. 346). Springer, Cham. https://doi.org/10.1007/978-3-030-84397-7.
 
