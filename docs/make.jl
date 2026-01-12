@@ -23,10 +23,12 @@ makedocs(sitename = "BenchmarkingEconomicEfficiency",
                 "Profit Modified Directional Distance Function model" => "profit/profitmddf.md",
                 "Profit Reverse Directional Distance Function model" => "profit/profitrddf.md",
                 "Profit General Direct Approach model" => "profit/profitgda.md",
+                "Profit Efficiency Change" => "profit/profitchange.md",
                 ],             
              "Profitability model" => [
                 "Profitability Efficiency measurement" => "profitability/profitability.md",
-                 ],
+                "Profitability Efficiency Change" => "profitability/profitabilitychange.md",
+                ],
              "Cost Models" => Any[
                 "Cost (In)Efficiency measurement" => "cost/costefficiency.md",
                 "Cost Radial model" => "cost/cost.md",

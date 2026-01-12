@@ -22,5 +22,8 @@ using Test
     include("deacostgda.jl")
     include("dearevenuegda.jl")
     include("deaprofitgda.jl")
+
+    include("deaprofitchange.jl")
+    include("deaprofitabilitychange.jl")
     
 end
