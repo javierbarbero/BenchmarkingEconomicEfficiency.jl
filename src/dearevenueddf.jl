@@ -142,7 +142,7 @@ function Base.show(io::IO, x::RevenueDDFDEAModel)
         print(io, "\n")
         print(io, "Gy = ", string(x.Gy))
         print(io, "\n")
-        show(io, CoefTable(hcat(eff, techeff, alloceff), ["Revenue", "Technical", "Allocative"], dmunames))
+        show(io, MIME"text/plain"(), CoefTable(hcat(eff, techeff, alloceff), ["Revenue", "Technical", "Allocative"], dmunames))
     end
 
 end

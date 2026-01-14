@@ -147,7 +147,7 @@ function Base.show(io::IO, x::ProfitAdditiveDEAModel)
         print(io, "Weights = ", string(x.weights))
         print(io, "; Returns to Scale = VRS")
         print(io, "\n")
-        show(io, CoefTable(hcat(eff, techeff, alloceff), ["Profit", "Technical", "Allocative"], dmunames))
+        show(io, MIME"text/plain"(), CoefTable(hcat(eff, techeff, alloceff), ["Profit", "Technical", "Allocative"], dmunames))
     end
 
 end

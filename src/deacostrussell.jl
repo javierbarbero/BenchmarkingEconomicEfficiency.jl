@@ -104,7 +104,7 @@ function Base.show(io::IO, x::CostRussellDEAModel)
         print(io, "; Returns to Scale = ", string(x.rts))
         print(io, "\n")
 
-        show(io, CoefTable(hcat(eff, techeff, alloceff), ["Cost", "Technical", "Allocative"], dmunames))
+        show(io, MIME"text/plain"(), CoefTable(hcat(eff, techeff, alloceff), ["Cost", "Technical", "Allocative"], dmunames))
 
     end
     

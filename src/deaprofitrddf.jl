@@ -138,7 +138,7 @@ function Base.show(io::IO, x::ProfitReverseDDFDEAModel)
         print(io, "\n")
         print(io, "Associated efficiency measure = ", string(x.measure))
         print(io, "\n")
-        show(io, CoefTable(hcat(eff, techeff, alloceff), ["Profit", "Technical", "Allocative"], dmunames))
+        show(io, MIME"text/plain"(), CoefTable(hcat(eff, techeff, alloceff), ["Profit", "Technical", "Allocative"], dmunames))
     end
 
 end

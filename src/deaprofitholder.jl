@@ -142,6 +142,6 @@ function Base.show(io::IO, x::ProfitHolderDEAModel)
         if isweighted
             print(io, "Weighted (weakly) Hölder distance function \n")
         end
-        show(io, CoefTable(hcat(eff, techeff, alloceff), ["Profit", "Technical", "Allocative"], dmunames))
+        show(io, MIME"text/plain"(), CoefTable(hcat(eff, techeff, alloceff), ["Profit", "Technical", "Allocative"], dmunames))
     end
 end

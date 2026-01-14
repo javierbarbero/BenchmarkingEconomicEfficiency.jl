@@ -518,7 +518,7 @@ function Base.show(io::IO, x::ProfitChangeDEAModel)
         print(io, "\n")
         deadisplayinfo(io, x.profitmodelbase)
         
-        show(io, CoefTable(hcat(profchange, techchange, allocchange, normbase, normcomp), ["Prof.Change", "Tech.Change", "Alloc.Change", "NF.Base", "NF.Comp"], dmunames))
+        show(io, MIME"text/plain"(), CoefTable(hcat(profchange, techchange, allocchange, normbase, normcomp), ["Prof.Change", "Tech.Change", "Alloc.Change", "NF.Base", "NF.Comp"], dmunames))
     end
 
 end

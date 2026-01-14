@@ -88,7 +88,7 @@ function Base.show(io::IO, x::ProfitabilityChangeDEAModel)
         print(io, "alpha = ", x.profitamodelbase.alpha)
         print(io, "; Returns to Scale = VRS")
         print(io, "\n")
-        show(io, CoefTable(hcat(profchange, crseffchange, vrseffchange, scaleffchange, allocchange), ["Prof.Change", "CRS.Change", "VRS.Change", "Scale.Change", "Alloc.Change"], dmunames))
+        show(io, MIME"text/plain"(), CoefTable(hcat(profchange, crseffchange, vrseffchange, scaleffchange, allocchange), ["Prof.Change", "CRS.Change", "VRS.Change", "Scale.Change", "Alloc.Change"], dmunames))
     end
 
 end

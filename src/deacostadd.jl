@@ -156,7 +156,7 @@ function Base.show(io::IO, x::CostAdditiveDEAModel)
 
         if disposY == :Weak println(io, "Weak disposability of outputs") end
 
-        show(io, CoefTable(hcat(eff, techeff, alloceff), ["Cost", "Technical", "Allocative"], dmunames))
+        show(io, MIME"text/plain"(), CoefTable(hcat(eff, techeff, alloceff), ["Cost", "Technical", "Allocative"], dmunames))
     end
 
 end
