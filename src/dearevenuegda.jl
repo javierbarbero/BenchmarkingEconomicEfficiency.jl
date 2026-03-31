@@ -3,7 +3,7 @@
     RevenueGDADEAModel
 An data structure representing a Revenue General Direct Approach DEA model.
 """
-struct RevenueGDADEAModel <: AbstractProfitDEAModel
+struct RevenueGDADEAModel <: AbstractRevenueDEAModel
     n::Int64
     m::Int64
     s::Int64

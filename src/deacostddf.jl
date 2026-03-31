@@ -32,7 +32,7 @@ The direction `Gx` can be one of the following symbols.
 - `:Ones`: use ones.
 - `:Observed`: use observed values.
 - `:Mean`: use column means.
-- `:Monetary`: use direction so that profit inefficiency is expressed in monetary values.
+- `:Monetary`: use direction so that cost inefficiency is expressed in monetary values.
 
 Alternatively, a vector or matrix with the desired directions can be supplied.
 

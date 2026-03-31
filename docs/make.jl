@@ -37,7 +37,8 @@ makedocs(sitename = "BenchmarkingEconomicEfficiency",
                 "Cost Directional Distance Function model" => "cost/costddf.md",
                 "Cost Hölder model" => "cost/costholder.md",
                 "Cost Reverse Directional Distance Function model" => "cost/costrddf.md",
-                "Cost General Direct Approach model" => "cost/costgda.md"
+                "Cost General Direct Approach model" => "cost/costgda.md",
+                "Cost Efficiency Change" => "cost/costchange.md",
                 ],
               "Revenue Models" => Any[
                 "Revenue (In)Efficiency measurement" => "revenue/revenueefficiency.md",
@@ -47,7 +48,8 @@ makedocs(sitename = "BenchmarkingEconomicEfficiency",
                 "Revenue Directional Distance Function model" => "revenue/revenueddf.md",
                 "Revenue Hölder model" => "revenue/revenueholder.md",
                 "Revenue Reverse Directional Distance Function model" => "revenue/revenuerddf.md",
-                "Revenue General Direct Approach model" => "revenue/revenuegda.md"
+                "Revenue General Direct Approach model" => "revenue/revenuegda.md",
+                "Revenue Efficiency Change" => "revenue/revenuechange.md"
                 ],
         "Configuring Optimizer" => "optimizer.md",
         ],

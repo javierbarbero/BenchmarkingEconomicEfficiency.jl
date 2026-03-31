@@ -42,14 +42,15 @@ module BenchmarkingEconomicEfficiency
     deacostrddf, dearevenuerddf, deaprofitrddf,
     deacostgda, dearevenuegda, deaprofitgda,
 
-    deaprofitchangeadd, 
-    deaprofitchangerussell, 
+    deacostchange, dearevenuechange,
+    deacostchangeadd, dearevenuechangeadd, deaprofitchangeadd, 
+    deacostchangerussell, dearevenuechangerussell, deaprofitchangerussell, 
     deaprofitchangeerg,
-    deaprofitchange,
-    deaprofitchangeholder,
+    deacostchangeddf, dearevenuechangeddf, deaprofitchange,
+    deacostchangeholder, dearevenuechangeholder, deaprofitchangeholder,
     deaprofitchangemddf,
-    deaprofitchangerddf,
-    deaprofitchangegda,
+    deacostchangerddf, dearevenuechangerddf, deaprofitchangerddf,
+    deacostchangegda, dearevenuechangegda, deaprofitchangegda,
     effchange,
 
     deaprofitabilitychange
@@ -76,6 +77,8 @@ module BenchmarkingEconomicEfficiency
     include("deaprofitgda.jl")
 
     include("deaprofitchange.jl")
+    include("deacostchange.jl")
+    include("dearevenuechange.jl")
     include("deaprofitabilitychange.jl")
 
 end
